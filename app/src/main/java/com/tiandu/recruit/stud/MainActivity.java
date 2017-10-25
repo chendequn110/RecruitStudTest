@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
+
     @BindView(R.id.re_home)
     RelativeLayout re_home;
     @BindView(R.id.re_home_human)
