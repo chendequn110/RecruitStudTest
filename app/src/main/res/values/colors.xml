@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorAccent">#8BC34A</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="windowBackground">#ffffff</color>
+    <color name="bg_color">#F1F1F1</color>
+
+    <color name="light_white">#BEBEBE</color>
+    <color name="comm_line">#eaeaea</color>
+    <color name="line">#A09288</color>
+    <color name="deep_blue">#006699</color>
+    <color name="black">#000000</color>
+    <color name="error_color">#fe3b2f</color>
+    <color name="wait_red">#FF5502</color>
+    <color name="red">#F50000</color>
+    <color name="green">#4CAF50</color>
+    <color name="pale_green">#62a72e</color>
+    <color name="load_green">#4CAF50</color>
+    <color name="main_green">#20CB04</color>
+    <color name="stroke_green">#80c050</color>
+    <color name="transparent">#00000000</color>
+    <color name="theme_black_7f">#8f000000</color>
+    <color name="light_green">#27cd66</color>
+    <color name="title">#333333</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#BEBEBE</color>
+    <color name="light_gray">#F4F4F4</color>
+    <color name="darker_gray">#aaa</color>
+    <!--<color name="darker_grey">#333333</color>-->
+    <color name="darker_grey">#666666</color>
+    <color name="btn_green_pre">#6DD100</color>
+    <color name="violet">#0075C6</color>
+    <color name="input_txt">#909090</color>
+
+    <color name="alpha_75_black">#BF000000</color>
+    <color name="text_red">#F25D2F</color>
+    <color name="appint_yellow">#F6CB3B</color>
+    <color name="course_gray">#c1c1c1</color>
+    <color name="load_gray">#c7c5c3</color>
+    <color name="load_bk">#20f6f3f2</color>
+
+
+
+    <color name="note_bk">#8C8C8C</color>
+    <color name="black_bk">#333333</color>
+
+    <color name="title_text">#0C0C0C</color>
+    <color name="title_state_text">#999999</color>
+    <color name="context_text">#999999</color>
+    <color name="color_99ffffff">#99ffffff</color>
+</resources>

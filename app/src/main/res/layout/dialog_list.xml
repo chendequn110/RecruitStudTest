@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_corner_bg_white"
+    android:orientation="vertical" >
+    <TextView
+        android:id="@+id/dialog_list_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_20dp"
+        android:layout_marginRight="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_14dp"
+        android:gravity="center"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="@string/dialog_title_default"
+        android:textColor="@color/darker_grey"
+        android:textSize="@dimen/font_medium" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/size_20dp"
+        android:layout_marginRight="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_14dp"
+        android:background="@color/darker_grey" />
+    <ListView
+        android:id="@+id/dialog_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/size_20dp"
+        android:layout_marginRight="@dimen/size_20dp"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/gray"
+        android:dividerHeight="1px"
+        android:scrollbarSize="@dimen/size_4dp"
+        android:scrollbarThumbVertical="@drawable/shape_scrollbar_thumb_vertical" />
+
+</LinearLayout>

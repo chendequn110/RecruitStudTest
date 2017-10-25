@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/custom_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/fab_margin">
+
+        <com.tiandu.recruit.stud.view.ClearEditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:inputType="number"
+            android:hint="@string/input_phone"
+            android:minHeight="@dimen/size_45dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etValideCode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:inputType="number"
+                android:hint="@string/input_valide_code"
+                android:minHeight="@dimen/size_45dp" />
+
+            <Button
+                android:id="@+id/btnCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/size_10dp"
+                android:background="@drawable/select_corner_state_green"
+                android:minHeight="@dimen/size_40dp"
+                android:layout_marginLeft="@dimen/size_10dp"
+                android:padding="@dimen/size_5dp"
+                android:text="@string/sendCode"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_medium" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+
+        <com.tiandu.recruit.stud.view.ClearEditText
+            android:id="@+id/setPasswd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:inputType="textPassword"
+            android:background="@null"
+            android:hint="@string/input_reset_paswd"
+            android:minHeight="@dimen/size_45dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+
+        <com.tiandu.recruit.stud.view.ClearEditText
+            android:id="@+id/okPasswd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:background="@null"
+            android:inputType="textPassword"
+            android:hint="@string/input_ok_passwd"
+            android:minHeight="@dimen/size_45dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_40dp"
+            android:background="@drawable/select_corner_state_green"
+            android:text="@string/passwd_submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_large" />
+    </LinearLayout>
+
+
+</LinearLayout>
