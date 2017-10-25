@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">人人招</string>
-    <string name="find_passwd">找回密码?</string>
+    <string name="find_passwd">忘记密码?</string>
     <string name="protocol_txt">《人人招》协议</string>
     <string name="protocol_hint">我已阅读并同意</string>
     <string name="login_user_hit">请输入用户名</string>
@@ -20,8 +20,8 @@
     <string name="user_exit_login">退出登录</string>
     <string name="user_face">人脸录入</string>
     <string name="main_me">我的</string>
-    <string name="main_trends">动态</string>
-    <string name="main_human">人才</string>
+    <string name="main_trends">账户</string>
+    <string name="main_human">招聘</string>
     <string name="main_home">首页</string>
     <string name="dialog_title_default">操作确认</string>
     <string name="dialog_msg_default">您确定进行此操作吗?</string>

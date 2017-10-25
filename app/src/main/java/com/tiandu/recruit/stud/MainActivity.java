@@ -3,6 +3,7 @@ package com.tiandu.recruit.stud;
 
 
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 
 import com.tiandu.recruit.stud.base.BaseActivity;
@@ -13,14 +14,14 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.re_home)
-    RelativeLayout re_home;
-    @BindView(R.id.re_home_human)
-    RelativeLayout re_home_human;
-    @BindView(R.id.re_trends)
-    RelativeLayout re_trends;
-    @BindView(R.id.re_home_me)
-    RelativeLayout re_home_me;
+    @BindView(R.id.rb_home)
+    RadioButton rb_home;
+    @BindView(R.id.rb_human)
+    RadioButton rb_human;
+    @BindView(R.id.rb_trends)
+    RadioButton rb_trends;
+    @BindView(R.id.rb_me)
+    RadioButton rb_me;
 
     @Override
     protected void initView() {
@@ -31,14 +32,14 @@ public class MainActivity extends BaseActivity {
     protected int getLayoutRes() {
         return R.layout.activity_main;
     }
-    @OnClick(R.id.re_home_me) void meClick() {
+    @OnClick(R.id.rb_me) void meClick() {
         readyGo(MeActivity.class);
     }
-    @OnClick(R.id.re_home) void humanClick() {
+    @OnClick(R.id.rb_home) void humanClick() {
     }
-    @OnClick(R.id.re_home_human) void homeClick() {
+    @OnClick(R.id.rb_trends) void homeClick() {
     }
-    @OnClick(R.id.re_trends) void retClick() {
+    @OnClick(R.id.rb_human) void retClick() {
 
     }
     @Override
@@ -48,6 +49,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected boolean isApplyStatusBarTranslucency() {
-        return false;
+        return true;
     }
 }

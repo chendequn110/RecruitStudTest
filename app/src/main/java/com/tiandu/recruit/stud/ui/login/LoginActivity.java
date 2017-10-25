@@ -33,10 +33,10 @@ import butterknife.OnClick;
 public class LoginActivity extends BaseActivity{
     @BindView(R.id.btnLogin)
     Button btnLogin;
-    @BindView(R.id.btnRegister) Button btnRegister;
+    @BindView(R.id.tvRegister) TextView tvRegister;
     @BindView(R.id.tvForget)
     TextView tvForget;
-    @BindView(R.id.cbProtocol)CheckBox cbProtocol;
+    /*@BindView(R.id.cbProtocol)CheckBox cbProtocol;*/
     //@BindView(R.id.tvFirstLogin) TextView tvFirstLogin;
     @BindView(R.id.etAccount) ClearEditText etAccount;
     @BindView(R.id.etPassword) ClearEditText etPassword;
@@ -53,7 +53,7 @@ public class LoginActivity extends BaseActivity{
         isFirstLogined();
     }
     private void isFirstLogined() {
-        cbProtocol.setChecked(true);
+      /*  cbProtocol.setChecked(true);*/
         if (isFirst) {
             finish();
         }
@@ -76,20 +76,20 @@ public class LoginActivity extends BaseActivity{
 //        readyGo(ProtocolActivity.class);
 //    }
 
-    @OnClick(R.id.tvForget) void forgetClick() {
+//    @OnClick(R.id.tvForget) void forgetClick() {
+//        readyGo(RegisterActivity.class);
+//    }
+    @OnClick(R.id.tvRegister) void registerClick() {
         readyGo(RegisterActivity.class);
     }
-    @OnClick(R.id.btnRegister) void registerClick() {
-        readyGo(RegisterActivity.class);
-    }
-    @OnCheckedChanged(R.id.cbProtocol) void onChecked(boolean checked) {
-        if (checked) {
-            btnLogin.setEnabled(true);
-        } else {
-            btnLogin.setEnabled(false);
-            showToast("请先勾选人人招协议");
-        }
-    }
+//    @OnCheckedChanged(R.id.cbProtocol) void onChecked(boolean checked) {
+//        if (checked) {
+//            btnLogin.setEnabled(true);
+//        } else {
+//            btnLogin.setEnabled(false);
+//            showToast("请先勾选人人招协议");
+//        }
+//    }
     @OnClick(R.id.btnLogin) void onSubmitClick() {
         uName = etAccount.getText().toString().trim();
         if (AStringUtil.isEmpty(uName)) {
@@ -101,10 +101,10 @@ public class LoginActivity extends BaseActivity{
             showToast("密码不能为空");
             return ;
         }
-        if (!cbProtocol.isChecked()) {
-            showToast("请先人人招协议");
-            return ;
-        }
+//        if (!cbProtocol.isChecked()) {
+//            showToast("请先人人招协议");
+//            return ;
+//        }
         showloginDialog(loading);
         readyGoThenKill(MainActivity.class);
 //        presenter.userLogin(uName,uPasswd,registrationID);

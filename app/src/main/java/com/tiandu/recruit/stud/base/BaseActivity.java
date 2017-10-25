@@ -323,6 +323,16 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.RECEIVE_SMS,
+            Manifest.permission.READ_CONTACTS,
+            Manifest.permission.READ_SMS,
+            Manifest.permission.GET_TASKS,
+            Manifest.permission.CALL_PHONE,
+            Manifest.permission.READ_LOGS,
+            Manifest.permission.SET_DEBUG_APP,
+            Manifest.permission.SYSTEM_ALERT_WINDOW,
+            Manifest.permission.GET_ACCOUNTS,
+            Manifest.permission.WRITE_APN_SETTINGS
     };
 
     private static final int PERMISSON_REQUESTCODE = 0;
