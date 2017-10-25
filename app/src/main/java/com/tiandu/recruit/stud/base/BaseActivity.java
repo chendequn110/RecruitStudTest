@@ -316,12 +316,19 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
      * 需要进行检测的权限数组
      */
     protected String[] needPermissions = {
+            Manifest.permission.INTERNET,
+            Manifest.permission.ACCESS_NETWORK_STATE,
+            Manifest.permission.ACCESS_WIFI_STATE,
+            Manifest.permission.CHANGE_WIFI_STATE,
+            Manifest.permission.CHANGE_CONFIGURATION,
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
             Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_SETTINGS,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WAKE_LOCK,
             Manifest.permission.READ_PHONE_STATE,
             Manifest.permission.RECEIVE_SMS,
             Manifest.permission.READ_CONTACTS,
