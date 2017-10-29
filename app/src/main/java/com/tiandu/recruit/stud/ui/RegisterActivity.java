@@ -4,13 +4,20 @@ import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.tiandu.recruit.stud.MainActivity;
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.base.BaseActivity;
+import com.tiandu.recruit.stud.base.utils.AStringUtil;
+import com.tiandu.recruit.stud.ui.login.LoginActivity;
+import com.tiandu.recruit.stud.ui.register.RegisterContract;
+import com.tiandu.recruit.stud.ui.register.RegisterModel;
+import com.tiandu.recruit.stud.ui.register.ResisterPresenter;
 import com.tiandu.recruit.stud.view.ClearEditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.OnClick;
 import cn.smssdk.EventHandler;
@@ -25,7 +32,7 @@ import cn.smssdk.SMSSDK;
  * 修改时间：2017/10/23 23:26
  * 修改备注：
  */
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity <ResisterPresenter,RegisterModel> implements RegisterContract.View{
     @BindView(R.id.btnSubmit)Button btnSubmit;
     @BindView(R.id.btnCode)Button btnCode;
     @BindView(R.id.etPhone)
@@ -34,7 +41,12 @@ public class RegisterActivity extends BaseActivity {
     EditText etValideCode;
     @BindView(R.id.setPasswd)
     ClearEditText setPasswd;
+    @BindView(R.id.setUserId)
+    ClearEditText setUserId;
+    @BindView(R.id.setuserName)
+    ClearEditText setuserName;
     @BindView(R.id.okPasswd) ClearEditText okPasswd;
+    @BindString(R.string.register_loading) String loading;
     private EventHandler handler;
     private String phone;
 
@@ -49,6 +61,7 @@ public class RegisterActivity extends BaseActivity {
         phone = etPhone.getText().toString().trim();
         String number = etValideCode.getText().toString();
         SMSSDK.submitVerificationCode("86",phone,number);
+
     }
 
     @Override
@@ -70,10 +83,33 @@ public class RegisterActivity extends BaseActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                showToast("验证成功");
-//                                Toast.makeText(RegisterActivity.this,"验证成功",Toast.LENGTH_SHORT).show();
-//                                Intent intent = new Intentntenttent(MainActivity.this,Main2Activity.class);
-//                                startActivity(intent);
+                                String uName = setuserName.getText().toString().trim();
+                                if (AStringUtil.isEmpty(uName)) {
+                                    showToast("账号不能为空");
+                                    return ;
+                                }
+                                String uId = setUserId.getText().toString().trim();
+                                if (AStringUtil.isEmpty(uId)) {
+                                    showToast("用户名不能为空");
+                                    return ;
+                                }
+                                String uPassword = setPasswd.getText().toString().trim();
+                                if (AStringUtil.isEmpty(uPassword)) {
+                                    showToast("密码不能为空");
+                                    return ;
+                                }
+                                String okPwd = okPasswd.getText().toString().trim();
+                                if (AStringUtil.isEmpty(okPwd)) {
+                                    showToast("确认密码不能为空");
+                                    return ;
+                                }
+                                if(!uPassword.equals(okPwd)){
+                                    showToast("两次输入密码不一致");
+                                    return ;
+                                }
+
+                                showloginDialog(loading);
+                                presenter.userRegister("Reg",uId,uName,uPassword,phone);
                             }
                         });
 
@@ -83,7 +119,6 @@ public class RegisterActivity extends BaseActivity {
                             @Override
                             public void run() {
                                 showToast("验证码已发送");
-//                                Toast.makeText(RegisterActivity.this,"验证码已发送",Toast.LENGTH_SHORT).show();
                             }
                         });
                     }else if (event ==SMSSDK.EVENT_GET_SUPPORTED_COUNTRIES){
@@ -101,8 +136,7 @@ public class RegisterActivity extends BaseActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    showToast("提交错误信息");
-//                                    Toast.makeText(RegisterActivity.this,"提交错误信息", Toast.LENGTH_SHORT).show();
+                                    showToast("短信验证失败");
                                 }
                             });
                         }
@@ -124,11 +158,24 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     protected void initPresenter() {
-
+        presenter.setVM(this,mModel);
     }
 
     @Override
     protected boolean isApplyStatusBarTranslucency() {
         return  false;
+    }
+
+    @Override
+    public void loginSuccess(String message) {
+        cannelDialog();
+        showToast(message);
+        readyGoThenKill(LoginActivity.class);
+    }
+
+    @Override
+    public void showError(String message) {
+        showToast(message);
+        cannelDialog();
     }
 }

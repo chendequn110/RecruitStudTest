@@ -1,6 +1,7 @@
 package com.tiandu.recruit.stud.base;
 
 import android.app.Application;
+import android.content.res.Resources;
 
 import com.mob.MobSDK;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
@@ -37,10 +38,15 @@ public class App extends Application {
 
     private void UMinit() {
         PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
-        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+        PlatformConfig.setQQZone("1106503324", "xbgdfalMXJmRqi1u");
     }
 
     public static App getAppContext() {
         return mApp;
+    }
+
+
+    public static Resources getAppResources() {
+        return mApp.getResources();
     }
 }

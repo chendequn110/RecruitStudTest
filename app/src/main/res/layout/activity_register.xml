@@ -56,6 +56,34 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/font_medium" />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+
+        <com.tiandu.recruit.stud.view.ClearEditText
+            android:id="@+id/setUserId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:background="@null"
+            android:hint="@string/input_reset_userid"
+            android:inputType="text"
+            android:minHeight="@dimen/size_45dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+
+        <com.tiandu.recruit.stud.view.ClearEditText
+            android:id="@+id/setuserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:background="@null"
+            android:hint="@string/input_reset_username"
+            android:inputType="text"
+            android:minHeight="@dimen/size_45dp" />
 
         <View
             android:layout_width="match_parent"
@@ -67,9 +95,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_10dp"
-            android:inputType="textPassword"
             android:background="@null"
             android:hint="@string/input_reset_paswd"
+            android:inputType="textPassword"
             android:minHeight="@dimen/size_45dp" />
 
         <View

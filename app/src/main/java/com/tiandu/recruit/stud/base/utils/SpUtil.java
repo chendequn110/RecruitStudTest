@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.google.gson.Gson;
 import com.tiandu.recruit.stud.base.BaseActivity;
+import com.tiandu.recruit.stud.data.entity.UserInfo;
 
 
 public class SpUtil {
@@ -71,13 +73,13 @@ public class SpUtil {
         prefs.edit().putString(USER_NAME_KEY,account).commit();
     }
 
-//    public static UserInfo getUser() {
-//        return new Gson().fromJson(prefs.getString(USER_INFO_KEY,""),UserInfo.class);
-//    }
-//
-//    public static void saveUser(UserInfo model) {
-//        prefs.edit().putString(USER_INFO_KEY,new Gson().toJson(model)).commit();
-//    }
+    public static UserInfo getUser() {
+        return new Gson().fromJson(prefs.getString(USER_INFO_KEY,""),UserInfo.class);
+    }
+
+    public static void saveUser(UserInfo model) {
+        prefs.edit().putString(USER_INFO_KEY,new Gson().toJson(model)).commit();
+    }
 
     public static void clearAll() {
         prefs.edit().clear().commit();

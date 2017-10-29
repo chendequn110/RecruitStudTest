@@ -2,14 +2,11 @@ package com.tiandu.recruit.stud.ui.login;
 
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tiandu.recruit.stud.MainActivity;
 import com.tiandu.recruit.stud.R;
@@ -17,9 +14,9 @@ import com.tiandu.recruit.stud.base.BaseActivity;
 import com.tiandu.recruit.stud.base.utils.AStringUtil;
 import com.tiandu.recruit.stud.base.utils.DialogFactory;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
+import com.tiandu.recruit.stud.data.event.ReceiverEvent;
 import com.tiandu.recruit.stud.ui.RegisterActivity;
 import com.tiandu.recruit.stud.view.ClearEditText;
-import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareConfig;
@@ -27,11 +24,14 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.utils.SocializeUtils;
 
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.Map;
 
 import butterknife.BindString;
 import butterknife.BindView;
-import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 /**
@@ -43,14 +43,12 @@ import butterknife.OnClick;
  * 修改时间：2017/10/23 18:21
  * 修改备注：
  */
-public class LoginActivity extends BaseActivity{
+public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> implements LoginContract.View {
     @BindView(R.id.btnLogin)
     Button btnLogin;
     @BindView(R.id.tvRegister) TextView tvRegister;
     @BindView(R.id.tvForget)
     TextView tvForget;
-    /*@BindView(R.id.cbProtocol)CheckBox cbProtocol;*/
-    //@BindView(R.id.tvFirstLogin) TextView tvFirstLogin;
     @BindView(R.id.login_qq_fast_login)
     ImageView iv_qq_fast_login;
     @BindView(R.id.login_we_chat_fast_login)
@@ -60,22 +58,21 @@ public class LoginActivity extends BaseActivity{
     @BindString(R.string.login_loading) String loading;
     private String uName = null;
     public static boolean isFirst;
-    private String registrationID;
     private AlertDialog.Builder builder;
     private Dialog fastDialog = null;
+    private String registrationID;
     @Override
     protected void initView() {
         fastDialog = DialogFactory.getLoadingDialog(this,"跳转中",false,null);
         cannelDialog();
-//        EventBus.getDefault().register(this);
+        EventBus.getDefault().register(this);
         UMShareConfig config = new UMShareConfig();
         config.isNeedAuthOnGetUserInfo(true);
         UMShareAPI.get(this).setShareConfig(config);
         etAccount.setText(SpUtil.getAccount());
-        isFirstLogined();
+//        isFirstLogined();
     }
     private void isFirstLogined() {
-      /*  cbProtocol.setChecked(true);*/
         if (isFirst) {
             finish();
         }
@@ -84,34 +81,21 @@ public class LoginActivity extends BaseActivity{
             return;
         }
     }
-//    @Subscribe(threadMode = ThreadMode.MAIN)
-//    public void onReceiverEvent(ReceiverEvent event) {
-//        if (event != null) {
-//            registrationID = event.getRegistrationId();
-//        }
-//    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onReceiverEvent(ReceiverEvent event) {
+        if (event != null) {
+            registrationID = event.getRegistrationId();
+        }
+    }
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_login;
     }
-//    @OnClick(R.id.tvProtocol) void onClick() {
-//        readyGo(ProtocolActivity.class);
-//    }
 
-//    @OnClick(R.id.tvForget) void forgetClick() {
-//        readyGo(RegisterActivity.class);
-//    }
     @OnClick(R.id.tvRegister) void registerClick() {
         readyGo(RegisterActivity.class);
     }
-//    @OnCheckedChanged(R.id.cbProtocol) void onChecked(boolean checked) {
-//        if (checked) {
-//            btnLogin.setEnabled(true);
-//        } else {
-//            btnLogin.setEnabled(false);
-//            showToast("请先勾选人人招协议");
-//        }
-//    }
+
     @OnClick(R.id.btnLogin) void onSubmitClick() {
         uName = etAccount.getText().toString().trim();
         if (AStringUtil.isEmpty(uName)) {
@@ -123,13 +107,8 @@ public class LoginActivity extends BaseActivity{
             showToast("密码不能为空");
             return ;
         }
-//        if (!cbProtocol.isChecked()) {
-//            showToast("请先人人招协议");
-//            return ;
-//        }
         showloginDialog(loading);
-        readyGoThenKill(MainActivity.class);
-//        presenter.userLogin(uName,uPasswd,registrationID);
+        presenter.userLogin(uName,uPasswd);
     }
     @OnClick(R.id.login_qq_fast_login) void qqFastLoginClick(){
         UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.QQ, authListener);
@@ -139,7 +118,7 @@ public class LoginActivity extends BaseActivity{
     }
     @Override
     protected void initPresenter() {
-//        presenter.setVM(this,mModel);
+        presenter.setVM(this,mModel);
     }
 
     @Override
@@ -147,6 +126,28 @@ public class LoginActivity extends BaseActivity{
         return true;
     }
 
+
+    @Override
+    public void loginSuccess(String message) {
+//        isFirst = true;
+        cannelDialog();
+        showToast(message);
+//        SpUtil.setAccount(uName);
+//        SpUtil.isLogined(true);
+        readyGoThenKill(MainActivity.class);
+    }
+
+    @Override
+    public void showError(String message) {
+        showToast(message);
+        cannelDialog();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
     UMAuthListener authListener = new UMAuthListener() {
         /**
          * @desc 授权开始的回调
@@ -197,4 +198,5 @@ public class LoginActivity extends BaseActivity{
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
+
 }

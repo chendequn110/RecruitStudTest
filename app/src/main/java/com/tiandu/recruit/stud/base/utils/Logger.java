@@ -36,7 +36,7 @@ public class Logger {
 	private static final int STACK_TRACE_INDEX = 5;
 	public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
-	private static String tag = "[LearnStud]";
+	private static String tag = "[cdq]";
 
 	private static String getFunctionName() {
 		StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
