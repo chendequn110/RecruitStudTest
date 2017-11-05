@@ -18,7 +18,7 @@ import rx.Observable;
 public interface RegisterContract {
     interface Model extends BaseModel {
 
-        Call<ResponseBody> doRegister(String reg, String userId, String userName, String password, String bindMobile);
+        Observable<RegisterInfo> doRegister(String mobile, String password);
     }
 
     interface View extends BaseView {
@@ -36,6 +36,6 @@ public interface RegisterContract {
 
         }
 
-        public abstract void userRegister(String actionType, String userId,String userName,String password,String bindMobile);
+        public abstract void userRegister(String mobile ,String password);
     }
 }

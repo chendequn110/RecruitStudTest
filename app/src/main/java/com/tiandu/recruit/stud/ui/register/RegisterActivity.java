@@ -1,17 +1,14 @@
-package com.tiandu.recruit.stud.ui;
+package com.tiandu.recruit.stud.ui.register;
 
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.tiandu.recruit.stud.MainActivity;
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.base.BaseActivity;
 import com.tiandu.recruit.stud.base.utils.AStringUtil;
+import com.tiandu.recruit.stud.base.utils.CountDownButtonHelper;
 import com.tiandu.recruit.stud.ui.login.LoginActivity;
-import com.tiandu.recruit.stud.ui.register.RegisterContract;
-import com.tiandu.recruit.stud.ui.register.RegisterModel;
-import com.tiandu.recruit.stud.ui.register.ResisterPresenter;
 import com.tiandu.recruit.stud.view.ClearEditText;
 
 import org.json.JSONException;
@@ -41,10 +38,6 @@ public class RegisterActivity extends BaseActivity <ResisterPresenter,RegisterMo
     EditText etValideCode;
     @BindView(R.id.setPasswd)
     ClearEditText setPasswd;
-    @BindView(R.id.setUserId)
-    ClearEditText setUserId;
-    @BindView(R.id.setuserName)
-    ClearEditText setuserName;
     @BindView(R.id.okPasswd) ClearEditText okPasswd;
     @BindString(R.string.register_loading) String loading;
     private EventHandler handler;
@@ -54,11 +47,26 @@ public class RegisterActivity extends BaseActivity <ResisterPresenter,RegisterMo
 
     @OnClick(R.id.btnCode) void getCodeClick(){
         phone = etPhone.getText().toString().trim();
-        //获取验证码
-        SMSSDK.getVerificationCode("86", phone);
+        if(AStringUtil.isPhone(phone)){
+            CountDownButtonHelper helper = new CountDownButtonHelper(btnCode,"",60,1);
+            helper.setOnFinishListener(new CountDownButtonHelper.OnFinishListener() {
+                @Override
+                public void finish() {
+                    // Toast.makeText(RegisterActivity.this,"倒计时结束",Toast.LENGTH_SHORT).show();
+                    btnCode.setText("再次获取");
+                }
+            });
+            helper.start();
+            phone = etPhone.getText().toString().trim();
+            //获取验证码
+            SMSSDK.getVerificationCode("86", phone);
+        }else{
+//            showToast("请输入正确手机号");
+            return;
+        }
+
     }
     @OnClick(R.id.btnSubmit) void submitClick(){
-        phone = etPhone.getText().toString().trim();
         String number = etValideCode.getText().toString();
         SMSSDK.submitVerificationCode("86",phone,number);
 
@@ -83,16 +91,7 @@ public class RegisterActivity extends BaseActivity <ResisterPresenter,RegisterMo
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                String uName = setuserName.getText().toString().trim();
-                                if (AStringUtil.isEmpty(uName)) {
-                                    showToast("账号不能为空");
-                                    return ;
-                                }
-                                String uId = setUserId.getText().toString().trim();
-                                if (AStringUtil.isEmpty(uId)) {
-                                    showToast("用户名不能为空");
-                                    return ;
-                                }
+
                                 String uPassword = setPasswd.getText().toString().trim();
                                 if (AStringUtil.isEmpty(uPassword)) {
                                     showToast("密码不能为空");
@@ -109,7 +108,7 @@ public class RegisterActivity extends BaseActivity <ResisterPresenter,RegisterMo
                                 }
 
                                 showloginDialog(loading);
-                                presenter.userRegister("Reg",uId,uName,uPassword,phone);
+                                presenter.userRegister(phone,uPassword);
                             }
                         });
 

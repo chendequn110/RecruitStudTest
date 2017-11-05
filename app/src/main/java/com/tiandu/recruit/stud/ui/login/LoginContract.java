@@ -9,6 +9,8 @@ import com.tiandu.recruit.stud.base.BaseView;
 import com.tiandu.recruit.stud.data.entity.LoginInfo;
 import com.tiandu.recruit.stud.data.entity.UserInfo;
 
+import java.util.List;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import rx.Observable;
@@ -22,9 +24,9 @@ public interface LoginContract {
 
     interface Model extends BaseModel {
 
-//        Observable<VersionInfo> getVersion(int version);
+        Observable<List<UserInfo>> doLogin(String mobile, String password);
 
-        Call<ResponseBody> doLogin(String userId, String uPasswd);
+//        Call<ResponseBody> doLogin(String userId, String uPasswd);
     }
 
     interface View extends BaseView {
@@ -45,7 +47,7 @@ public interface LoginContract {
 
 //        public abstract void getVersion(int version);
 
-        public abstract void userLogin(String uName, String uPasswd);
+        public abstract void userLogin(String mobole, String password);
     }
 
 

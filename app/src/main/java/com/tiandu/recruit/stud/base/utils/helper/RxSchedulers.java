@@ -1,13 +1,16 @@
 package com.tiandu.recruit.stud.base.utils.helper;
 
 import android.accounts.NetworkErrorException;
+import android.util.Log;
 
 
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.api.exception.ResponseException;
 import com.tiandu.recruit.stud.base.App;
+import com.tiandu.recruit.stud.base.utils.Logger;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.data.entity.Response;
+
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -20,9 +23,33 @@ public class RxSchedulers {
         return tObservable -> tObservable.flatMap(new Func1<Response<T>, Observable<T>>() {
             @Override
             public Observable<T> call(Response<T> tResponse) {
-                if (tResponse.getData()!= null){
-                    return respResult(tResponse);
+                if (tResponse != null){
+                    Log.d("cdq", "1111 ");
+                    if (tResponse.isCode()){
+                        Log.d("cdq", "22222 ");
+                        return respResult(tResponse);
+                    }else {
+                        Log.d("cdq", "33333 ");
+//                        正常情况下的错误信息
+                            return Observable.error(new ResponseException(tResponse.getMessage()));
+                    }
+//                    switch (tResponse.isCode()){
+//                        case 0:
+//                        case -1:
+//                            //请求失败后，仍然返回数据（特殊情况）
+//                            if (tResponse.getContent() != null) return Observable.just(tResponse.getContent());
+//                        case -2:
+//                        case -3:
+//                        case -4:
+//                        case -5:
+//                            //正常情况下的错误信息
+//                            return Observable.error(new ResponseException(tResponse.getMessage()));
+//                        default:
+//                            SpUtil.setPage(tResponse.getPage());
+//                            return respResult(tResponse);
+//                    }
                 } else {
+                    Log.d("cdq", "444 ");
                     return Observable.error(new NetworkErrorException(App.getAppResources().getString(R.string.req_exce_msg)));
                 }
             }
@@ -33,7 +60,7 @@ public class RxSchedulers {
         if (tResponse.getData() != null) {
             return Observable.just(tResponse.getData());
         } else {
-            return null;
+            return Observable.just(tResponse.getData());
         }
     }
 
@@ -50,12 +77,17 @@ public class RxSchedulers {
      * }
      * @return
      */
-//    public static Observable.Transformer<Response<String>,String> trans() {
-//        return strObservable -> strObservable.flatMap(new Func1<Response<String>, Observable<String>>() {
-//
-//            @Override
-//            public Observable<String> call(Response<String> tResponse) {
-//                if (tResponse != null){
+    public static Observable.Transformer<Response<String>,String> trans() {
+        return strObservable -> strObservable.flatMap(new Func1<Response<String>, Observable<String>>() {
+
+            @Override
+            public Observable<String> call(Response<String> tResponse) {
+                if (tResponse != null){
+                    if(tResponse.isCode()){
+                        return Observable.just(tResponse.getData());
+                    }else{
+                        return Observable.just(tResponse.getMessage());
+                    }
 //                    switch (tResponse.getFlag()){
 //                        case 0:
 //                        case -1:
@@ -65,10 +97,10 @@ public class RxSchedulers {
 //                        default:
 //                            return Observable.just(tResponse.getContent());
 //                    }
-//                } else {
-//                    return Observable.error(new NetworkErrorException(App.getAppResources().getString(R.string.req_exce_msg)));
-//                }
-//            }
-//        });
-//    }
+                } else {
+                    return Observable.error(new NetworkErrorException(App.getAppResources().getString(R.string.req_exce_msg)));
+                }
+            }
+        });
+    }
 }

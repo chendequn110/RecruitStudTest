@@ -3,6 +3,9 @@ package com.tiandu.recruit.stud.api;
 
 import com.tiandu.recruit.stud.data.entity.RegisterInfo;
 import com.tiandu.recruit.stud.data.entity.Response;
+import com.tiandu.recruit.stud.data.entity.UserInfo;
+
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -21,7 +24,7 @@ public interface ApiService {
      * @return LoginInfo
      */
     @GET("{value}")
-    Call<ResponseBody> doLogin(@Path("value") String url, @Query("UserID") String userName, @Query("Password") String passwd);
+    Observable<Response<List<UserInfo>>> doLogin(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Password") String Password);
 
     /**
      * 注册
@@ -30,7 +33,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Call<ResponseBody> doRegister(@Path("value") String url, @Query("actionType") String Reg, @Query("UserID") String UserID, @Query("UserName") String UserName, @Query("Password") String Password, @Query("BindMobile") String BindMobile);
+    Observable<Response<RegisterInfo>> doRegister(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Password") String Password);
 
 }
 

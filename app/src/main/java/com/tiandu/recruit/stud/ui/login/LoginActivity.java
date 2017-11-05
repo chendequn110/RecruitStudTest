@@ -15,7 +15,7 @@ import com.tiandu.recruit.stud.base.utils.AStringUtil;
 import com.tiandu.recruit.stud.base.utils.DialogFactory;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.data.event.ReceiverEvent;
-import com.tiandu.recruit.stud.ui.RegisterActivity;
+import com.tiandu.recruit.stud.ui.register.RegisterActivity;
 import com.tiandu.recruit.stud.view.ClearEditText;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;

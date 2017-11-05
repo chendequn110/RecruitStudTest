@@ -5,8 +5,7 @@ import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.RegisterInfo;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
+
 import rx.Observable;
 
 /**
@@ -14,8 +13,11 @@ import rx.Observable;
  */
 
 public class RegisterModel implements RegisterContract.Model {
+
+
     @Override
-    public Call<ResponseBody>  doRegister(String reg, String userId, String userName, String password, String bindMobile) {
-        return Api.getInstance().movieService.doRegister(C.USER_REGISTER_PATH,reg,userId,userName,password,bindMobile);
+    public Observable<RegisterInfo> doRegister(String mobile, String password) {
+        return Api.getInstance().movieService.doRegister(C.USER_REGISTER_PATH,mobile,password)
+                .compose(RxSchedulers.io_main()).compose(RxSchedulers.sTransformer());
     }
 }
