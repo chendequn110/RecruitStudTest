@@ -1,23 +1,357 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:orientation="vertical">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-	<!--<include layout="@layout/custom_toolbar" />-->
- 
-	<FrameLayout
-		android:id="@+id/fragment_container"
-		android:layout_width="fill_parent"
-		android:layout_height="0dip"
-		android:layout_weight="1"
-		android:background="#e9e9e9">
+    <LinearLayout
+        android:id="@+id/llContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-		
+        <View
+            android:id="@+id/statusBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_25dp"
+            android:background="@color/colorPrimary" />
 
-	</FrameLayout>
-	
-	  <include layout="@layout/layout_bottom"/>
-	  
-</LinearLayout>
+        <include layout="@layout/view_custom_toolbar" />
+
+        <com.tiandu.recruit.stud.view.XViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e1e1e1" />
+
+
+        <com.tiandu.recruit.stud.view.tabstrip.HomeNavigateTabIndicator
+            android:id="@+id/tabStrip"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_btn_screen"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_55dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tvRestar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="重置"
+            android:textColor="@color/black"
+            android:textSize="@dimen/font_medium"
+            android:background="@color/comm_line"
+            />
+
+        <TextView
+            android:id="@+id/tvOk"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/selectStuGreen"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_medium"
+            />
+    </LinearLayout>
+    <!--<FrameLayout-->
+        <!--android:layout_gravity="bottom"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="300dp"-->
+        <!--android:background="@color/windowBackground">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="@dimen/size_10dp">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="驾校名称"-->
+                    <!--android:textColor="@color/context_text"-->
+                    <!--android:textSize="@dimen/font_medium"-->
+                    <!--/>-->
+
+                <!--<EditText-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:background="@null"-->
+                    <!--android:gravity="right"-->
+                    <!--android:hint="请输入驾校名称"-->
+                    <!--android:textColorHint="@color/title_state_text"-->
+                    <!--android:textSize="@dimen/font_medium"/>-->
+            <!--</LinearLayout>-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/size_1dp"-->
+                <!--android:background="@color/comm_line"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="@dimen/size_10dp">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="教练姓名"-->
+                    <!--android:textColor="@color/context_text"-->
+                    <!--android:textSize="@dimen/font_medium"-->
+                    <!--/>-->
+
+                <!--<EditText-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:background="@null"-->
+                    <!--android:gravity="right"-->
+                    <!--android:hint="请输入教练姓名"-->
+                    <!--android:textColorHint="@color/title_state_text"-->
+                    <!--android:textSize="@dimen/font_medium"/>-->
+            <!--</LinearLayout>-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/size_8dp"-->
+                <!--android:background="@color/comm_line"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="@dimen/size_10dp"-->
+                    <!--android:text="驾车类型"-->
+                    <!--android:textSize="@dimen/font_medium"/>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:weightSum="3">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvLabal1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="@dimen/size_20dp"-->
+                        <!--android:layout_marginTop="@dimen/size_5dp"-->
+                        <!--android:background="@drawable/shape_corner_stroke"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:lines="1"-->
+                        <!--android:minHeight="@dimen/size_20dp"-->
+                        <!--android:paddingLeft="@dimen/size_10dp"-->
+                        <!--android:paddingRight="@dimen/size_10dp"-->
+                        <!--android:text="不限"-->
+                        <!--android:textSize="@dimen/font_mediumer"/>-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvLabal2"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="@dimen/size_20dp"-->
+                        <!--android:layout_marginTop="@dimen/size_5dp"-->
+                        <!--android:background="@drawable/shape_corner_stroke"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:lines="1"-->
+                        <!--android:minHeight="@dimen/size_20dp"-->
+                        <!--android:paddingLeft="@dimen/size_10dp"-->
+                        <!--android:paddingRight="@dimen/size_10dp"-->
+                        <!--android:text="c1小型汽车"-->
+                        <!--android:textSize="@dimen/font_mediumer"/>-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvLabal3"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="@dimen/size_20dp"-->
+                        <!--android:layout_marginTop="@dimen/size_5dp"-->
+                        <!--android:background="@drawable/shape_corner_stroke"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:lines="1"-->
+                        <!--android:minHeight="@dimen/size_20dp"-->
+                        <!--android:paddingLeft="@dimen/size_10dp"-->
+                        <!--android:paddingRight="@dimen/size_10dp"-->
+                        <!--android:text="c2小型自动挡汽车"-->
+                        <!--android:textSize="@dimen/font_mediumer"/>-->
+
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_marginTop="@dimen/size_5dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:weightSum="3">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvLabal4"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="@dimen/size_20dp"-->
+                        <!--android:layout_marginTop="@dimen/size_5dp"-->
+                        <!--android:background="@drawable/shape_corner_stroke"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:lines="1"-->
+                        <!--android:minHeight="@dimen/size_20dp"-->
+                        <!--android:paddingLeft="@dimen/size_10dp"-->
+                        <!--android:paddingRight="@dimen/size_10dp"-->
+                        <!--android:text="B1中型客车"-->
+                        <!--android:textSize="@dimen/font_mediumer" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvLabal5"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="@dimen/size_20dp"-->
+                        <!--android:layout_marginTop="@dimen/size_5dp"-->
+                        <!--android:background="@drawable/shape_corner_stroke"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:lines="1"-->
+                        <!--android:minHeight="@dimen/size_20dp"-->
+                        <!--android:paddingLeft="@dimen/size_10dp"-->
+                        <!--android:paddingRight="@dimen/size_10dp"-->
+                        <!--android:text="B2大型货车"-->
+                        <!--android:textSize="@dimen/font_mediumer"/>-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvLabal6"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="@dimen/size_20dp"-->
+                        <!--android:layout_marginTop="@dimen/size_5dp"-->
+                        <!--android:background="@drawable/shape_corner_stroke"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:lines="1"-->
+                        <!--android:minHeight="@dimen/size_20dp"-->
+                        <!--android:paddingLeft="@dimen/size_10dp"-->
+                        <!--android:paddingRight="@dimen/size_10dp"-->
+                        <!--android:text="A1大型客车"-->
+                        <!--android:textSize="@dimen/font_mediumer"/>-->
+
+                <!--</LinearLayout>-->
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_marginTop="@dimen/size_5dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:weightSum="2">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvLabal7"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="@dimen/size_20dp"-->
+                        <!--android:layout_marginTop="@dimen/size_5dp"-->
+                        <!--android:background="@drawable/shape_corner_stroke"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:lines="1"-->
+                        <!--android:minHeight="@dimen/size_20dp"-->
+                        <!--android:paddingLeft="@dimen/size_10dp"-->
+                        <!--android:paddingRight="@dimen/size_10dp"-->
+                        <!--android:text="A2牵引车"-->
+                        <!--android:textSize="@dimen/font_mediumer"/>-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tvLabal8"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="@dimen/size_20dp"-->
+                        <!--android:layout_marginTop="@dimen/size_5dp"-->
+                        <!--android:background="@drawable/shape_corner_stroke"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:lines="1"-->
+                        <!--android:minHeight="@dimen/size_20dp"-->
+                        <!--android:paddingLeft="@dimen/size_10dp"-->
+                        <!--android:paddingRight="@dimen/size_10dp"-->
+                        <!--android:text="A3城市公家车"-->
+                        <!--android:textSize="@dimen/font_mediumer"/>-->
+
+                <!--</LinearLayout>-->
+
+
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="@dimen/size_10dp"-->
+                    <!--android:text="练车区域"-->
+                    <!--android:textSize="@dimen/font_medium"/>-->
+
+                <!--<android.support.v7.widget.RecyclerView-->
+                    <!--android:id="@+id/recyclerViewAddress"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"/>-->
+
+            <!--</LinearLayout>-->
+
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/size_45dp"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:background="@color/white"-->
+            <!--android:orientation="horizontal"-->
+            <!--&gt;-->
+
+            <!--<TextView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:gravity="center"-->
+                <!--android:text="重置"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:textSize="@dimen/font_medium"-->
+                <!--android:background="@color/comm_line"-->
+                <!--/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tvOk"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@color/selectStuGreen"-->
+                <!--android:gravity="center"-->
+                <!--android:text="确定"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/font_medium"-->
+                <!--/>-->
+        <!--</LinearLayout>-->
+    <!--</FrameLayout>-->
+</FrameLayout>

@@ -15,6 +15,7 @@ import com.tiandu.recruit.stud.base.utils.AStringUtil;
 import com.tiandu.recruit.stud.base.utils.DialogFactory;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.data.event.ReceiverEvent;
+import com.tiandu.recruit.stud.ui.forget.ResetPwdActivity;
 import com.tiandu.recruit.stud.ui.register.RegisterActivity;
 import com.tiandu.recruit.stud.view.ClearEditText;
 import com.umeng.socialize.UMAuthListener;
@@ -94,6 +95,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
 
     @OnClick(R.id.tvRegister) void registerClick() {
         readyGo(RegisterActivity.class);
+    }
+    @OnClick(R.id.tvForget) void resetClick() {
+        readyGo(ResetPwdActivity.class);
     }
 
     @OnClick(R.id.btnLogin) void onSubmitClick() {

@@ -55,6 +55,11 @@
             android:label="@string/register"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".ui.forget.ResetPwdActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/reset"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".ui.MeActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/main_me"

@@ -39,7 +39,7 @@
 
     <string name="home">主页</string>
     <string name="register">注册</string>
-
+    <string name="reset">重置密码</string>
     <string name="network_conection_exce">网络连接失败,请重试</string>
     <string name="network_timeout_exce">请求超时，请重试</string>
     <string name="req_exce_msg">请求失败，请稍后重试</string>

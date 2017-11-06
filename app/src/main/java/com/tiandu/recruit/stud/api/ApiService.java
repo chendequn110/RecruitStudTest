@@ -33,7 +33,15 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<RegisterInfo>> doRegister(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Password") String Password);
+    Observable<Response<List<RegisterInfo>>> doRegister(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Password") String Password);
 
+    /**
+     * 忘记密码
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<RegisterInfo>>> doResetPwd(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Password") String Password);
 }
 

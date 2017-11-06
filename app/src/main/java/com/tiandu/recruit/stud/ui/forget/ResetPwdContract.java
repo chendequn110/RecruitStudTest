@@ -1,6 +1,4 @@
-package com.tiandu.recruit.stud.ui.register;
-
-
+package com.tiandu.recruit.stud.ui.forget;
 
 import com.tiandu.recruit.stud.base.BaseModel;
 import com.tiandu.recruit.stud.base.BasePresenter;
@@ -9,18 +7,21 @@ import com.tiandu.recruit.stud.data.entity.RegisterInfo;
 
 import java.util.List;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
 import rx.Observable;
 
 /**
- * Created by cdq on 2017/10/29.
+ * 项目名称：RecruitStud
+ * 类描述：
+ * 创建人：chendequnn
+ * 创建时间：2017/11/6 16:10
+ * 修改人：chendequnn
+ * 修改时间：2017/11/6 16:10
+ * 修改备注：
  */
-
-public interface RegisterContract {
+public interface ResetPwdContract {
     interface Model extends BaseModel {
 
-        Observable<List<RegisterInfo>> doRegister(String mobile, String password);
+        Observable<List<RegisterInfo>> doResetPwd(String mobile, String password);
     }
 
     interface View extends BaseView {
@@ -38,6 +39,6 @@ public interface RegisterContract {
 
         }
 
-        public abstract void userRegister(String mobile ,String password);
+        public abstract void userResetPwd(String mobile ,String password);
     }
 }
