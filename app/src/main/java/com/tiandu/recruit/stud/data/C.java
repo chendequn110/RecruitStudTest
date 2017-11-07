@@ -4,6 +4,8 @@ package com.tiandu.recruit.stud.data;
  * Created by baixiaokang on 16/4/23.
  */
 public class C {
+    public static final int HOME_LEARNCAR = 1;
+    public static final String LOGIN_ACCOUNT = "login_account";
 
     /**
      * Unknown network class

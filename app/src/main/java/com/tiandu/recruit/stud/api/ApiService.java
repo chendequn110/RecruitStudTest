@@ -1,9 +1,11 @@
 package com.tiandu.recruit.stud.api;
 
 
+import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.RegisterInfo;
 import com.tiandu.recruit.stud.data.entity.Response;
 import com.tiandu.recruit.stud.data.entity.UserInfo;
+import com.tiandu.recruit.stud.data.entity.VersionInfo;
 
 import java.util.List;
 
@@ -15,6 +17,13 @@ import retrofit2.http.Query;
 import rx.Observable;
 
 public interface ApiService {
+
+
+    /**
+     * 版本检测
+     */
+    @GET("{value}")
+    Observable<Response<VersionInfo>> getVersionInfo(@Path("value") String url, @Query("type") int type);
 
 
     /**

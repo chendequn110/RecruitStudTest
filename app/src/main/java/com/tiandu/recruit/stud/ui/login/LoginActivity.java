@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tiandu.recruit.stud.MainActivity;
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.base.BaseActivity;
 import com.tiandu.recruit.stud.base.utils.AStringUtil;
@@ -16,6 +15,7 @@ import com.tiandu.recruit.stud.base.utils.DialogFactory;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.data.event.ReceiverEvent;
 import com.tiandu.recruit.stud.ui.forget.ResetPwdActivity;
+import com.tiandu.recruit.stud.ui.main.MainActivity;
 import com.tiandu.recruit.stud.ui.register.RegisterActivity;
 import com.tiandu.recruit.stud.view.ClearEditText;
 import com.umeng.socialize.UMAuthListener;

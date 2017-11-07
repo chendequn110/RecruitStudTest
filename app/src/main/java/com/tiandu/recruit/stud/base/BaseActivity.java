@@ -442,6 +442,7 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         startActivity(intent);
     }
 
+
     protected abstract void initView();
 
     protected abstract int getLayoutRes();
