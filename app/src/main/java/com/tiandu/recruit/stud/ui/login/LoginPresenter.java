@@ -5,14 +5,17 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.tiandu.recruit.stud.api.exception.MessageFactory;
-import com.tiandu.recruit.stud.data.entity.LoginInfo;
+import com.tiandu.recruit.stud.base.utils.SpUtil;
+import com.tiandu.recruit.stud.data.entity.UserInfo;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rx.functions.Action1;
 
 /**
  * Created by Jerome on 16/9/17.
@@ -29,8 +32,12 @@ public class LoginPresenter extends LoginContract.Persenter {
     @Override
     public void userLogin(String mobole, String password) {
         mRxManage.add(mModel.doLogin(mobole, password)
-                .subscribe(userInfo -> {
-                    mView.loginSuccess("登录成功");
+                .subscribe(new Action1<List<UserInfo>>() {
+                    @Override
+                    public void call(List<UserInfo> userInfos) {
+                        SpUtil.setToken(userInfos.get(0).getToken());
+                        mView.loginSuccess("登录成功");
+                    }
                 }, e -> {
                     mView.showError(MessageFactory.getMessage(e));
                 })

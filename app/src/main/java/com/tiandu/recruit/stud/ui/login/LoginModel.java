@@ -3,14 +3,10 @@ package com.tiandu.recruit.stud.ui.login;
 import com.tiandu.recruit.stud.api.Api;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
-import com.tiandu.recruit.stud.data.entity.LoginInfo;
-import com.tiandu.recruit.stud.data.entity.Response;
 import com.tiandu.recruit.stud.data.entity.UserInfo;
 
 import java.util.List;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
 import rx.Observable;
 
 /**

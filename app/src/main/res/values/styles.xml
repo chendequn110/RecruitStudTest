@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="@style/AppThemeBase">
+    <style name="AppThemes" parent="@style/AppThemeBase">
 
     </style>
     <style name="AppThemeBase" parent="Theme.AppCompat.Light.NoActionBar">
@@ -81,6 +81,24 @@
         <item name="android:textColor">@drawable/index_main_bottom_text_color_selector</item>
         <item name="android:hapticFeedbackEnabled">false</item>
         <item name="android:background">@null</item>
+    </style>
+    <style name="txt_icon_style">
+        <item name="android:paddingLeft">@dimen/size_16dp</item>
+        <item name="android:paddingRight">@dimen/size_16dp</item>
+        <item name="android:textColor">@color/darker_grey</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">@dimen/size_10dp</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:minHeight">45dp</item>
+    </style>
+    <style name="change_trade_pwd_style" parent="common_label_style">
+        <item name="android:layout_width">@dimen/space_86</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!--通用的label style-->
+    <style name="common_label_style">
+        <item name="android:textColor">@color/color_33</item>
+        <item name="android:textSize">@dimen/space_14</item>
     </style>
     <!--第三方登录-->
     <style name="Theme.UMDefault" parent="android:style/Theme.NoTitleBar"></style>

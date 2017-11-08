@@ -26,9 +26,7 @@ import com.tiandu.recruit.stud.data.entity.PayInfo;
 import com.tiandu.recruit.stud.ui.adapter.HomeHeadAdapter;
 import com.tiandu.recruit.stud.view.AppBarStateChangeListener;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,12 +104,12 @@ public class HomeFragment extends BaseLazyFragment {
 
 
     private void initHeader() {
-//        for (int i = 0; i < 3; i++) {
-//            PayInfo payInfo = new PayInfo();
-//            payInfo.setName(titles[i]);
-//            payInfo.setResId(images[i]);
-//            enrollInfos.add(payInfo);
-//        }
+        for (int i = 0; i < 3; i++) {
+            PayInfo payInfo = new PayInfo();
+            payInfo.setName(titles[i]);
+            payInfo.setResId(images[i]);
+            homeInfos.add(payInfo);
+        }
 
         line_school.setVisibility(View.VISIBLE);
         line_coach.setVisibility(View.INVISIBLE);

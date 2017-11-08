@@ -7,6 +7,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -15,12 +16,14 @@ import android.widget.LinearLayout;
 
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.base.BaseActivity;
+import com.tiandu.recruit.stud.base.BaseAppManager;
 import com.tiandu.recruit.stud.base.BaseLazyFragment;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.VersionInfo;
 import com.tiandu.recruit.stud.ui.adapter.FragmentAdapter;
 import com.tiandu.recruit.stud.ui.fragment.HomeFragment;
+import com.tiandu.recruit.stud.ui.fragment.UserFragment;
 import com.tiandu.recruit.stud.ui.login.LoginActivity;
 import com.tiandu.recruit.stud.view.XViewPager;
 import com.tiandu.recruit.stud.view.tabstrip.HomeNavigateTab;
@@ -53,9 +56,9 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
         setHomeEnable(false);
         initTabHost();
 
-//        if (SpUtil.isLogined()) {
-//            position = 1;
-//        }
+        if (true) {
+            position = 0;
+        }
         setCurrentViewPage();
         viewPager.setCurrentItem(position, false);
     }
@@ -67,7 +70,7 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
 
     @Override
     protected void initPresenter() {
-
+        presenter.setVM(this, mModel);
     }
 
     @Override
@@ -78,20 +81,21 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
     @Override
     public void onTabChanged(int index) {
         position = index;
-        if (position == 1 | position == 2) {
-            if (SpUtil.isLogined()) {
+        if (position==3) {
+//            if (SpUtil.isLogined()) {
                 mToolbar.setVisibility(index == C.HOME_LEARNCAR ? View.VISIBLE : View.GONE);
                 setToolbarTitle(mTitles[index]);
                 viewPager.setCurrentItem(position, false);
-            } else {
-                readyGo(LoginActivity.class);
-            }
+//            } else {
+//                readyGo(LoginActivity.class);
+//            }
         } else {
             mToolbar.setVisibility(View.GONE);
             setToolbarTitle(mTitles[0]);
             viewPager.setCurrentItem(0, false);
         }
     }
+
 
     @Override
     public void showVersion(VersionInfo info) {
@@ -126,7 +130,7 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
         mFragments.add(new HomeFragment());
 //        mFragments.add(new LearningFragment());
 //        mFragments.add(new UserFragment());
-//        mFragments.add(new UserFragment());
+        mFragments.add(new UserFragment());
         viewPager.setEnableScroll(false);
         viewPager.setOffscreenPageLimit(mFragments.size());
         adapter.updateData(mFragments);
@@ -143,5 +147,26 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
         }
 
         tabStrip.setCurrSelectedIndex(index);
+    }
+    private long firstTime = 0;
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        {
+            switch(keyCode) {
+                case KeyEvent.KEYCODE_BACK:
+                    cannelDialog();
+                    long secondTime = System.currentTimeMillis();
+                    if (secondTime - firstTime > 2000) {//如果两次按键时间间隔大于2秒，则不退出
+                        showToast("再按一次退出程序");
+                        firstTime = secondTime;//更新firstTime
+                        return true;
+                    } else {        //两次按键小于2秒时，退出应用
+                        BaseAppManager.getInstance().clearAll();
+                        System.exit(0);
+                    }
+                    break;
+            }
+            return super.onKeyUp(keyCode, event);
+        }
     }
 }

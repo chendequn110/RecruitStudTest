@@ -9,6 +9,8 @@
     <string name="input_reset_userid">请输入账号</string>
     <string name="input_reset_username">请输入用户名</string>
     <string name="input_reset_paswd">请输入密码,至少6位</string>
+    <string name="input_old_paswd">请输入原密码,至少6位</string>
+    <string name="input_new_paswd">请输入新密码,至少6位</string>
     <string name="sendCode">获取验证码</string>
     <string name="input_ok_passwd">确认密码</string>
     <string name="passwd_submit">提 交</string>
@@ -21,6 +23,7 @@
     <string name="user_evaluation">我的评价</string>
     <string name="user_exit_login">退出登录</string>
     <string name="user_face">人脸录入</string>
+    <string name="user_userInfo">会员资料</string>
     <string name="main_me">我的</string>
     <string name="main_trends">账户</string>
     <string name="main_human">招聘</string>
@@ -31,6 +34,7 @@
     <string name="cancel">取消</string>
     <string name="login_loading">正在登录...</string>
     <string name="register_loading">正在注册...</string>
+    <string name="modify_loading">正在修改...</string>
 
     <string name="setting">设置</string>
     <string name="cancel2">取消</string>
@@ -40,7 +44,35 @@
     <string name="home">主页</string>
     <string name="register">注册</string>
     <string name="reset">重置密码</string>
+    <string name="modify">修改密码</string>
     <string name="network_conection_exce">网络连接失败,请重试</string>
     <string name="network_timeout_exce">请求超时，请重试</string>
     <string name="req_exce_msg">请求失败，请稍后重试</string>
+
+
+    <!--我的界面-->
+    <string name="user_info_coupon">优惠券</string>
+    <string name="user_info_progressquery">修改密码</string>
+    <string name="user_info_coach">分享</string>
+    <string name="user_info_attention">会员资料</string>
+    <string name="user_info_wall">钱包</string>
+    <string name="user_info_contace">评价管理</string>
+    <string name="user_info_complaint">投诉</string>
+    <string name="user_about_us">关于我们</string>
+    <string name="user_info_exit">退出登陆</string>
+    <!--用户资料-->
+    <string name="user_info_memberid">会员编号</string>
+    <string name="user_info_membername">会员名称</string>
+    <string name="user_info_mobile">手机号码</string>
+    <string name="user_info_mail">绑定邮箱</string>
+    <string name="user_info_wx">绑定微信</string>
+    <string name="user_info_qq">绑定QQ</string>
+    <string name="user_info_idnumber">身份证号</string>
+
+    <string name="user_info_realname">真实姓名</string>
+    <string name="user_info_Gender">性别</string>
+    <string name="user_info_birthdate">出生日期</string>
+    <string name="user_info_Province">省/直辖市</string>
+    <string name="user_info_city">市/区</string>
+    <string name="user_info_parentid">上级代理编号</string>
 </resources>

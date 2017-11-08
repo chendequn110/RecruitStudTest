@@ -18,8 +18,7 @@ public class SpUtil {
     private static final String ORDER_NUM = "order_num";
     private static final String USER_LOGINED_KEY = "isLogin";
     private static final String USER_NAME_KEY = "userName";
-    private static final String STUDENT_LOGIN_NUM = "student_login_num";
-    private static final String COACH_LOGIN_NUM  = "coach_login_num";
+    private static final String USER_INFO_TAKEN_KEY = "user_token_key";
 
     private static SharedPreferences prefs;
 
@@ -85,21 +84,13 @@ public class SpUtil {
         prefs.edit().clear().commit();
     }
 
-    public static void setStudentloginNum(String num) {
-        prefs.edit().putString(STUDENT_LOGIN_NUM,num).commit();
+
+    public static String getToken() {
+        return prefs.getString(USER_INFO_TAKEN_KEY,"");
     }
 
-    public static String getStudentloginNum() {
-        return prefs.getString(STUDENT_LOGIN_NUM,"");
+    public static void setToken(String token) {
+        prefs.edit().putString(USER_INFO_TAKEN_KEY,token).commit();
     }
-
-    public static void setcoachLoginNum(String num) {
-        prefs.edit().putString(COACH_LOGIN_NUM,num).commit();
-    }
-
-    public static String getcoachLoginNum() {
-        return prefs.getString(COACH_LOGIN_NUM,"");
-    }
-
 
 }

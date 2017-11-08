@@ -32,12 +32,13 @@ public class C {
      */
     public static final int NETWORK_CLASS_4_G = 4;
 
-    public static final String PAY_TYPE_KEY = "payType.txt";
-    public static final String PAY_TYPE_SCHOOL_KEY = "paySchoolType.txt";
+
 
     public static final String USER_LOGIN_PATH = "MemberLoginDetailSource";
     public static final String USER_REGISTER_PATH = "MemberRegEntranceSource";
     public static final String USER_RESETPWD_PATH = "MemberResetPwdSource";
+    public static final String USER_MODIFYPWD_PATH = "MemberChgPwdSource";
+    public static final String USER_USERINFO_PATH = "MemberViewSource";
 
     public static final String APPLIVEING_SECRET = "085ff643022fee4fcbeaeb897bc277b963d50008e3713171a66294611b7f78e45d315e8c0f74f3111ccc3195e9b44eb6e6e8976f5fa157239de242e5ba69e674";
 
@@ -177,5 +178,8 @@ public class C {
 
     public static final String QUERYSTAGETRAIN = "queryStagetrain";
     public static final String QUERYMYCOMMENT = "queryMyComment";
+//登出
+    public static final String USER_OUT = "user_out";
+    public static final int USER_OUT_STATUS = 1;//登出
 
 }

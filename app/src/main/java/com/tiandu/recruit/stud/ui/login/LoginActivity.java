@@ -71,7 +71,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
         config.isNeedAuthOnGetUserInfo(true);
         UMShareAPI.get(this).setShareConfig(config);
         etAccount.setText(SpUtil.getAccount());
-//        isFirstLogined();
+        isFirstLogined();
     }
     private void isFirstLogined() {
         if (isFirst) {
@@ -133,11 +133,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
 
     @Override
     public void loginSuccess(String message) {
-//        isFirst = true;
+        isFirst = true;
         cannelDialog();
         showToast(message);
-//        SpUtil.setAccount(uName);
-//        SpUtil.isLogined(true);
+        SpUtil.setAccount(uName);
+        SpUtil.isLogined(true);
         readyGoThenKill(MainActivity.class);
     }
 

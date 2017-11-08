@@ -24,12 +24,9 @@ public class RxSchedulers {
             @Override
             public Observable<T> call(Response<T> tResponse) {
                 if (tResponse != null){
-                    Log.d("cdq", "1111 ");
                     if (tResponse.isCode()){
-                        Log.d("cdq", "22222 ");
                         return respResult(tResponse);
                     }else {
-                        Log.d("cdq", "33333 ");
 //                        正常情况下的错误信息
                             return Observable.error(new ResponseException(tResponse.getMessage()));
                     }
@@ -49,7 +46,6 @@ public class RxSchedulers {
 //                            return respResult(tResponse);
 //                    }
                 } else {
-                    Log.d("cdq", "444 ");
                     return Observable.error(new NetworkErrorException(App.getAppResources().getString(R.string.req_exce_msg)));
                 }
             }

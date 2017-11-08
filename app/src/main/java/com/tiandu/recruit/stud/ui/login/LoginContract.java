@@ -1,12 +1,10 @@
 package com.tiandu.recruit.stud.ui.login;
 
 
-import android.icu.util.VersionInfo;
 
 import com.tiandu.recruit.stud.base.BaseModel;
 import com.tiandu.recruit.stud.base.BasePresenter;
 import com.tiandu.recruit.stud.base.BaseView;
-import com.tiandu.recruit.stud.data.entity.LoginInfo;
 import com.tiandu.recruit.stud.data.entity.UserInfo;
 
 import java.util.List;

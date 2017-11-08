@@ -40,7 +40,7 @@ public class ResetPwdActivity extends BaseActivity <ResetPwdPresenter,ResetPwdMo
     @BindView(R.id.setPasswd)
     ClearEditText setPasswd;
     @BindView(R.id.okPasswd) ClearEditText okPasswd;
-    @BindString(R.string.register_loading) String loading;
+    @BindString(R.string.modify_loading) String loading;
     private EventHandler handler;
     private String phone;
 

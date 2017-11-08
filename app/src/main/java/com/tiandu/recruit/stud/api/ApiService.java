@@ -2,6 +2,7 @@ package com.tiandu.recruit.stud.api;
 
 
 import com.tiandu.recruit.stud.data.C;
+import com.tiandu.recruit.stud.data.entity.MeInfo;
 import com.tiandu.recruit.stud.data.entity.RegisterInfo;
 import com.tiandu.recruit.stud.data.entity.Response;
 import com.tiandu.recruit.stud.data.entity.UserInfo;
@@ -52,5 +53,23 @@ public interface ApiService {
      */
     @GET("{value}")
     Observable<Response<List<RegisterInfo>>> doResetPwd(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Password") String Password);
+
+    /**
+     * 修改密码
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<RegisterInfo>>> doModifyPwd(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Password") String Password,@Query("NewPassword") String NewPassword,@Query("Token") String Token);
+
+    /**
+     * 获取会员资料
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<MeInfo>>> getUserInfo(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Token") String Token);
 }
 

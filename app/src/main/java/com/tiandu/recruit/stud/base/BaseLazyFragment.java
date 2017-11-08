@@ -19,7 +19,6 @@ import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.helper.MyToast;
 import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.event.LoginEvent;
-import com.tiandu.recruit.stud.ui.login.LoginActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -215,17 +214,16 @@ public abstract class BaseLazyFragment extends Fragment {
     }
 
     public void outLogin() {
+        showToast("您的账号" + SpUtil.getAccount() + "在其他手机登录");
+        BaseAppManager.getInstance().clearAll();
+        Bundle bundle = new Bundle();
+        bundle.putString(C.LOGIN_ACCOUNT,SpUtil.getAccount());
 
-//        showToast("您的账号" + SpUtil.getAccount() + "在其他手机登录");
-//        BaseAppManager.getInstance().clearAll();
-//        Bundle bundle = new Bundle();
-//        bundle.putString(C.LOGIN_ACCOUNT,SpUtil.getAccount());
-//
 //        if (!isForeground(context, "com.jq.learn.yn.stud.ui.login.LoginActivity")) {
 //            readyGo(LoginActivity.class,bundle);
 //        }
-//
-//        SpUtil.clearAll();
+
+        SpUtil.clearAll();
     }
 
     public boolean isUser() {
