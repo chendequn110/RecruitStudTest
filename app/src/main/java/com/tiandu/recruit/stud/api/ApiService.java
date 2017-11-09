@@ -3,6 +3,8 @@ package com.tiandu.recruit.stud.api;
 
 import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.MeInfo;
+import com.tiandu.recruit.stud.data.entity.MemberFeeInfo;
+import com.tiandu.recruit.stud.data.entity.MemberFeeInfo2;
 import com.tiandu.recruit.stud.data.entity.RegisterInfo;
 import com.tiandu.recruit.stud.data.entity.Response;
 import com.tiandu.recruit.stud.data.entity.UserInfo;
@@ -71,5 +73,23 @@ public interface ApiService {
      */
     @GET("{value}")
     Observable<Response<List<MeInfo>>> getUserInfo(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Token") String Token);
+
+    /**
+     * 更新会员资料
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<MeInfo>>> upDataUserInfo(@Path("value") String url, @Query("actionType") String actionType, @Query("Token") String Token);
+
+    /**
+     * 获取代理费
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<MemberFeeInfo2.DataBean.AaDataBean>>> getMemberFee(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token);
 }
 

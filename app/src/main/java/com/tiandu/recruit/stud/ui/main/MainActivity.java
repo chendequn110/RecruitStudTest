@@ -22,7 +22,9 @@ import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.VersionInfo;
 import com.tiandu.recruit.stud.ui.adapter.FragmentAdapter;
+import com.tiandu.recruit.stud.ui.fragment.FeeFragment;
 import com.tiandu.recruit.stud.ui.fragment.HomeFragment;
+import com.tiandu.recruit.stud.ui.fragment.JobFragment;
 import com.tiandu.recruit.stud.ui.fragment.UserFragment;
 import com.tiandu.recruit.stud.ui.login.LoginActivity;
 import com.tiandu.recruit.stud.view.XViewPager;
@@ -81,15 +83,20 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
     @Override
     public void onTabChanged(int index) {
         position = index;
-        if (position==3) {
+        if (position==2|position==1) {
 //            if (SpUtil.isLogined()) {
-                mToolbar.setVisibility(index == C.HOME_LEARNCAR ? View.VISIBLE : View.GONE);
+                mToolbar.setVisibility(View.VISIBLE);
                 setToolbarTitle(mTitles[index]);
                 viewPager.setCurrentItem(position, false);
 //            } else {
 //                readyGo(LoginActivity.class);
 //            }
-        } else {
+        }else if(position==3){
+            mToolbar.setVisibility(View.GONE);
+            setToolbarTitle(mTitles[index]);
+            viewPager.setCurrentItem(position, false);
+        }
+        else {
             mToolbar.setVisibility(View.GONE);
             setToolbarTitle(mTitles[0]);
             viewPager.setCurrentItem(0, false);
@@ -128,8 +135,8 @@ public class MainActivity extends BaseActivity<MainPresenter,MainModel> implemen
         viewPager.setAdapter(adapter = new FragmentAdapter(getSupportFragmentManager()));
         tabStrip.setOnTabChangeListener(this);
         mFragments.add(new HomeFragment());
-//        mFragments.add(new LearningFragment());
-//        mFragments.add(new UserFragment());
+        mFragments.add(new JobFragment());
+        mFragments.add(new FeeFragment());
         mFragments.add(new UserFragment());
         viewPager.setEnableScroll(false);
         viewPager.setOffscreenPageLimit(mFragments.size());

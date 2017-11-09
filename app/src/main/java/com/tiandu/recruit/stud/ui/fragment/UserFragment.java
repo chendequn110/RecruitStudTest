@@ -149,13 +149,15 @@ public class UserFragment extends BaseLazyFragment {
 
     private void exitLogin() {
         BaseAppManager.getInstance().clearAll();
-
-        Bundle bundle = new Bundle();
-        bundle.putString(C.LOGIN_ACCOUNT, SpUtil.getAccount());
-        bundle.putInt(C.USER_OUT, C.USER_OUT_STATUS);
-        readyGo(LoginActivity.class, bundle);
-
+//        Bundle bundle = new Bundle();
+//        bundle.putString(C.LOGIN_ACCOUNT, SpUtil.getAccount());
+//        bundle.putInt(C.USER_OUT, C.USER_OUT_STATUS);
         SpUtil.clearAll();
+        readyGo(LoginActivity.class);
+        BaseAppManager.getInstance().clearToTop();
+
+
+
     }
 
 }

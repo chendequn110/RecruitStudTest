@@ -204,103 +204,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_1dp"
             android:background="@color/comm_line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_30dp"
-            android:background="@color/white"
-            android:gravity="center_vertical">
-
-            <TextView
-                style="@style/change_trade_pwd_style"
-                android:text="@string/user_info_Gender" />
-
-            <com.tiandu.recruit.stud.view.ClearEditText
-                android:id="@+id/etGender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:inputType="text"
-                android:minHeight="@dimen/size_45dp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_1dp"
-            android:background="@color/comm_line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_30dp"
-            android:background="@color/white"
-            android:gravity="center_vertical">
-
-            <TextView
-                style="@style/change_trade_pwd_style"
-                android:text="@string/user_info_birthdate" />
-
-            <com.tiandu.recruit.stud.view.ClearEditText
-                android:id="@+id/etBirthDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:inputType="text"
-                android:minHeight="@dimen/size_45dp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_1dp"
-            android:background="@color/comm_line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_30dp"
-            android:background="@color/white"
-            android:gravity="center_vertical">
-
-            <TextView
-                style="@style/change_trade_pwd_style"
-                android:text="@string/user_info_Province" />
-
-            <com.tiandu.recruit.stud.view.ClearEditText
-                android:id="@+id/etProvince"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:inputType="text"
-                android:minHeight="@dimen/size_45dp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_1dp"
-            android:background="@color/comm_line" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_30dp"
-            android:background="@color/white"
-            android:gravity="center_vertical">
-
-            <TextView
-                style="@style/change_trade_pwd_style"
-                android:text="@string/user_info_city" />
-
-            <com.tiandu.recruit.stud.view.ClearEditText
-                android:id="@+id/etCity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:inputType="text"
-                android:minHeight="@dimen/size_45dp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_1dp"
-            android:background="@color/comm_line" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_30dp"
@@ -324,13 +227,122 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_1dp"
             android:background="@color/comm_line" />
+        <LinearLayout
+            android:id="@+id/ltGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/windowBackground"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/change_trade_pwd_style"
+                android:text="@string/user_info_Gender" />
+
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/size_30dp"
+                android:layout_weight="1"
+                android:drawableRight="@mipmap/ic_arrow_right"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/size_15dp"
+                android:text=""
+                android:textSize="@dimen/font_normal" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+
+        <LinearLayout
+            android:id="@+id/ltBirthdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/windowBackground"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/change_trade_pwd_style"
+                android:text="@string/user_info_birthdate" />
+
+            <TextView
+                android:id="@+id/tvBirthdate"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/size_30dp"
+                android:layout_weight="1"
+                android:drawableRight="@mipmap/ic_arrow_right"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/size_15dp"
+                android:text=""
+                android:textSize="@dimen/font_normal" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+        <LinearLayout
+            android:id="@+id/ltProvince"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/windowBackground"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/change_trade_pwd_style"
+                android:text="@string/user_info_Province" />
+
+            <TextView
+                android:id="@+id/tvProvince"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/size_30dp"
+                android:layout_weight="1"
+                android:drawableRight="@mipmap/ic_arrow_right"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/size_15dp"
+                android:text=""
+                android:textSize="@dimen/font_normal" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+
+
+        <LinearLayout
+            android:id="@+id/ltCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/windowBackground"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/change_trade_pwd_style"
+                android:text="@string/user_info_city" />
+
+            <TextView
+                android:id="@+id/tvCity"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/size_30dp"
+                android:layout_weight="1"
+                android:drawableRight="@mipmap/ic_arrow_right"
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/size_15dp"
+                android:text=""
+                android:textSize="@dimen/font_normal" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+
+
 
 
         <Button
-            android:id="@+id/btnSubmit"
+            android:id="@+id/btnUpdata"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_20dp"
+            android:layout_marginTop="@dimen/size_10dp"
             android:background="@drawable/select_corner_state_green"
             android:text="@string/passwd_submit"
             android:textColor="@color/white"

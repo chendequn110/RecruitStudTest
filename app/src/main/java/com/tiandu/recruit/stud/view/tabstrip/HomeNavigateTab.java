@@ -23,7 +23,7 @@ public class HomeNavigateTab {
 
         TabParam pageParam1 = new TabParam();
         pageParam1.title = context.getString(R.string.main_home);
-        pageParam1.iconResId = R.mipmap.ic_home_human;
+        pageParam1.iconResId = R.mipmap.ic_home_page;
         pageParam1.iconSelectedResId = R.mipmap.ic_home_page_normal;
         pageParams.add(pageParam1);
 

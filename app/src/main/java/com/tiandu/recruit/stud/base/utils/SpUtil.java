@@ -19,6 +19,7 @@ public class SpUtil {
     private static final String USER_LOGINED_KEY = "isLogin";
     private static final String USER_NAME_KEY = "userName";
     private static final String USER_INFO_TAKEN_KEY = "user_token_key";
+    private static final String USER_MEMBERID = "user_merberid";
 
     private static SharedPreferences prefs;
 
@@ -92,5 +93,11 @@ public class SpUtil {
     public static void setToken(String token) {
         prefs.edit().putString(USER_INFO_TAKEN_KEY,token).commit();
     }
+    public static String getMemberID() {
+        return prefs.getString(USER_MEMBERID,"");
+    }
 
+    public static void setMemberID(String memberID) {
+        prefs.edit().putString(USER_MEMBERID,memberID).commit();
+    }
 }
