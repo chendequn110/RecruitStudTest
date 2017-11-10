@@ -72,6 +72,21 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/user_userInfo"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.feechild.FeeChildActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/fee_child"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.job.JobDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/job_detail"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.notice.NoticeDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/notice_detail"
+            android:screenOrientation="portrait"/>
         <!--短信验证-->
         <activity
             android:name="com.mob.tools.MobUIShell"

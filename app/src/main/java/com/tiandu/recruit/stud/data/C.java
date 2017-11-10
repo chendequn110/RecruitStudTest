@@ -41,11 +41,16 @@ public class C {
     public static final String USER_USERINFO_PATH = "MemberViewSource";
     public static final String USER_UPDATAUSERINFO_PATH = "MemberUpdateSource";
     public static final String USER_GETMEMBERFEE = "MemberFeeList";
+    public static final String USER_FEECHILD = "AgentFeeChildList";
+    public static final String USER_JOBINFO = "JobList";
+    public static final String USER_JOBLISTINFO = "JobDetail";
+    public static final String USER_NOTICE = "NoticeList";
+    public static final String USER_NOTICELIST = "NoticeDetail";
 
-    public static final String APPLIVEING_SECRET = "085ff643022fee4fcbeaeb897bc277b963d50008e3713171a66294611b7f78e45d315e8c0f74f3111ccc3195e9b44eb6e6e8976f5fa157239de242e5ba69e674";
 
 
-    public static final String ORDER_LIST_URL = "orderlist";
+
+
     public static final String USER_SMS_URL = "getSms";
     public static final String LEARN_TIME_URL = "stuhours";
     public static final String USER_RESET_PASSWD_URL = "update";

@@ -69,12 +69,12 @@
 
                 </FrameLayout>
 
-                <android.support.v7.widget.RecyclerView
+               <!-- <android.support.v7.widget.RecyclerView
                     android:id="@+id/rvHead"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.7"
-                    android:background="@color/windowBackground" />
+                    android:background="@color/windowBackground" />-->
 
             </LinearLayout>
         </android.support.design.widget.CollapsingToolbarLayout>

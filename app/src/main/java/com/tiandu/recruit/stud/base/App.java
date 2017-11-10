@@ -5,7 +5,6 @@ import android.content.res.Resources;
 
 import com.mob.MobSDK;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
-import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.common.QueuedWork;
@@ -27,7 +26,7 @@ public class App extends Application {
         mApp = this;
         SpUtil.init(this);
         MobSDK.init(this,"21b8bf737736e","0fde79dbdd1c144c4a2398b78e6767ec");
-        Config.DEBUG = true;
+//        Config.DEBUG = true;
         QueuedWork.isUseThreadPool = false;
         UMinit();
         UMShareAPI.get(this);

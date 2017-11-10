@@ -6,7 +6,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.data.entity.MemberFeeInfo;
-import com.tiandu.recruit.stud.data.entity.MemberFeeInfo2;
 
 /**
  * 项目名称：RecruitStud
@@ -17,14 +16,14 @@ import com.tiandu.recruit.stud.data.entity.MemberFeeInfo2;
  * 修改时间：2017/11/9 15:21
  * 修改备注：
  */
-public class FeeAdapter  extends BaseQuickAdapter<MemberFeeInfo2.DataBean.AaDataBean,BaseViewHolder> {
+public class FeeAdapter  extends BaseQuickAdapter<MemberFeeInfo.AaDataBean,BaseViewHolder> {
 
     public FeeAdapter() {
         super(R.layout.item_fee_appoint_viwe, null);
     }
 
     @Override
-    protected void convert(BaseViewHolder baseViewHolder, MemberFeeInfo2.DataBean.AaDataBean info) {
+    protected void convert(BaseViewHolder baseViewHolder, MemberFeeInfo.AaDataBean info) {
 
 
 

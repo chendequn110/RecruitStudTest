@@ -19,9 +19,9 @@ import com.tiandu.recruit.stud.base.BaseLazyFragment;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
-import com.tiandu.recruit.stud.data.entity.JobInfo;
-import com.tiandu.recruit.stud.ui.adapter.JobAdapter;
-import com.tiandu.recruit.stud.ui.job.JobDetailActivity;
+import com.tiandu.recruit.stud.data.entity.NoticeInfo;
+import com.tiandu.recruit.stud.ui.adapter.NoticeAdpter;
+import com.tiandu.recruit.stud.ui.notice.NoticeDetailActivity;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -38,18 +38,18 @@ import static com.tiandu.recruit.stud.R.id.btnMeg;
  * 项目名称：RecruitStud
  * 类描述：
  * 创建人：chendequnn
- * 创建时间：2017/11/9 13:03
+ * 创建时间：2017/11/10 16:47
  * 修改人：chendequnn
- * 修改时间：2017/11/9 13:03
+ * 修改时间：2017/11/10 16:47
  * 修改备注：
  */
-public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.OnRefreshListener, View.OnClickListener{
+public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayout.OnRefreshListener, View.OnClickListener{
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefresh;
 
-    private JobAdapter adapter = null;
+    private NoticeAdpter adapter = null;
     private LinearLayout llMoreFoor;
 
 
@@ -70,18 +70,18 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
         swipeRefresh.setOnRefreshListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter = new JobAdapter());
+        recyclerView.setAdapter(adapter = new NoticeAdpter());
         adapter.addFooterView(getFooterView());
 
         recyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
             @Override
             public void onSimpleItemChildClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-                JobInfo.AaDataBean item = adapter.getItem(i);
+                NoticeInfo.AaDataBean item = adapter.getItem(i);
                 switch (view.getId()) {
                     case btnMeg:
                         Bundle bundle=new Bundle();
                         bundle.putInt("ID",item.getID());
-                        readyGo(JobDetailActivity.class,bundle);
+                        readyGo(NoticeDetailActivity.class,bundle);
                         break;
                 }
             }
@@ -113,15 +113,15 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
 
     private void getOrdList() {
         Api.getInstance()
-                .movieService.getJobInfo(C.USER_JOBINFO,SpUtil.getToken())
+                .movieService.getNoticeInfo(C.USER_NOTICE,SpUtil.getToken())
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
-                .subscribe(new Action1<List<JobInfo>>() {
+                .subscribe(new Action1<List<NoticeInfo>>() {
                     @Override
-                    public void call(List<JobInfo> infos) {
+                    public void call(List<NoticeInfo> infos) {
                         cannelMyDialog();
                         if (null != infos) {
-                            List<JobInfo.AaDataBean> aaData = infos.get(0).getAaData();
+                            List<NoticeInfo.AaDataBean> aaData = infos.get(0).getAaData();
                             adapter.setNewData(aaData);
                         }
                     }
@@ -155,10 +155,10 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
 
     @Override
     protected void onFirstUserVisible() {
-        view = getActivity().findViewById(R.id.statusBar);
-        if (view.getVisibility() == View.GONE) {
-            view.setVisibility(View.VISIBLE);
-        }
+//        view = getActivity().findViewById(R.id.statusBar);
+//        if (view.getVisibility() == View.GONE) {
+//            view.setVisibility(View.VISIBLE);
+//        }
 
         if (isUser()) {
             showMyDialog("");
@@ -168,10 +168,9 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
 
     @Override
     protected void onUserVisible() {
-        if (view.getVisibility() == View.GONE) {
-            view.setVisibility(View.VISIBLE);
-        }
-
+//        if (view.getVisibility() == View.GONE) {
+//            view.setVisibility(View.VISIBLE);
+//        }
         if (isUser()) {
             swipeRefresh.setRefreshing(true);
             onRefresh();

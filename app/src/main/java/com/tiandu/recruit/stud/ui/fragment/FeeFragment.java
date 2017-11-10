@@ -1,5 +1,6 @@
 package com.tiandu.recruit.stud.ui.fragment;
 
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,12 +16,13 @@ import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.api.Api;
 import com.tiandu.recruit.stud.api.exception.MessageFactory;
 import com.tiandu.recruit.stud.base.BaseLazyFragment;
+import com.tiandu.recruit.stud.base.utils.Logger;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.MemberFeeInfo;
-import com.tiandu.recruit.stud.data.entity.MemberFeeInfo2;
 import com.tiandu.recruit.stud.ui.adapter.FeeAdapter;
+import com.tiandu.recruit.stud.ui.feechild.FeeChildActivity;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -30,6 +32,9 @@ import butterknife.ButterKnife;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+
+import static com.tiandu.recruit.stud.R.id.btnXiajia;
+
 
 /**
  * 项目名称：RecruitStud
@@ -73,7 +78,14 @@ public class FeeFragment extends BaseLazyFragment implements SwipeRefreshLayout.
         recyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
             @Override
             public void onSimpleItemChildClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-//                MemberFeeInfo2.DataBean item = adapter.getItem(i);
+                MemberFeeInfo.AaDataBean item = adapter.getItem(i);
+                switch (view.getId()) {
+                    case btnXiajia:
+                        Bundle bundle=new Bundle();
+                        bundle.putString("PlanID",item.getPlanID());
+                        readyGo(FeeChildActivity.class,bundle);
+                        break;
+                }
             }
         });
 
@@ -85,6 +97,7 @@ public class FeeFragment extends BaseLazyFragment implements SwipeRefreshLayout.
             }
         });
     }
+
 
 
     @Override
@@ -105,14 +118,16 @@ public class FeeFragment extends BaseLazyFragment implements SwipeRefreshLayout.
                 .movieService.getMemberFee(C.USER_GETMEMBERFEE,SpUtil.getMemberID(),SpUtil.getToken())
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
-                .subscribe(new Action1<List<MemberFeeInfo2.DataBean.AaDataBean>>() {
+                .subscribe(new Action1<List<MemberFeeInfo>>() {
                     @Override
-                    public void call(List<MemberFeeInfo2.DataBean.AaDataBean> orderInfos) {
+                    public void call(List<MemberFeeInfo> orderInfos) {
                         cannelMyDialog();
                         if (null != orderInfos) {
-//                            Logger.d(orderInfos.get(0).toString()+orderInfos.get(1).toString()+orderInfos.get(2).toString());
-                            showToast(orderInfos.size()+"");
-                            adapter.setNewData(orderInfos);
+                            List<MemberFeeInfo.AaDataBean> aaData = orderInfos.get(0).getAaData();
+                            for (MemberFeeInfo.AaDataBean aaDataBean : aaData) {
+                                Logger.d("11111>>>>>>>" + aaDataBean.getChildFee());
+                            }
+                            adapter.setNewData(aaData);
                         }
                     }
                 }, e -> {
