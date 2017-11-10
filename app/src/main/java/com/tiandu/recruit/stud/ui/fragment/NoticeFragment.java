@@ -159,7 +159,7 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
 //        if (view.getVisibility() == View.GONE) {
 //            view.setVisibility(View.VISIBLE);
 //        }
-
+//
         if (isUser()) {
             showMyDialog("");
             getOrdList();
