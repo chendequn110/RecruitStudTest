@@ -144,5 +144,6 @@ public interface ApiService {
     @GET("{value}")
     Observable<Response<List<RegisterInfo>>> getSMSAuthCode(@Path("value") String url,@Query("AuthType") String AuthType, @Query("Mobile") String Mobile);
 
+
 }
 
