@@ -13,8 +13,8 @@ import com.tiandu.recruit.stud.api.exception.MessageFactory;
  */
 public class ResetPwdPresenter extends ResetPwdContract.Persenter {
     @Override
-    public void userResetPwd(String mobile, String password) {
-        mRxManage.add(mModel.doResetPwd(mobile, password)
+    public void userResetPwd(String mobile, String password,String authCode) {
+        mRxManage.add(mModel.doResetPwd(mobile, password,authCode)
                 .subscribe(registerInfo -> {
                     mView.loginSuccess("密码修改成功");
                 }, e -> {

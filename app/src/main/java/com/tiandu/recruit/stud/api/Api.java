@@ -65,7 +65,7 @@ public class Api {
      * 测试库 true
      */
 
-    public static final String API_DEV_URL = "http://advertise.shanghaiiot.org/MemberReg/";
+    public static final String API_DEV_URL = "http://advertise.shanghaiiot.org/MobileAPI/";
     public static final String API_DEV_LOGIN_URL = "http://121.40.77.233/jishi/simustudent/";
     public static final String API_DEV_ZHES_URL = "http://121.40.77.233/";
 

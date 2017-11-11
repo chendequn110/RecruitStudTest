@@ -34,18 +34,19 @@ public class C {
 
 
 
-    public static final String USER_LOGIN_PATH = "MemberLoginDetailSource";
-    public static final String USER_REGISTER_PATH = "MemberRegEntranceSource";
-    public static final String USER_RESETPWD_PATH = "MemberResetPwdSource";
-    public static final String USER_MODIFYPWD_PATH = "MemberChgPwdSource";
-    public static final String USER_USERINFO_PATH = "MemberViewSource";
-    public static final String USER_UPDATAUSERINFO_PATH = "MemberUpdateSource";
+    public static final String USER_LOGIN_PATH = "MemberLogin";
+    public static final String USER_REGISTER_PATH = "MemberReg";
+    public static final String USER_RESETPWD_PATH = "MemberResetPwd";
+    public static final String USER_MODIFYPWD_PATH = "MemberChgPwd";
+    public static final String USER_USERINFO_PATH = "GetMemberInfo";
+    public static final String USER_UPDATAUSERINFO_PATH = "UpdateMemberInfo";
     public static final String USER_GETMEMBERFEE = "MemberFeeList";
     public static final String USER_FEECHILD = "AgentFeeChildList";
     public static final String USER_JOBINFO = "JobList";
     public static final String USER_JOBLISTINFO = "JobDetail";
     public static final String USER_NOTICE = "NoticeList";
     public static final String USER_NOTICELIST = "NoticeDetail";
+    public static final String USER_MESSAGECODE = "SendSMSAuthCode";
 
 
 

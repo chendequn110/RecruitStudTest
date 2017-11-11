@@ -46,7 +46,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<RegisterInfo>>> doRegister(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Password") String Password);
+    Observable<Response<List<RegisterInfo>>> doRegister(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Password") String Password, @Query("AuthCode") String AuthCode);
 
     /**
      * 忘记密码
@@ -135,5 +135,14 @@ public interface ApiService {
      */
     @GET("{value}")
     Observable<Response<List<NoticeListInfo>>> getNoticeListInfo(@Path("value") String url,@Query("ID") int ID, @Query("Token") String Token);
+    /**
+     * 获取短信验证码
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<RegisterInfo>>> getSMSAuthCode(@Path("value") String url,@Query("AuthType") String AuthType, @Query("Mobile") String Mobile);
+
 }
 

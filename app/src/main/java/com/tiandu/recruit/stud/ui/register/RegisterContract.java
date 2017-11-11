@@ -9,8 +9,6 @@ import com.tiandu.recruit.stud.data.entity.RegisterInfo;
 
 import java.util.List;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
 import rx.Observable;
 
 /**
@@ -20,7 +18,7 @@ import rx.Observable;
 public interface RegisterContract {
     interface Model extends BaseModel {
 
-        Observable<List<RegisterInfo>> doRegister(String mobile, String password);
+        Observable<List<RegisterInfo>> doRegister(String mobile, String password ,String authCode);
     }
 
     interface View extends BaseView {
@@ -38,6 +36,6 @@ public interface RegisterContract {
 
         }
 
-        public abstract void userRegister(String mobile ,String password);
+        public abstract void userRegister(String mobile ,String password,String authCode);
     }
 }

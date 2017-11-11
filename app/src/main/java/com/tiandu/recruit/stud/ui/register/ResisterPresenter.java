@@ -10,8 +10,8 @@ import com.tiandu.recruit.stud.api.exception.MessageFactory;
 
 public class ResisterPresenter extends RegisterContract.Persenter {
     @Override
-    public void userRegister(String mobile, String password) {
-            mRxManage.add(mModel.doRegister(mobile, password)
+    public void userRegister(String mobile, String password,String authCode) {
+            mRxManage.add(mModel.doRegister(mobile, password,authCode)
                     .subscribe(registerInfo -> {
                         mView.loginSuccess("注册成功");
                     }, e -> {

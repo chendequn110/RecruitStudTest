@@ -18,8 +18,8 @@ public class RegisterModel implements RegisterContract.Model {
 
 
     @Override
-    public Observable<List<RegisterInfo>> doRegister(String mobile, String password) {
-        return Api.getInstance().movieService.doRegister(C.USER_REGISTER_PATH,mobile,password)
+    public Observable<List<RegisterInfo>> doRegister(String mobile, String password ,String authCode) {
+        return Api.getInstance().movieService.doRegister(C.USER_REGISTER_PATH,mobile,password,authCode)
                 .compose(RxSchedulers.io_main()).compose(RxSchedulers.sTransformer());
     }
 }

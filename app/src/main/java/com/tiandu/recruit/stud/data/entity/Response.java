@@ -1,6 +1,5 @@
 package com.tiandu.recruit.stud.data.entity;
 
-import java.util.List;
 
 /**
  * Created by Jerome on 16/9/19.

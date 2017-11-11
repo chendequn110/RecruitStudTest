@@ -1,7 +1,6 @@
 package com.tiandu.recruit.stud.ui.fragment;
 
 
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,7 +9,6 @@ import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.base.BaseAppManager;
 import com.tiandu.recruit.stud.base.BaseLazyFragment;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
-import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.ui.login.LoginActivity;
 import com.tiandu.recruit.stud.ui.modify.ModifyPwdActivity;
 import com.tiandu.recruit.stud.ui.userInfo.MeActivity;
@@ -154,10 +152,7 @@ public class UserFragment extends BaseLazyFragment {
 //        bundle.putInt(C.USER_OUT, C.USER_OUT_STATUS);
         SpUtil.clearAll();
         readyGo(LoginActivity.class);
-        BaseAppManager.getInstance().clearToTop();
-
-
-
+//        BaseAppManager.getInstance().clearToTop();
     }
 
 }

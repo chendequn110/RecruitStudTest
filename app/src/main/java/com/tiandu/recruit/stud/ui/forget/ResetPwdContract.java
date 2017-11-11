@@ -21,7 +21,7 @@ import rx.Observable;
 public interface ResetPwdContract {
     interface Model extends BaseModel {
 
-        Observable<List<RegisterInfo>> doResetPwd(String mobile, String password);
+        Observable<List<RegisterInfo>> doResetPwd(String mobile, String password ,String authCode);
     }
 
     interface View extends BaseView {
@@ -39,6 +39,6 @@ public interface ResetPwdContract {
 
         }
 
-        public abstract void userResetPwd(String mobile ,String password);
+        public abstract void userResetPwd(String mobile ,String password,String authCode);
     }
 }

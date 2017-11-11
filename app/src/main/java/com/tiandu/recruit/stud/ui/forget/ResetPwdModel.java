@@ -20,8 +20,8 @@ import rx.Observable;
  */
 public class ResetPwdModel implements ResetPwdContract.Model {
     @Override
-    public Observable<List<RegisterInfo>> doResetPwd(String mobile, String password) {
-        return Api.getInstance().movieService.doRegister(C.USER_RESETPWD_PATH,mobile,password)
+    public Observable<List<RegisterInfo>> doResetPwd(String mobile, String password ,String authCode) {
+        return Api.getInstance().movieService.doRegister(C.USER_RESETPWD_PATH,mobile,password,authCode)
                 .compose(RxSchedulers.io_main()).compose(RxSchedulers.sTransformer());
     }
 }

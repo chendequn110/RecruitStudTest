@@ -17,4 +17,5 @@ public class UserInfo implements Serializable {
     public void setToken(String token) {
         this.token = token;
     }
+
 }
