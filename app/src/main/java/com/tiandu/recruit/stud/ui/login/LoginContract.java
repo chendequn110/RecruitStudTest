@@ -22,7 +22,7 @@ public interface LoginContract {
 
     interface Model extends BaseModel {
 
-        Observable<List<UserInfo>> doLogin(String mobile, String password);
+        Observable<List<UserInfo.DataBean>> doLogin(String mobile, String password);
 
 //        Call<ResponseBody> doLogin(String userId, String uPasswd);
     }

@@ -49,7 +49,7 @@ public class CountDownButtonHelper {
             @Override
             public void onFinish() {
                 button.setEnabled(true);
-                button.setText(defaultString);
+                button.setText("重新发送");
                 if (listener != null) {
                     listener.finish();
                 }

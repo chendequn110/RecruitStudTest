@@ -32,10 +32,11 @@ public class LoginPresenter extends LoginContract.Persenter {
     @Override
     public void userLogin(String mobole, String password) {
         mRxManage.add(mModel.doLogin(mobole, password)
-                .subscribe(new Action1<List<UserInfo>>() {
+                .subscribe(new Action1<List<UserInfo.DataBean>>() {
                     @Override
-                    public void call(List<UserInfo> userInfos) {
+                    public void call(List<UserInfo.DataBean> userInfos) {
                         SpUtil.setToken(userInfos.get(0).getToken());
+                        SpUtil.setMemberID(userInfos.get(0).getMemberID());
                         mView.loginSuccess("登录成功");
                     }
                 }, e -> {

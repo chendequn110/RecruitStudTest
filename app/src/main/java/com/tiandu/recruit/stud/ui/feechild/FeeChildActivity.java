@@ -101,7 +101,7 @@ public class FeeChildActivity extends BaseActivity  implements SwipeRefreshLayou
     private void getInitnetData() {
         showloginDialog("");
         Api.getInstance()
-                .movieService.getFeeChild(C.USER_FEECHILD, "T001",planId, SpUtil.getToken())
+                .movieService.getFeeChild(C.USER_FEECHILD,SpUtil.getMemberID(),planId, SpUtil.getToken())
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
                 .subscribe(new Action1<List<FeeChildInfo>>() {

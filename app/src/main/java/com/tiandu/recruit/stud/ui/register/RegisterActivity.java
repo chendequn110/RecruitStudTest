@@ -57,14 +57,6 @@ public class RegisterActivity extends BaseActivity <ResisterPresenter,RegisterMo
         phone = etPhone.getText().toString().trim();
         if(AStringUtil.isPhone(phone)){
             CountDownButtonHelper helper = new CountDownButtonHelper(btnCode,"",60,1);
-            helper.setOnFinishListener(new CountDownButtonHelper.OnFinishListener() {
-                @Override
-                public void finish() {
-                    // Toast.makeText(RegisterActivity.this,"倒计时结束",Toast.LENGTH_SHORT).show();
-                    btnCode.setText("再次获取");
-                }
-            });
-
             helper.start();
 
 

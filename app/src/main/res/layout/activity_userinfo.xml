@@ -308,28 +308,28 @@
             android:background="@color/comm_line" />
 
 
-        <LinearLayout
-            android:id="@+id/ltCity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/windowBackground"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+            <!--android:id="@+id/ltCity"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/windowBackground"-->
+            <!--android:orientation="horizontal">-->
 
-            <TextView
-                style="@style/change_trade_pwd_style"
-                android:text="@string/user_info_city" />
+            <!--<TextView-->
+                <!--style="@style/change_trade_pwd_style"-->
+                <!--android:text="@string/user_info_city" />-->
 
-            <TextView
-                android:id="@+id/tvCity"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/size_30dp"
-                android:layout_weight="1"
-                android:drawableRight="@mipmap/ic_arrow_right"
-                android:gravity="center_vertical|right"
-                android:paddingRight="@dimen/size_15dp"
-                android:text=""
-                android:textSize="@dimen/font_normal" />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/tvCity"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="@dimen/size_30dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:drawableRight="@mipmap/ic_arrow_right"-->
+                <!--android:gravity="center_vertical|right"-->
+                <!--android:paddingRight="@dimen/size_15dp"-->
+                <!--android:text=""-->
+                <!--android:textSize="@dimen/font_normal" />-->
+        <!--</LinearLayout>-->
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_1dp"

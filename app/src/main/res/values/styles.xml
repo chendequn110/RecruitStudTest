@@ -102,4 +102,6 @@
     </style>
     <!--第三方登录-->
     <style name="Theme.UMDefault" parent="android:style/Theme.NoTitleBar"></style>
+
+
 </resources>

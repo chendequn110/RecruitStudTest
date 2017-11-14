@@ -16,7 +16,7 @@ import rx.Observable;
 
 public class LoginModel implements LoginContract.Model {
     @Override
-    public Observable<List<UserInfo>> doLogin(String mobile, String password) {
+    public Observable<List<UserInfo.DataBean>> doLogin(String mobile, String password) {
             return Api.getInstance().movieService.doLogin(C.USER_LOGIN_PATH, mobile, password)
                     .compose(RxSchedulers.io_main()).compose(RxSchedulers.sTransformer());
     }

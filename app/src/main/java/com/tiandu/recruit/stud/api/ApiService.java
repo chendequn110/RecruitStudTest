@@ -37,7 +37,7 @@ public interface ApiService {
      * @return LoginInfo
      */
     @GET("{value}")
-    Observable<Response<List<UserInfo>>> doLogin(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Password") String Password);
+    Observable<Response<List<UserInfo.DataBean>>> doLogin(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Password") String Password);
 
     /**
      * 注册
@@ -73,7 +73,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<MeInfo>>> getUserInfo(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Token") String Token);
+    Observable<Response<List<MeInfo>>> getUserInfo(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token);
 
     /**
      * 更新会员资料
@@ -82,7 +82,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<MeInfo>>> upDataUserInfo(@Path("value") String url, @Query("actionType") String actionType, @Query("Token") String Token);
+    Observable<Response<List<MeInfo>>> upDataUserInfo(@Path("value") String url, @Query("actionType") String actionType,@Query("MemberID") String MemberID,@Query("MemberName") String MemberName, @Query("BindMobile") String BindMobile,@Query("BindEmail") String BindEmail,@Query("BindWechat") String BindWechat,@Query("BindQQ") String BindQQ,@Query("IDNumber") String IDNumber,@Query("RealName") String RealName,@Query("Gender") String Gender,@Query("BirthDate") String BirthDate,@Query("Province") String Province,@Query("City") String City,@Query("ParentID") String ParentID,@Query("Token") String Token);
 
     /**
      * 获取代理费

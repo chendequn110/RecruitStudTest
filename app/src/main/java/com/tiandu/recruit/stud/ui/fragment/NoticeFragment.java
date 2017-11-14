@@ -135,10 +135,6 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
         showToast(message);
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 
 
     @Override
@@ -155,17 +151,7 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
 
     @Override
     protected void onFirstUserVisible() {
-//        view = getActivity().findViewById(R.id.statusBar);
-//        if (view.getVisibility() == View.GONE) {
-//            view.setVisibility(View.VISIBLE);
-//        }
-//
-//        if (isUser()) {
-//            showMyDialog("");
-//            getOrdList();
-//        }
-        swipeRefresh.setRefreshing(true);
-        onRefresh();
+            getOrdList();
     }
 
     @Override
@@ -189,4 +175,9 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
     protected void onUserInvisible() {
 
     }
+    @Override
+    public void onClick(View v) {
+
+    }
+
 }
