@@ -1,5 +1,14 @@
 <resources>
-
+    <style name="WelcomeContentOverlay"         parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowIsTranslucent">false</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowBackground">@mipmap/ic_login_bg</item>
+</style>
+    <style name="Theme.AppLauncher" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@mipmap/ic_login_bg</item>
+    </style>
     <!-- Base application theme. -->
     <style name="AppThemes" parent="@style/AppThemeBase">
 

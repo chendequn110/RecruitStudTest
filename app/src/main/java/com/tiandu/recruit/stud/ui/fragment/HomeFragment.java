@@ -46,7 +46,6 @@ public class HomeFragment extends BaseLazyFragment {
     @BindView(R.id.LineVertical) View LineVertical;
     @BindView(R.id.line_school) View line_school;
     @BindView(R.id.line_coach) View line_coach;
-    @BindView(R.id.tvAddress) TextView tvAddress;
     @BindView(R.id.convenientBanner) ConvenientBanner convenientBanner;
 
     @BindView(R.id.payFragmentContainer) LinearLayout fragmentContainer;

@@ -41,10 +41,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1.4">
 
-                    <!--<ImageView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="@dimen/size_150dp"-->
-                    <!--android:background="@mipmap/ic_enroll_bg" />-->
+
 
                     <com.bigkoo.convenientbanner.ConvenientBanner
                         android:id="@+id/convenientBanner"
@@ -52,40 +49,20 @@
                         android:layout_height="@dimen/size_168dp"
                         app:canLoop="true" />
 
-                    <TextView
-                        android:id="@+id/tvAddress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/size_55dp"
-                        android:layout_marginLeft="@dimen/size_5dp"
-                        android:layout_marginTop="@dimen/size_5dp"
-                        android:drawableRight="@mipmap/ic_arrow_down_main"
-                        android:ellipsize="end"
-                        android:gravity="center_vertical"
-                        android:lines="1"
-                        android:maxLength="10"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/font_mediumer" />
 
 
                 </FrameLayout>
 
-               <!-- <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rvHead"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.7"
-                    android:background="@color/windowBackground" />-->
-
             </LinearLayout>
         </android.support.design.widget.CollapsingToolbarLayout>
-        <!--悬浮的部分-->
+
         <include layout="@layout/view_enroll_toolbar" />
 
-        <View
+      <!--  <View
             android:id="@+id/headLine"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_1dp"
-            android:background="@color/comm_line" />
+            android:background="@color/comm_line" />-->
 
     </android.support.design.widget.AppBarLayout>
 
