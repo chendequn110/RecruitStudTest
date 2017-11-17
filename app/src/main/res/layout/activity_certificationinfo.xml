@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/custom_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/fab_margin">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_40dp"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/change_trade_pwd_style"
+                android:text="@string/user_info_realname" />
+
+            <com.tiandu.recruit.stud.view.ClearEditText
+                android:id="@+id/etRealName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="text"
+                android:minHeight="@dimen/size_45dp" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_40dp"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/change_trade_pwd_style"
+                android:text="@string/user_info_idnumber" />
+
+            <com.tiandu.recruit.stud.view.ClearEditText
+                android:id="@+id/etIDNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="number"
+                android:minHeight="@dimen/size_45dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_40dp"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/change_trade_pwd_style"
+                android:text="@string/user_info_bank" />
+
+            <com.tiandu.recruit.stud.view.ClearEditText
+                android:id="@+id/etBank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="text"
+                android:minHeight="@dimen/size_45dp" />
+        </LinearLayout>
+
+
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/size_1dp"
+               android:background="@color/comm_line" />
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/size_40dp"
+               android:background="@color/white"
+               android:gravity="center_vertical">
+
+               <TextView
+                   style="@style/change_trade_pwd_style"
+                   android:text="@string/user_info_bankNum" />
+
+               <com.tiandu.recruit.stud.view.ClearEditText
+                   android:id="@+id/etBankNum"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:background="@null"
+                   android:inputType="text"
+                   android:minHeight="@dimen/size_45dp" />
+           </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
+
+
+
+
+
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:background="@drawable/select_corner_state_green"
+            android:text="@string/passwd_submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_large" />
+    </LinearLayout>
+
+
+</LinearLayout>

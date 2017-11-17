@@ -1,6 +1,7 @@
 package com.tiandu.recruit.stud.api;
 
 
+import com.tiandu.recruit.stud.data.entity.ChildMenberInfo;
 import com.tiandu.recruit.stud.data.entity.FeeChildInfo;
 import com.tiandu.recruit.stud.data.entity.JobInfo;
 import com.tiandu.recruit.stud.data.entity.JobListInfo;
@@ -144,6 +145,47 @@ public interface ApiService {
     @GET("{value}")
     Observable<Response<List<RegisterInfo>>> getSMSAuthCode(@Path("value") String url,@Query("AuthType") String AuthType, @Query("Mobile") String Mobile);
 
+    /**
+     * 绑定手机
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<RegisterInfo>>> bindPhone(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Mobile") String Mobile, @Query("AuthCode") String AuthCode,@Query("Token") String Token);
 
+    /**
+     * 绑定邮箱
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<RegisterInfo>>> bindMail(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Email") String Email,@Query("Token") String Token);
+    /**
+     * 更新会员资料
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<MeInfo>>> upDataUserInfoBase(@Path("value") String url,@Query("MemberID") String MemberID,@Query("MemberName") String MemberName, @Query("Gender") String Gender,@Query("BirthDate") String BirthDate,@Query("Province") String Province,@Query("City") String City,@Query("Token") String Token);
+    /**
+     * 实名认证
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<MeInfo>>> upDataUserRealInfo(@Path("value") String url,@Query("MemberID") String MemberID,@Query("RealName") String RealName, @Query("IDNumber") String IDNumber,@Query("BankName") String BankName,@Query("BankAccount") String BankAccount,@Query("Token") String Token);
+
+    /**
+     * 下级会员
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<ChildMenberInfo>>> getChildMember(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token);
 }
 

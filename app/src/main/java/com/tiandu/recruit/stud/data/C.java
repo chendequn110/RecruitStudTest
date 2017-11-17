@@ -47,7 +47,11 @@ public class C {
     public static final String USER_NOTICE = "NoticeList";
     public static final String USER_NOTICELIST = "NoticeDetail";
     public static final String USER_MESSAGECODE = "SendSMSAuthCode";
-
+    public static final String USER_BINDPHONE = "MemberBindMobile";
+    public static final String USER_BINDMAIL = "MemberBindEmail";
+    public static final String USER_UPDATAUSERINFOBASE = "UpdateMemberBase";
+    public static final String USER_UPDATAUSERREALINFO = "MemberAuth";
+    public static final String USER_GETCHILDMEMBER="GetChildMember";
 
 
 

@@ -11,6 +11,9 @@ import com.tiandu.recruit.stud.base.BaseLazyFragment;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.ui.login.LoginActivity;
 import com.tiandu.recruit.stud.ui.modify.ModifyPwdActivity;
+import com.tiandu.recruit.stud.ui.userInfo.BindInfoActivity;
+import com.tiandu.recruit.stud.ui.userInfo.CertificationActivity;
+import com.tiandu.recruit.stud.ui.userInfo.ChildMemberInfoActivity;
 import com.tiandu.recruit.stud.ui.userInfo.MeActivity;
 
 import butterknife.BindView;
@@ -26,11 +29,9 @@ public class UserFragment extends BaseLazyFragment {
     @BindView(R.id.ivAvatar) ImageView ivAvatar;
     @BindView(R.id.tvName) TextView tvName;
     @BindView(R.id.tvUserInfo) TextView tvUserInfo;
-    @BindView(R.id.tvCoupon) TextView tvCoupon;
     @BindView(R.id.tvWall) TextView tvWall;
-    @BindView(R.id.tvComplaint) TextView tvComplaint;
-    @BindView(R.id.tvEvaluate) TextView tvEvaluate;
     @BindView(R.id.tvExit) TextView tvExit;
+    @BindView(R.id.tvAccountBind) TextView tvAccountBind;
 
 
     @Override
@@ -38,7 +39,7 @@ public class UserFragment extends BaseLazyFragment {
 
     }
 
-    @OnClick({R.id.ivAvatar,R.id.tvModifyPwd,R.id.tvUserInfo, R.id.tvCoupon, R.id.llWall, R.id.tvCoach,R.id.tvComplaint, R.id.tvEvaluate,R.id.tvAboutUs,R.id.tvExit})
+    @OnClick({R.id.ivAvatar,R.id.tvModifyPwd,R.id.tvUserInfo, R.id.llWall,R.id.tvAboutUs,R.id.tvExit,R.id.tvAccountBind,R.id.tvAuthentic,R.id.llChildInfo})
     void OnSelectedClick(View view) {
         switch (view.getId()) {
             case R.id.tvModifyPwd:
@@ -50,21 +51,15 @@ public class UserFragment extends BaseLazyFragment {
             case R.id.ivAvatar:
                 readyGo(MeActivity.class);
                 break;
-//            case R.id.llWall:
-//                readyGo(WalletActivity.class);
-//                break;
-//            case R.id.tvCoach:
-//                readyGo(AllCoachActivity.class);
-//                break;
-//            case R.id.tvEvaluate://评论
-//                readyGo(EvaluateListActivity.class);
-//                break;
-//            case R.id.tvComplaint://投诉
-//                readyGo(ComplaintActivity.class);
-//                break;
-//            case R.id.tvAboutUs:
-//                readyGo(AboutUsActivity.class);
-//                break;
+            case R.id.tvAccountBind:
+                readyGo(BindInfoActivity.class);
+                break;
+            case R.id.tvAuthentic:
+                readyGo(CertificationActivity.class);
+                break;
+            case R.id.llChildInfo:
+                readyGo(ChildMemberInfoActivity.class);
+                break;
             case R.id.tvExit:
                 exitLogin();
                 break;

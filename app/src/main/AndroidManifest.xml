@@ -82,6 +82,41 @@
             android:label="@string/user_userInfo"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".ui.userInfo.BindInfoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/user_bindinfo"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.userInfo.BindPhoneActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/user_bindphone"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.userInfo.BindMailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/user_bind_mail"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.userInfo.CertificationActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/user_info_certification"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.userInfo.ChildMemberInfoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/user_info_child"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.userInfo.BindQQActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/user_bind_qq"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.userInfo.BindWxActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/user_bind_wx"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".ui.feechild.FeeChildActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/fee_child"

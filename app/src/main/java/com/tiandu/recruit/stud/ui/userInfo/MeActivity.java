@@ -50,20 +50,20 @@ public class MeActivity extends BaseActivity {
     ClearEditText etMemberID;
     @BindView(R.id.etMemberName)
     ClearEditText etMemberName;
-    @BindView(R.id.etBindMobile)
-    ClearEditText etBindMobile;
-    @BindView(R.id.etBindEmail)
-    ClearEditText etBindEmail;
-    @BindView(R.id.etBindWechat)
-    ClearEditText etBindWechat;
-    @BindView(R.id.etBindQQ)
-    ClearEditText etBindQQ;
-    @BindView(R.id.etIDNumber)
-    ClearEditText etIDNumber;
-    @BindView(R.id.etRealName)
-    ClearEditText etRealName;
-    @BindView(R.id.etParentID)
-    ClearEditText etParentID;
+//    @BindView(R.id.etBindMobile)
+//    ClearEditText etBindMobile;
+//    @BindView(R.id.etBindEmail)
+//    ClearEditText etBindEmail;
+//    @BindView(R.id.etBindWechat)
+//    ClearEditText etBindWechat;
+//    @BindView(R.id.etBindQQ)
+//    ClearEditText etBindQQ;
+//    @BindView(R.id.etIDNumber)
+//    ClearEditText etIDNumber;
+//    @BindView(R.id.etRealName)
+//    ClearEditText etRealName;
+//    @BindView(R.id.etParentID)
+//    ClearEditText etParentID;
     @BindView(R.id.tvBirthdate)
     TextView tvBirthdate;
     @BindView(R.id.tvGender)
@@ -105,13 +105,13 @@ public class MeActivity extends BaseActivity {
                         if (null != meInfos) {
                             etMemberID.setText( meInfos.get(0).getMemberID());
                             etMemberName.setText(meInfos.get(0).getMemberName());
-                            etBindMobile.setText( meInfos.get(0).getBindMobile());
-                            etBindEmail.setText(meInfos.get(0).getBindEmail());
-                            etBindWechat.setText( meInfos.get(0).getBindWechat());
-                            etBindQQ.setText(meInfos.get(0).getBindQQ());
-                            etIDNumber.setText( meInfos.get(0).getIDNumber());
-                            etRealName.setText(meInfos.get(0).getRealName());
-                            etParentID.setText( meInfos.get(0).getParentID());
+//                            etBindMobile.setText( meInfos.get(0).getBindMobile());
+//                            etBindEmail.setText(meInfos.get(0).getBindEmail());
+//                            etBindWechat.setText( meInfos.get(0).getBindWechat());
+//                            etBindQQ.setText(meInfos.get(0).getBindQQ());
+//                            etIDNumber.setText( meInfos.get(0).getIDNumber());
+//                            etRealName.setText(meInfos.get(0).getRealName());
+//                            etParentID.setText( meInfos.get(0).getParentID());
                             tvBirthdate.setText(meInfos.get(0).getBirthDate());
                             tvGender.setText(meInfos.get(0).getGender());
                             tvProvince.setText(meInfos.get(0).getProvince());
@@ -135,36 +135,36 @@ public class MeActivity extends BaseActivity {
             showToast("用户名不能为空");
             return;
         }
-        String BindMobile=etBindMobile.getText().toString();
-        if(AStringUtil.isEmpty(BindMobile)){
-            showToast("绑定手机不能为空");
-            return;
-        }
-        String BindEmail=etBindEmail.getText().toString();
-        if(AStringUtil.isEmpty(BindEmail)){
-            showToast("绑定邮箱不能为空");
-            return;
-        }
-        String BindWechat=etBindWechat.getText().toString();
-        if(AStringUtil.isEmpty(BindWechat)){
-            showToast("绑定微信不能为空");
-            return;
-        }
-        String BindQQ=etBindQQ.getText().toString();
-        if(AStringUtil.isEmpty(BindQQ)){
-            showToast("绑定QQ不能为空");
-            return;
-        }
-        String IDNumber=etIDNumber.getText().toString();
-        if(AStringUtil.isEmpty(IDNumber)){
-            showToast("绑定身份证不能为空");
-            return;
-        }
-        String RealName=etRealName.getText().toString();
-        if(AStringUtil.isEmpty(RealName)){
-            showToast("真实姓名不能为空");
-            return;
-        }
+//        String BindMobile=etBindMobile.getText().toString();
+//        if(AStringUtil.isEmpty(BindMobile)){
+//            showToast("绑定手机不能为空");
+//            return;
+//        }
+//        String BindEmail=etBindEmail.getText().toString();
+//        if(AStringUtil.isEmpty(BindEmail)){
+//            showToast("绑定邮箱不能为空");
+//            return;
+//        }
+//        String BindWechat=etBindWechat.getText().toString();
+//        if(AStringUtil.isEmpty(BindWechat)){
+//            showToast("绑定微信不能为空");
+//            return;
+//        }
+//        String BindQQ=etBindQQ.getText().toString();
+//        if(AStringUtil.isEmpty(BindQQ)){
+//            showToast("绑定QQ不能为空");
+//            return;
+//        }
+//        String IDNumber=etIDNumber.getText().toString();
+//        if(AStringUtil.isEmpty(IDNumber)){
+//            showToast("绑定身份证不能为空");
+//            return;
+//        }
+//        String RealName=etRealName.getText().toString();
+//        if(AStringUtil.isEmpty(RealName)){
+//            showToast("真实姓名不能为空");
+//            return;
+//        }
         String Gender=tvGender.getText().toString();
         if(AStringUtil.isEmpty(Gender)){
             showToast("性别不能为空");
@@ -177,17 +177,17 @@ public class MeActivity extends BaseActivity {
         }
         String Province=tvProvince.getText().toString();
         if(AStringUtil.isEmpty(Province)){
-            showToast("性别不能为空");
+            showToast("地区不能为空");
             return;
         }
-        String ParentID=etParentID.getText().toString();
-        if(AStringUtil.isEmpty(ParentID)){
-            showToast("上级代理不能为空");
-            return;
-        }
+//        String ParentID=etParentID.getText().toString();
+//        if(AStringUtil.isEmpty(ParentID)){
+//            showToast("上级代理不能为空");
+//            return;
+//        }
             showloginDialog("更新资料中...");
             Api.getInstance()
-                    .movieService.upDataUserInfo(C.USER_UPDATAUSERINFO_PATH,"Edit",SpUtil.getMemberID(),memberName,BindMobile,BindEmail,BindWechat,BindQQ,IDNumber,RealName,Gender,Birthdate,Province,"",ParentID,SpUtil.getToken())
+                    .movieService.upDataUserInfoBase(C.USER_UPDATAUSERINFOBASE,SpUtil.getMemberID(),memberName,Gender,Birthdate,Province,"",SpUtil.getToken())
                     .compose(RxSchedulers.io_main())
                     .compose(RxSchedulers.sTransformer())
                     .subscribe(MeInfo -> {

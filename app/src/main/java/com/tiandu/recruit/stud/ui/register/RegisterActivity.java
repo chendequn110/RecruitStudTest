@@ -88,6 +88,15 @@ public class RegisterActivity extends BaseActivity <ResisterPresenter,RegisterMo
 
     @OnClick(R.id.btnSubmit) void submitClick(){
         String number = etValideCode.getText().toString();
+        if (AStringUtil.isEmpty(number)) {
+            showToast("验证码不能为空");
+            return ;
+        }
+        String phone=etPhone.getText().toString().trim();
+        if (AStringUtil.isEmpty(phone)) {
+            showToast("手机号不能为空");
+            return ;
+        }
         String uPassword = setPasswd.getText().toString().trim();
         if (AStringUtil.isEmpty(uPassword)) {
             showToast("密码不能为空");

@@ -2,14 +2,12 @@ package com.tiandu.recruit.stud.ui.fragment;
 
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
@@ -22,7 +20,6 @@ import com.tiandu.recruit.stud.view.AppBarStateChangeListener;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 import static com.tiandu.recruit.stud.base.utils.AImageUtil.getResId;
 
@@ -39,13 +36,13 @@ public class HomeFragment extends BaseLazyFragment {
 //    @BindView(R.id.rvHead) RecyclerView rvHead;
     @BindView(R.id.mAppBarLayout) AppBarLayout mAppBarLayout;
     @BindView(R.id.collapsingToolBarLayout) CollapsingToolbarLayout collapsingToolbarLayout;
-    @BindView(R.id.lltollbar) LinearLayout lltollbar;
-    @BindView(R.id.tvNotice) TextView tvNotice;
-    @BindView(R.id.tvNotice2) TextView tvNotice2;
-    @BindView(R.id.headLine) View headLine;
-    @BindView(R.id.LineVertical) View LineVertical;
-    @BindView(R.id.line_school) View line_school;
-    @BindView(R.id.line_coach) View line_coach;
+//    @BindView(R.id.lltollbar) LinearLayout lltollbar;
+//    @BindView(R.id.tvNotice) TextView tvNotice;
+//    @BindView(R.id.tvNotice2) TextView tvNotice2;
+//    @BindView(R.id.headLine) View headLine;
+//    @BindView(R.id.LineVertical) View LineVertical;
+//    @BindView(R.id.line_school) View line_school;
+//    @BindView(R.id.line_coach) View line_coach;
     @BindView(R.id.convenientBanner) ConvenientBanner convenientBanner;
 
     @BindView(R.id.payFragmentContainer) LinearLayout fragmentContainer;
@@ -80,74 +77,74 @@ public class HomeFragment extends BaseLazyFragment {
 
 
     private void initHeader() {
-        line_school.setVisibility(View.VISIBLE);
-        line_coach.setVisibility(View.INVISIBLE);
+//        line_school.setVisibility(View.VISIBLE);
+//        line_coach.setVisibility(View.INVISIBLE);
         mAppBarLayout.addOnOffsetChangedListener(new AppBarStateChangeListener() {
             @Override
             public void onStateChanged(AppBarLayout appBarLayout, State state) {
                 if (state == State.EXPANDED) { //展开状态
                     Logger.d("展开状态");
-                    LineVertical.setVisibility(View.VISIBLE);
-                    headLine.setBackgroundColor((Color.parseColor("#eaeaea")));//灰色
-                    lltollbar.setBackgroundColor(Color.parseColor("#ffffff"));
-                    tvNotice.setTextColor(Color.parseColor("#000000"));//黑色
-                    tvNotice2.setTextColor(Color.parseColor("#000000"));
-                    line_coach.setBackgroundColor(Color.parseColor("#4CAF50"));
-                    line_school.setBackgroundColor(Color.parseColor("#4CAF50"));
+//                    LineVertical.setVisibility(View.VISIBLE);
+//                    headLine.setBackgroundColor((Color.parseColor("#eaeaea")));//灰色
+//                    lltollbar.setBackgroundColor(Color.parseColor("#ffffff"));
+//                    tvNotice.setTextColor(Color.parseColor("#000000"));//黑色
+//                    tvNotice2.setTextColor(Color.parseColor("#000000"));
+//                    line_coach.setBackgroundColor(Color.parseColor("#4CAF50"));
+//                    line_school.setBackgroundColor(Color.parseColor("#4CAF50"));
                 } else if (state == State.COLLAPSED) { //折叠状态
                     Logger.d("折叠状态");
-                    LineVertical.setVisibility(View.INVISIBLE);
-                    lltollbar.setBackgroundColor(Color.parseColor("#4CAF50"));
-                    headLine.setBackgroundColor((Color.parseColor("#4CAF50")));//绿色
-                    tvNotice.setTextColor(Color.parseColor("#ffffff"));//白色
-                    tvNotice2.setTextColor(Color.parseColor("#ffffff"));
-                    line_coach.setBackgroundColor(Color.parseColor("#ffffff"));
-                    line_school.setBackgroundColor(Color.parseColor("#ffffff"));
+//                    LineVertical.setVisibility(View.INVISIBLE);
+//                    lltollbar.setBackgroundColor(Color.parseColor("#4CAF50"));
+//                    headLine.setBackgroundColor((Color.parseColor("#4CAF50")));//绿色
+//                    tvNotice.setTextColor(Color.parseColor("#ffffff"));//白色
+//                    tvNotice2.setTextColor(Color.parseColor("#ffffff"));
+//                    line_coach.setBackgroundColor(Color.parseColor("#ffffff"));
+//                    line_school.setBackgroundColor(Color.parseColor("#ffffff"));
                 } else {
                     //中间状态
                     Logger.d("中间状态");
-                    LineVertical.setVisibility(View.VISIBLE);
-                    lltollbar.setBackgroundColor(Color.parseColor("#ffffff"));
-                    headLine.setBackgroundColor((Color.parseColor("#eaeaea")));
-                    tvNotice.setTextColor(Color.parseColor("#000000"));//黑色
-                    tvNotice2.setTextColor(Color.parseColor("#000000"));
-                    line_coach.setBackgroundColor(Color.parseColor("#4CAF50"));
-                    line_school.setBackgroundColor(Color.parseColor("#4CAF50"));
+//                    LineVertical.setVisibility(View.VISIBLE);
+//                    lltollbar.setBackgroundColor(Color.parseColor("#ffffff"));
+//                    headLine.setBackgroundColor((Color.parseColor("#eaeaea")));
+//                    tvNotice.setTextColor(Color.parseColor("#000000"));//黑色
+//                    tvNotice2.setTextColor(Color.parseColor("#000000"));
+//                    line_coach.setBackgroundColor(Color.parseColor("#4CAF50"));
+//                    line_school.setBackgroundColor(Color.parseColor("#4CAF50"));
 
                 }
             }
         });
     }
-    @OnClick({R.id.tvNotice, R.id.tvNotice2})
-    void onClick(View v) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        switch (v.getId()) {
-            case R.id.tvNotice:
-                Logger.d("通知");
-                if (!noticeFragment.isVisible()) {
-                    transaction.show(noticeFragment);
-                    if (noticeFragment.isVisible() && null != noticeFragment) {
-                        transaction.hide(noticeFragment);
-                    }
-                    transaction.commit();
-                }
-                line_coach.setVisibility(View.INVISIBLE);
-                line_school.setVisibility(View.VISIBLE);
-                break;
-            case R.id.tvNotice2:
-                Logger.d("推送");
-                if (!noticeFragment.isVisible()) {
-                    transaction.show(noticeFragment);
-                    if (noticeFragment.isVisible() && null != noticeFragment) {
-                        transaction.hide(noticeFragment);
-                    }
-                    transaction.commit();
-                }
-                line_coach.setVisibility(View.VISIBLE);
-                line_school.setVisibility(View.INVISIBLE);
-                break;
-        }
-    }
+//    @OnClick({R.id.tvNotice, R.id.tvNotice2})
+//    void onClick(View v) {
+//        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//        switch (v.getId()) {
+//            case R.id.tvNotice:
+//                Logger.d("通知");
+//                if (!noticeFragment.isVisible()) {
+//                    transaction.show(noticeFragment);
+//                    if (noticeFragment.isVisible() && null != noticeFragment) {
+//                        transaction.hide(noticeFragment);
+//                    }
+//                    transaction.commit();
+//                }
+////                line_coach.setVisibility(View.INVISIBLE);
+////                line_school.setVisibility(View.VISIBLE);
+//                break;
+//            case R.id.tvNotice2:
+//                Logger.d("推送");
+//                if (!noticeFragment.isVisible()) {
+//                    transaction.show(noticeFragment);
+//                    if (noticeFragment.isVisible() && null != noticeFragment) {
+//                        transaction.hide(noticeFragment);
+//                    }
+//                    transaction.commit();
+//                }
+////                line_coach.setVisibility(View.VISIBLE);
+////                line_school.setVisibility(View.INVISIBLE);
+//                break;
+//        }
+//    }
 
     @Override
     protected int getLayoutRes() {
