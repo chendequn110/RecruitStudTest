@@ -1,5 +1,7 @@
 package com.tiandu.recruit.stud.ui.adapter;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.widget.Button;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -17,9 +19,12 @@ import com.tiandu.recruit.stud.data.entity.NoticeInfo;
  * 修改备注：
  */
 public class NoticeAdpter extends BaseQuickAdapter<NoticeInfo.AaDataBean,BaseViewHolder> {
-
-    public NoticeAdpter() {
+    private LayoutInflater mInflater = null;
+    private Context context;
+    public NoticeAdpter(Context context) {
         super(R.layout.item_notice_appoint_viwe, null);
+        this.context = context;
+        this.mInflater = LayoutInflater.from(this.context);
     }
 
     @Override

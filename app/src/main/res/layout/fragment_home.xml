@@ -39,14 +39,14 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="1.4">
+                    android:layout_weight="1.0">
 
 
 
                     <com.bigkoo.convenientbanner.ConvenientBanner
                         android:id="@+id/convenientBanner"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size_168dp"
+                        android:layout_height="@dimen/size_220dp"
                         app:canLoop="true" />
 
 

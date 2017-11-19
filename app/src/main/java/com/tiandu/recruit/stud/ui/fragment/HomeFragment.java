@@ -170,7 +170,9 @@ public class HomeFragment extends BaseLazyFragment {
     }
     private void initNoticeView() {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        noticeFragment = new NoticeFragment();
+        if(null==noticeFragment){
+            noticeFragment = new NoticeFragment();
+        }
         transaction.add(R.id.payFragmentContainer, noticeFragment);
         transaction.commit();
     }

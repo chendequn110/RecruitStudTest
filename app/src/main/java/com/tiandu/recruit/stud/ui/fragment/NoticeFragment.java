@@ -22,6 +22,7 @@ import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.NoticeInfo;
 import com.tiandu.recruit.stud.ui.adapter.NoticeAdpter;
 import com.tiandu.recruit.stud.ui.notice.NoticeDetailActivity;
+import com.tiandu.recruit.stud.view.decoration.DividerItemDecoration;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -49,7 +50,7 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefresh;
 
-    private NoticeAdpter adapter = null;
+    private NoticeAdpter adapter ;
     private LinearLayout llMoreFoor;
 
 
@@ -57,6 +58,7 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
     @Override
     protected void initViewsAndEvents() {
         setupView();
+        getOrdList();
     }
 
     public View getFooterView() {
@@ -68,9 +70,10 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
 
     private void setupView() {
         swipeRefresh.setOnRefreshListener(this);
+        recyclerView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL_LIST));
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter = new NoticeAdpter());
+        recyclerView.setAdapter(adapter = new NoticeAdpter(context));
         adapter.addFooterView(getFooterView());
 
         recyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
@@ -151,7 +154,10 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
 
     @Override
     protected void onFirstUserVisible() {
+        if (isUser()) {
+            showMyDialog("");
             getOrdList();
+        }
     }
 
     @Override
