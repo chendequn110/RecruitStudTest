@@ -27,9 +27,10 @@
                 android:id="@+id/etMemberID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/font_normal"
                 android:background="@null"
-                android:inputType="text"
-                android:minHeight="@dimen/size_45dp" />
+                android:minHeight="@dimen/size_45dp"
+                android:focusable="false"/>
         </LinearLayout>
 
         <View
@@ -53,7 +54,9 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:inputType="text"
-                android:minHeight="@dimen/size_45dp" />
+                android:minHeight="@dimen/size_45dp"
+                android:textSize="@dimen/font_normal"
+                />
         </LinearLayout>
 
         <View
@@ -223,10 +226,6 @@
                 android:minHeight="@dimen/size_45dp" />
         </LinearLayout>-->
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_1dp"
-            android:background="@color/comm_line" />
         <LinearLayout
             android:id="@+id/ltGender"
             android:layout_width="match_parent"
@@ -330,12 +329,6 @@
                 <!--android:text=""-->
                 <!--android:textSize="@dimen/font_normal" />-->
         <!--</LinearLayout>-->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_1dp"
-            android:background="@color/comm_line" />
-
-
 
 
         <Button

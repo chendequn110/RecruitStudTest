@@ -33,8 +33,6 @@ import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
-import static com.tiandu.recruit.stud.R.id.btnXiajia;
-
 
 /**
  * 项目名称：RecruitStud
@@ -79,20 +77,20 @@ public class FeeFragment extends BaseLazyFragment implements SwipeRefreshLayout.
             @Override
             public void onSimpleItemChildClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
                 MemberFeeInfo.AaDataBean item = adapter.getItem(i);
-                switch (view.getId()) {
-                    case btnXiajia:
                         Bundle bundle=new Bundle();
                         bundle.putString("PlanID",item.getPlanID());
                         readyGo(FeeChildActivity.class,bundle);
-                        break;
-                }
+
             }
         });
 
         recyclerView.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-//                MemberFeeInfo2.DataBean item = adapter.getItem(i);
+                MemberFeeInfo.AaDataBean item = adapter.getItem(i);
+                Bundle bundle=new Bundle();
+                bundle.putString("PlanID",item.getPlanID());
+                readyGo(FeeChildActivity.class,bundle);
 
             }
         });

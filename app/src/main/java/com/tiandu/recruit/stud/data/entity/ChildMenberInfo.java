@@ -1,7 +1,6 @@
 package com.tiandu.recruit.stud.data.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 项目名称：RecruitStud
@@ -14,17 +13,18 @@ import java.util.List;
  */
 public class ChildMenberInfo implements Serializable {
 
-    private List<DataBean> data;
 
-    public void setData(List<DataBean> data) {
-        this.data = data;
-    }
-
-    public List<DataBean> getData() {
-        return data;
-    }
-
-    public static class DataBean {
+//    private List<DataBean> data;
+//
+//    public void setData(List<DataBean> data) {
+//        this.data = data;
+//    }
+//
+//    public List<DataBean> getData() {
+//        return data;
+//    }
+//
+//    public static class DataBean {
         /**
          * ID : 9.0
          * MemberID : qian2
@@ -228,5 +228,5 @@ public class ChildMenberInfo implements Serializable {
         public String getStatusName() {
             return StatusName;
         }
-    }
+//    }
 }

@@ -4,7 +4,7 @@
     <string name="find_passwd">忘记密码?</string>
     <string name="protocol_txt">《人人招》协议</string>
     <string name="protocol_hint">我已阅读并同意</string>
-    <string name="login_user_hit">请输入用户名</string>
+    <string name="login_user_hit">请输入手机号</string>
     <string name="input_phone">请输入手机号码</string>
     <string name="input_mail">请输入邮箱</string>
     <string name="input_wx">请输入微信号</string>
@@ -63,7 +63,7 @@
     <string name="user_info_coupon">账号关联</string>
     <string name="user_info_progressquery">修改密码</string>
     <string name="user_info_coach">实名认证</string>
-    <string name="user_info_more">更多</string>
+    <string name="user_info_more">系统设置</string>
     <string name="user_info_attention">会员资料</string>
     <string name="user_info_certification">实名认证</string>
     <string name="user_info_wall">分享</string>
@@ -74,7 +74,7 @@
     <string name="user_info_exit">退出登陆</string>
     <!--用户资料-->
     <string name="user_info_memberid">会员编号</string>
-    <string name="user_info_membername">会员名称</string>
+    <string name="user_info_membername">昵称</string>
     <string name="user_info_bank">开户银行</string>
     <string name="user_info_bankNum">银行账户</string>
     <string name="user_info_mobile">手机号码</string>
@@ -83,6 +83,7 @@
     <string name="user_info_qq">绑定QQ</string>
     <string name="user_info_idnumber">身份证号</string>
 
+    <string name="user_info_parant">上级代理</string>
     <string name="user_info_realname">真实姓名</string>
     <string name="user_info_Gender">性别</string>
     <string name="user_info_birthdate">出生日期</string>

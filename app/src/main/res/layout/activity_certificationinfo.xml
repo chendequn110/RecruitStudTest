@@ -20,6 +20,26 @@
 
             <TextView
                 style="@style/change_trade_pwd_style"
+                android:text="@string/user_info_parant" />
+
+            <com.tiandu.recruit.stud.view.ClearEditText
+                android:id="@+id/etParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:inputType="text"
+                android:minHeight="@dimen/size_45dp"
+                android:focusable="false"
+                android:textSize="@dimen/font_normal"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_40dp"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/change_trade_pwd_style"
                 android:text="@string/user_info_realname" />
 
             <com.tiandu.recruit.stud.view.ClearEditText
@@ -28,7 +48,8 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:inputType="text"
-                android:minHeight="@dimen/size_45dp" />
+                android:minHeight="@dimen/size_45dp"
+                android:textSize="@dimen/font_normal"/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"
@@ -51,7 +72,8 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:inputType="number"
-                android:minHeight="@dimen/size_45dp" />
+                android:minHeight="@dimen/size_45dp"
+                android:textSize="@dimen/font_normal"/>
         </LinearLayout>
 
         <View
@@ -77,7 +99,8 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:inputType="text"
-                android:minHeight="@dimen/size_45dp" />
+                android:minHeight="@dimen/size_45dp"
+                android:textSize="@dimen/font_normal"/>
         </LinearLayout>
 
 
@@ -102,7 +125,8 @@
                    android:layout_height="wrap_content"
                    android:background="@null"
                    android:inputType="text"
-                   android:minHeight="@dimen/size_45dp" />
+                   android:minHeight="@dimen/size_45dp"
+                   android:textSize="@dimen/font_normal"/>
            </LinearLayout>
 
         <View

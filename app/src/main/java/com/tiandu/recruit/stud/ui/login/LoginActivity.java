@@ -75,7 +75,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
     }
     private void isFirstLogined() {
         if (isFirst) {
-            finish();
+//            finish();
         }
         if (SpUtil.isLogined()) {
             readyGoThenKill(MainActivity.class);

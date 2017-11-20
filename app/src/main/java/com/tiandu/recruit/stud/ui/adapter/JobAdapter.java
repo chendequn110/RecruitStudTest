@@ -1,7 +1,5 @@
 package com.tiandu.recruit.stud.ui.adapter;
 
-import android.widget.Button;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tiandu.recruit.stud.R;
@@ -27,15 +25,14 @@ public class JobAdapter extends BaseQuickAdapter<JobInfo.AaDataBean,BaseViewHold
 
 
 
-        Button btnMeg = baseViewHolder.getView(R.id.btnMeg);
 
         baseViewHolder.setText(R.id.tvTitle, info.getTitle())
                 .setText(R.id.tvWorkPlace,info.getWorkPlace())
                 .setText(R.id.tvMonthPay,info.getMonthPay())
                 .setText(R.id.tvCompanyName,info.getCompanyName())
-                .setText(R.id.tvCreateTime,info.getCreateTime())
-                .setText(R.id.tvStatusName,info.getStatusName())
-                .addOnClickListener(R.id.btnMeg);
+                .setText(R.id.tvCreateTime,info.getCreateTime());
+//                .setText(R.id.tvStatusName,info.getStatusName())
+//                .addOnClickListener(R.id.btnMeg);
 
     }
 

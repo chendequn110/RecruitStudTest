@@ -1,7 +1,5 @@
 package com.tiandu.recruit.stud.ui.adapter;
 
-import android.widget.Button;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tiandu.recruit.stud.R;
@@ -27,14 +25,12 @@ public class FeeAdapter  extends BaseQuickAdapter<MemberFeeInfo.AaDataBean,BaseV
 
 
 
-        Button btnXiajia = baseViewHolder.getView(R.id.btnXiajia);
 
         baseViewHolder.setText(R.id.tvTotalFee,"总金额:" +info.getTotalFee())
                 .setText(R.id.tvParentFee,"上交金额:"+info.getParentFee())
                 .setText(R.id.tvArrangeTime,info.getStartDate())
                 .setText(R.id.tvTakeFee,"劳务费:"+info.getTakeFee())
-                .setText(R.id.tvChildFee,"分支金额:"+info.getChildFee())
-                .addOnClickListener(R.id.btnXiajia);
-
+                .setText(R.id.tvChildFee,"分支金额:"+info.getChildFee());
+//                .addOnClickListener(R.id.btnXiajia);
     }
 }

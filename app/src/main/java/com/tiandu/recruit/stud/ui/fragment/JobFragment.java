@@ -32,8 +32,6 @@ import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
-import static com.tiandu.recruit.stud.R.id.btnMeg;
-
 /**
  * 项目名称：RecruitStud
  * 类描述：
@@ -77,20 +75,19 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
             @Override
             public void onSimpleItemChildClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
                 JobInfo.AaDataBean item = adapter.getItem(i);
-                switch (view.getId()) {
-                    case btnMeg:
                         Bundle bundle=new Bundle();
                         bundle.putInt("ID",item.getID());
                         readyGo(JobDetailActivity.class,bundle);
-                        break;
-                }
             }
         });
 
         recyclerView.addOnItemTouchListener(new OnItemClickListener() {
             @Override
             public void onSimpleItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-//                MemberFeeInfo2.DataBean item = adapter.getItem(i);
+                JobInfo.AaDataBean item = adapter.getItem(i);
+                        Bundle bundle=new Bundle();
+                        bundle.putInt("ID",item.getID());
+                        readyGo(JobDetailActivity.class,bundle);
 
             }
         });

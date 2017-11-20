@@ -45,7 +45,7 @@ public class ChildMemberInfoActivity extends BaseActivity implements SwipeRefres
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefresh;
 
-    private ChildMemberAdapter adapter = null;
+    private ChildMemberAdapter adapter;
     private LinearLayout llMoreFoor;
 
 
@@ -72,7 +72,7 @@ public class ChildMemberInfoActivity extends BaseActivity implements SwipeRefres
         recyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
             @Override
             public void onSimpleItemChildClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-                ChildMenberInfo.DataBean item = adapter.getItem(i);
+//                ChildMenberInfo.DataBean item = adapter.getItem(i);
             }
         });
 
@@ -125,8 +125,8 @@ public class ChildMemberInfoActivity extends BaseActivity implements SwipeRefres
                     public void call(List<ChildMenberInfo> orderInfos) {
                         cannelDialog();
                         if (null != orderInfos) {
-                            List<ChildMenberInfo.DataBean> aaData = orderInfos.get(0).getData();
-                            adapter.setNewData(aaData);
+                            List<ChildMenberInfo> data = orderInfos;
+                            adapter.setNewData(orderInfos);
                         }
                     }
                 }, e -> {

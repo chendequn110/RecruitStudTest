@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -43,12 +43,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="会员名称"
-                        android:layout_marginLeft="@dimen/size_100dp"
+                        android:layout_marginLeft="@dimen/size_168dp"
                         android:textColor="@color/darker_grey"
                         android:textSize="@dimen/font_medium" />
 
-                </LinearLayout>
-                <LinearLayout
+                </RelativeLayout>
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_5dp"
@@ -65,12 +65,12 @@
                         android:id="@+id/tvParentFee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/size_100dp"
+                        android:layout_marginLeft="@dimen/size_168dp"
                         android:text="上交金额"
                         android:textColor="@color/darker_grey"
                         android:textSize="@dimen/font_medium" />
 
-                </LinearLayout>
+                </RelativeLayout>
 
             </LinearLayout>
 
@@ -88,9 +88,10 @@
 
 
 
-   <!-- <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/comm_line" />-->
+
 </LinearLayout>
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="@color/comm_line" />
 </LinearLayout>

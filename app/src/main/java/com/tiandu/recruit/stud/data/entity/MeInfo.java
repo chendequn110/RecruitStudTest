@@ -1,7 +1,6 @@
 package com.tiandu.recruit.stud.data.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 项目名称：RecruitStud
@@ -58,8 +57,29 @@ public class MeInfo implements Serializable {
         private String ParentID;
         private String Password;
         private String LastLoginTime;
-        private String MemberStatus;
-        private String MemberStatusName;
+        private String Status;
+        private String StatusName;
+        private String BankName;
+
+    public String getBankName() {
+        return BankName;
+    }
+
+    public void setBankName(String bankName) {
+        BankName = bankName;
+    }
+
+    public String getBankAccount() {
+        return BankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        BankAccount = bankAccount;
+    }
+
+    private String BankAccount;
+
+
 
     public double getID() {
         return ID;
@@ -189,19 +209,19 @@ public class MeInfo implements Serializable {
         LastLoginTime = lastLoginTime;
     }
 
-    public String getMemberStatus() {
-        return MemberStatus;
+    public String getStatus() {
+        return Status;
     }
 
-    public void setMemberStatus(String memberStatus) {
-        MemberStatus = memberStatus;
+    public void setStatus(String status) {
+        Status = status;
     }
 
-    public String getMemberStatusName() {
-        return MemberStatusName;
+    public String getStatusName() {
+        return StatusName;
     }
 
-    public void setMemberStatusName(String memberStatusName) {
-        MemberStatusName = memberStatusName;
+    public void setStatusName(String statusName) {
+        StatusName = statusName;
     }
 }

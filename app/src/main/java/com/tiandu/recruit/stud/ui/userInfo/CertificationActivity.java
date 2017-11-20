@@ -29,6 +29,8 @@ import rx.functions.Action1;
  * 修改备注：
  */
 public class CertificationActivity extends BaseActivity {
+    @BindView(R.id.etParent)
+    ClearEditText etParent;
     @BindView(R.id.etRealName)
     ClearEditText etRealName;
     @BindView(R.id.etIDNumber)
@@ -88,7 +90,7 @@ public class CertificationActivity extends BaseActivity {
 
     @Override
     protected void initPresenter() {
-
+        getInitnetData();
     }
 
     @Override
@@ -98,5 +100,31 @@ public class CertificationActivity extends BaseActivity {
     private void showMessage(String message) {
         cannelDialog();
         showToast(message);
+    }
+    private void getInitnetData() {
+        showloginDialog("");
+        Api.getInstance()
+                .movieService.getUserInfo(C.USER_USERINFO_PATH,SpUtil.getMemberID(), SpUtil.getToken())
+                .compose(RxSchedulers.io_main())
+                .compose(RxSchedulers.sTransformer())
+                .subscribe(new Action1<List<MeInfo>>() {
+                    @Override
+                    public void call(List<MeInfo> meInfos) {
+                        cannelDialog();
+                        if (null != meInfos) {
+                            etParent.setText( meInfos.get(0).getParentID());
+                            etRealName.setText( meInfos.get(0).getRealName());
+                            etIDNumber.setText( meInfos.get(0).getIDNumber());
+                            etBank.setText( meInfos.get(0).getBankName());
+                            etBankNum.setText( meInfos.get(0).getBankAccount());
+
+                        }else {
+                            showToast("数据为空");
+                        }
+                    }
+                }, e -> {
+                    cannelDialog();
+                    showMessage(MessageFactory.getMessage(e));
+                });
     }
 }

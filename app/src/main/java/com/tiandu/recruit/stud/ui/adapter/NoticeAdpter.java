@@ -2,7 +2,6 @@ package com.tiandu.recruit.stud.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.widget.Button;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -31,14 +30,11 @@ public class NoticeAdpter extends BaseQuickAdapter<NoticeInfo.AaDataBean,BaseVie
     protected void convert(BaseViewHolder baseViewHolder, NoticeInfo.AaDataBean info) {
 
 
-        Button btnMeg = baseViewHolder.getView(R.id.btnMeg);
 
         baseViewHolder.setText(R.id.tvTitle, info.getTitle())
                 .setText(R.id.tvCreator, info.getCreator())
-                .setText(R.id.tvCreateTime, info.getCreateTime())
-                .setText(R.id.tvStatusName, info.getStatusName())
-                .addOnClickListener(R.id.btnMeg);
-
+                .setText(R.id.tvCreateTime, info.getCreateTime());
+//                .setText(R.id.tvStatusName, info.getStatusName());
     }
 
 }

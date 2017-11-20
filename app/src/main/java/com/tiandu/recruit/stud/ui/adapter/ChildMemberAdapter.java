@@ -17,7 +17,7 @@ import com.tiandu.recruit.stud.data.entity.ChildMenberInfo;
  * 修改时间：2017/11/10 11:13
  * 修改备注：
  */
-public class ChildMemberAdapter extends BaseQuickAdapter<ChildMenberInfo.DataBean, BaseViewHolder> {
+public class ChildMemberAdapter extends BaseQuickAdapter<ChildMenberInfo, BaseViewHolder> {
     private Context context;
     private LayoutInflater mInflater = null;
 
@@ -28,12 +28,12 @@ public class ChildMemberAdapter extends BaseQuickAdapter<ChildMenberInfo.DataBea
     }
 
     @Override
-    protected void convert(BaseViewHolder baseViewHolder, ChildMenberInfo.DataBean info) {
+    protected void convert(BaseViewHolder baseViewHolder, ChildMenberInfo info) {
 
 
 
         baseViewHolder.setText(R.id.tvMemberID, "会员编号:" + info.getMemberID())
-                .setText(R.id.tvMemberName, "会员名称:" + info.getMemberName())
+                .setText(R.id.tvMemberName, "昵称:" + info.getMemberName())
                 .setText(R.id.tvRealName, "真实姓名:" + info.getRealName())
                 .setText(R.id.tvStatus, "会员状态:" + info.getStatusName());
     }
