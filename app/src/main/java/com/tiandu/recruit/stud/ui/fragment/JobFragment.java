@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
@@ -16,6 +17,7 @@ import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.api.Api;
 import com.tiandu.recruit.stud.api.exception.MessageFactory;
 import com.tiandu.recruit.stud.base.BaseLazyFragment;
+import com.tiandu.recruit.stud.base.utils.Logger;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
@@ -28,6 +30,7 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -41,14 +44,31 @@ import rx.functions.Action1;
  * 修改时间：2017/11/9 13:03
  * 修改备注：
  */
-public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.OnRefreshListener, View.OnClickListener{
+public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefresh;
+    @BindView(R.id.tvJob1)
+    TextView tvJob1;
+    @BindView(R.id.tvJob2)
+    TextView tvJob2;
+    @BindView(R.id.tvJob3)
+    TextView tvJob3;
+    @BindView(R.id.tvJob4)
+    TextView tvJob4;
+    @BindView(R.id.line2)
+    View line2;
+    @BindView(R.id.line1)
+    View line1;
+    @BindView(R.id.line3)
+    View line3;
+    @BindView(R.id.line4)
+    View line4;
 
     private JobAdapter adapter = null;
     private LinearLayout llMoreFoor;
+    private String type="00";
 
 
 
@@ -65,6 +85,10 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
     }
 
     private void setupView() {
+        line1.setVisibility(View.VISIBLE);
+        line2.setVisibility(View.INVISIBLE);
+        line3.setVisibility(View.INVISIBLE);
+        line4.setVisibility(View.INVISIBLE);
         swipeRefresh.setOnRefreshListener(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -101,16 +125,16 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
                 .subscribe(aLong -> {
                     if (swipeRefresh != null && swipeRefresh.isRefreshing()) {
                         swipeRefresh.setRefreshing(false);
-                        getOrdList();
+                        getOrdList(type);
 //                        showProgress();
                     }
                 });
     }
 
 
-    private void getOrdList() {
+    private void getOrdList(String type) {
         Api.getInstance()
-                .movieService.getJobInfo(C.USER_JOBINFO,SpUtil.getToken())
+                .movieService.getJobInfo(C.USER_JOBINFO,type,SpUtil.getToken())
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
                 .subscribe(new Action1<List<JobInfo>>() {
@@ -123,6 +147,7 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
                         }
                     }
                 }, e -> {
+                    adapter.setNewData(null);
                     showMessage(MessageFactory.getMessage(e));
                 });
     }
@@ -132,15 +157,10 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
         showToast(message);
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
-
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.fragment_fee;
+        return R.layout.fragment_job;
     }
 
     @Override
@@ -159,7 +179,7 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
 
         if (isUser()) {
             showMyDialog("");
-            getOrdList();
+            getOrdList(type);
         }
     }
 
@@ -183,6 +203,56 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
 
     @Override
     protected void onUserInvisible() {
+
+    }
+    @OnClick({R.id.tvJob1, R.id.tvJob2,R.id.tvJob3,R.id.tvJob4})
+    void onSelectClick(View v) {
+        switch (v.getId()) {
+            case R.id.tvJob1:
+                Logger.d("点击1");
+                line1.setVisibility(View.VISIBLE);
+                line2.setVisibility(View.INVISIBLE);
+                line3.setVisibility(View.INVISIBLE);
+                line4.setVisibility(View.INVISIBLE);
+                type="00";
+                swipeRefresh.setRefreshing(true);
+                onRefresh();
+                break;
+            case R.id.tvJob2:
+                Logger.d("点击2");
+                line1.setVisibility(View.INVISIBLE);
+                line2.setVisibility(View.VISIBLE);
+                line3.setVisibility(View.INVISIBLE);
+                line4.setVisibility(View.INVISIBLE);
+                type="01";
+                swipeRefresh.setRefreshing(true);
+                onRefresh();
+                break;
+            case R.id.tvJob3:
+                Logger.d("点击3");
+                line1.setVisibility(View.INVISIBLE);
+                line2.setVisibility(View.INVISIBLE);
+                line3.setVisibility(View.VISIBLE);
+                line4.setVisibility(View.INVISIBLE);
+                type="02";
+                swipeRefresh.setRefreshing(true);
+                onRefresh();
+                break;
+            case R.id.tvJob4:
+                Logger.d("点击4");
+                line1.setVisibility(View.INVISIBLE);
+                line2.setVisibility(View.INVISIBLE);
+                line3.setVisibility(View.INVISIBLE);
+                line4.setVisibility(View.VISIBLE);
+                type="3";
+                swipeRefresh.setRefreshing(true);
+                onRefresh();
+                break;
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
 
     }
 }

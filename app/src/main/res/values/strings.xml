@@ -96,4 +96,9 @@
     <string name="user_bind_wx">绑定微信</string>
     <string name="user_bind_qq">绑定QQ</string>
 
+    <string name="user_share">分享</string>
+
+    <string name="user_setting">系统设置</string>
+    <string name="user_setting_version">版本检测</string>
+
 </resources>

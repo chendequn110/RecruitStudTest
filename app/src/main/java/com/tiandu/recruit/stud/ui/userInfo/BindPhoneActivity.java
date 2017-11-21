@@ -57,7 +57,7 @@ public class BindPhoneActivity extends BaseActivity {
     private void getSMSAuthCode(String phone) {
         showloginDialog("");
         Api.getInstance()
-                .movieService.getSMSAuthCode(C.USER_MESSAGECODE,"Reg",phone)
+                .movieService.getSMSAuthCode(C.USER_MESSAGECODE,"BindMobile",phone)
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
                 .subscribe(new Action1<List<RegisterInfo>>() {

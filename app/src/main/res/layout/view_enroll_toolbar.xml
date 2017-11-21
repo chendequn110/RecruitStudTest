@@ -19,11 +19,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <View
-            android:id="@+id/headLine"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_8dp"
-            android:background="@color/comm_line"/>
+        <!--<View-->
+            <!--android:id="@+id/headLine"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/size_8dp"-->
+            <!--android:background="@color/comm_line"/>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,29 +34,85 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="@dimen/size_48dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvNotice"
+                    android:id="@+id/tvJob1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_30dp"
-                    android:gravity="right|center_vertical"
-                    android:text="通知"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="实习"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_17dp"/>
 
                 <View
-                    android:id="@+id/line_school"
+                    android:id="@+id/line1"
                     android:layout_width="@dimen/size_30dp"
                     android:layout_height="2dp"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="@dimen/size_10dp"
+                    android:layout_gravity="center"
                     android:background="@color/colorPrimary"/>
 
             </LinearLayout>
+            <View
+                android:id="@+id/LineVertical3"
+                android:layout_width="@dimen/size_1dp"
+                android:layout_height="@dimen/size_20dp"
+                android:layout_gravity="center"
+                android:background="@color/comm_line"/>
 
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+               <TextView
+                    android:id="@+id/tvJob2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_30dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="普工"
+                    android:textColor="@color/black"
+                   android:textSize="@dimen/size_17dp"/>
+
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="@dimen/size_30dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimary"/>
+            </LinearLayout>
+            <View
+                android:id="@+id/LineVertical2"
+                android:layout_width="@dimen/size_1dp"
+                android:layout_height="@dimen/size_20dp"
+                android:layout_gravity="center"
+                android:background="@color/comm_line"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvJob3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_30dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="技工"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_17dp"/>
+
+                <View
+                    android:id="@+id/line3"
+                    android:layout_width="@dimen/size_30dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimary"/>
+            </LinearLayout>
             <View
                 android:id="@+id/LineVertical"
                 android:layout_width="@dimen/size_1dp"
@@ -67,28 +123,32 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/size_30dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvNotice2"
+                    android:id="@+id/tvJob4"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_30dp"
-                    android:gravity="left|center_vertical"
-                    android:text="推送"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="猎聘"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_17dp"/>
 
                 <View
-                    android:id="@+id/line_coach"
+                    android:id="@+id/line4"
                     android:layout_width="@dimen/size_30dp"
                     android:layout_height="2dp"
-                    android:layout_gravity="left"
-                    android:layout_marginLeft="@dimen/size_10dp"
+                    android:layout_gravity="center"
                     android:background="@color/colorPrimary"/>
             </LinearLayout>
         </LinearLayout>
+        <View
+            android:id="@+id/headLine"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:layout_marginTop="@dimen/size_5dp"
+            android:background="@color/comm_line"/>
     </LinearLayout>
 
 

@@ -19,6 +19,8 @@ import com.tiandu.recruit.stud.ui.userInfo.BindInfoActivity;
 import com.tiandu.recruit.stud.ui.userInfo.CertificationActivity;
 import com.tiandu.recruit.stud.ui.userInfo.ChildMemberInfoActivity;
 import com.tiandu.recruit.stud.ui.userInfo.MeActivity;
+import com.tiandu.recruit.stud.ui.userInfo.SettingActivity;
+import com.tiandu.recruit.stud.ui.userInfo.ShareActivity;
 
 import java.util.List;
 
@@ -41,6 +43,9 @@ public class UserFragment extends BaseLazyFragment {
     @BindView(R.id.tvAccountBind) TextView tvAccountBind;
     @BindView(R.id.tvGetUserInfo) TextView tvGetUserInfo;
     @BindView(R.id.tvGetAuthentic) TextView tvGetAuthentic;
+    @BindView(R.id.tvMore) TextView tvMore;
+
+
 
 
     @Override
@@ -48,7 +53,7 @@ public class UserFragment extends BaseLazyFragment {
 
     }
 
-    @OnClick({R.id.ivAvatar,R.id.tvModifyPwd,R.id.llUserInfo, R.id.llWall,R.id.tvAboutUs,R.id.tvExit,R.id.tvAccountBind,R.id.llAuthentic,R.id.llChildInfo})
+    @OnClick({R.id.ivAvatar,R.id.tvModifyPwd,R.id.llUserInfo, R.id.llWall,R.id.tvAboutUs,R.id.tvExit,R.id.tvAccountBind,R.id.llAuthentic,R.id.llChildInfo,R.id.tvMore})
     void OnSelectedClick(View view) {
         switch (view.getId()) {
             case R.id.tvModifyPwd:
@@ -71,6 +76,12 @@ public class UserFragment extends BaseLazyFragment {
                 break;
             case R.id.tvExit:
                 exitLogin();
+                break;
+            case R.id.tvMore:
+                readyGo(SettingActivity.class);
+                break;
+            case R.id.llWall:
+                readyGo(ShareActivity.class);
                 break;
         }
     }

@@ -110,7 +110,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<JobInfo>>> getJobInfo(@Path("value") String url, @Query("Token") String Token);
+    Observable<Response<List<JobInfo>>> getJobInfo(@Path("value") String url, @Query("JobType") String JobType, @Query("Token") String Token);
     /**
      * 获取招聘详情
      *
