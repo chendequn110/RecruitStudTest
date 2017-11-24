@@ -30,7 +30,9 @@ public class JobAdapter extends BaseQuickAdapter<JobInfo.AaDataBean,BaseViewHold
                 .setText(R.id.tvWorkPlace,info.getWorkPlace())
                 .setText(R.id.tvMonthPay,info.getMonthPay())
                 .setText(R.id.tvCompanyName,info.getCompanyName())
-                .setText(R.id.tvCreateTime,info.getCreateTime());
+                .setText(R.id.tvCreateTime,info.getCreateTime())
+                .setText(R.id.tvAwardAmt,"推荐奖金:"+info.getAwardAmt());
+
 //                .setText(R.id.tvStatusName,info.getStatusName())
 //                .addOnClickListener(R.id.btnMeg);
 

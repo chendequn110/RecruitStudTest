@@ -2,10 +2,12 @@ package com.tiandu.recruit.stud.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tiandu.recruit.stud.R;
+import com.tiandu.recruit.stud.base.utils.AImageUtil;
 import com.tiandu.recruit.stud.data.entity.NoticeInfo;
 
 /**
@@ -34,6 +36,12 @@ public class NoticeAdpter extends BaseQuickAdapter<NoticeInfo.AaDataBean,BaseVie
         baseViewHolder.setText(R.id.tvTitle, info.getTitle())
                 .setText(R.id.tvCreator, info.getCreator())
                 .setText(R.id.tvCreateTime, info.getCreateTime());
+        ImageView ivIcon = baseViewHolder.getView(R.id.ivIcon);
+        if (null != info.getCoverImg()) {
+            AImageUtil.loadImg(ivIcon, info.getCoverImg(),R.mipmap.ic_notice_default);
+        } else {
+            ivIcon.setImageResource(R.mipmap.ic_notice_default);
+        }
 //                .setText(R.id.tvStatusName, info.getStatusName());
     }
 

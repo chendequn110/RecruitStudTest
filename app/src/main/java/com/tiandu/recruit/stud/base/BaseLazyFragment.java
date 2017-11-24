@@ -13,12 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import com.tiandu.recruit.stud.base.utils.DialogFactory;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.helper.MyToast;
 import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.event.LoginEvent;
+import com.tiandu.recruit.stud.ui.login.LoginActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -219,9 +219,9 @@ public abstract class BaseLazyFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString(C.LOGIN_ACCOUNT,SpUtil.getAccount());
 
-//        if (!isForeground(context, "com.jq.learn.yn.stud.ui.login.LoginActivity")) {
-//            readyGo(LoginActivity.class,bundle);
-//        }
+        if (!isForeground(context, "com.jq.learn.yn.stud.ui.login.LoginActivity")) {
+            readyGo(LoginActivity.class,bundle);
+        }
 
         SpUtil.clearAll();
     }

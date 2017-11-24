@@ -61,7 +61,7 @@ public class ModifyPwdActivity extends BaseActivity<ModifyPwdPresenter,ModifyPwd
             return ;
         }
         showloginDialog(loading);
-        presenter.userModifyPwd(SpUtil.getAccount(),oldPassword,newPassword, SpUtil.getToken());
+        presenter.userModifyPwd(SpUtil.getMemberID(),oldPassword,newPassword, SpUtil.getToken());
 
     }
 

@@ -80,7 +80,9 @@
     <dimen name="size_168dp">168dp</dimen>
     <dimen name="size_180dp">180dp</dimen>
     <dimen name="size_200dp">200dp</dimen>
+    <dimen name="size_210dp">210dp</dimen>
     <dimen name="size_220dp">220dp</dimen>
+    <dimen name="size_240dp">240dp</dimen>
     <dimen name="space_86">86dp</dimen>
     <dimen name="space_14">14dp</dimen>
 

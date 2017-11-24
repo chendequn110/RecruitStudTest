@@ -75,6 +75,16 @@ public class JobInfo implements Serializable {
         private String Status;
         private String StatusName;
 
+        public String getAwardAmt() {
+            return AwardAmt;
+        }
+
+        public void setAwardAmt(String awardAmt) {
+            AwardAmt = awardAmt;
+        }
+
+        private String AwardAmt;
+
         public void setID(int ID) {
             this.ID = ID;
         }

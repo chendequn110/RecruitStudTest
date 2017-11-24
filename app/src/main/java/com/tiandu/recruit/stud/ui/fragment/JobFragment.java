@@ -134,7 +134,7 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
 
     private void getOrdList(String type) {
         Api.getInstance()
-                .movieService.getJobInfo(C.USER_JOBINFO,type,SpUtil.getToken())
+                .movieService.getJobInfo(C.USER_JOBINFO,type,SpUtil.getMemberID(),SpUtil.getToken())
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
                 .subscribe(new Action1<List<JobInfo>>() {
@@ -177,9 +177,13 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
             view.setVisibility(View.VISIBLE);
         }
 
+//        if (isUser()) {
+////            showMyDialog("");
+//            getOrdList(type);
+//        }
         if (isUser()) {
-            showMyDialog("");
-            getOrdList(type);
+            swipeRefresh.setRefreshing(true);
+            onRefresh();
         }
     }
 

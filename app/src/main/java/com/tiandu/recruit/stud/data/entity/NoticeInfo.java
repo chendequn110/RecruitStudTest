@@ -67,6 +67,15 @@ public class NoticeInfo implements Serializable {
         private String CreateTime;
         private String Status;
         private String StatusName;
+        private String CoverImg;
+
+        public String getCoverImg() {
+            return CoverImg;
+        }
+
+        public void setCoverImg(String coverImg) {
+            CoverImg = coverImg;
+        }
 
         public void setID(int ID) {
             this.ID = ID;

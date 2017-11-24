@@ -57,6 +57,8 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
         showMyDialog("");
         setupView();
         getOrdList();
+//            swipeRefresh.setRefreshing(true);
+//            onRefresh();
     }
 
     public View getFooterView() {
@@ -112,7 +114,7 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
 
     private void getOrdList() {
         Api.getInstance()
-                .movieService.getNoticeInfo(C.USER_NOTICE,SpUtil.getToken())
+                .movieService.getNoticeInfo(C.USER_NOTICE,SpUtil.getMemberID(),SpUtil.getToken())
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
                 .subscribe(new Action1<List<NoticeInfo>>() {
@@ -151,9 +153,13 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
     @Override
     protected void onFirstUserVisible() {
         if (isUser()) {
-            showMyDialog("");
+//            showMyDialog("");
             getOrdList();
         }
+//        if (isUser()) {
+//            swipeRefresh.setRefreshing(true);
+//            onRefresh();
+//        }
     }
 
     @Override

@@ -222,9 +222,13 @@ public class FeeFragment extends BaseLazyFragment implements SwipeRefreshLayout.
             view.setVisibility(View.VISIBLE);
         }
 
+//        if (isUser()) {
+//            showMyDialog("");
+//            getOrdList();
+//        }
         if (isUser()) {
-            showMyDialog("");
-            getOrdList();
+            swipeRefresh.setRefreshing(true);
+            onRefresh();
         }
     }
 

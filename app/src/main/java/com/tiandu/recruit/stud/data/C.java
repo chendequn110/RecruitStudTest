@@ -52,6 +52,9 @@ public class C {
     public static final String USER_UPDATAUSERINFOBASE = "UpdateMemberBase";
     public static final String USER_UPDATAUSERREALINFO = "MemberAuth";
     public static final String USER_GETCHILDMEMBER="GetChildMember";
+    public static final String USER_GETAPPVERSION="GetAppVersion";
+    public static final String USER_APPDOWNLOAD="AppDownload";
+
 
 
 

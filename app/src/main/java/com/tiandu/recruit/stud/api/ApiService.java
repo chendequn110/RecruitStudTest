@@ -16,6 +16,8 @@ import com.tiandu.recruit.stud.data.entity.VersionInfo;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -29,6 +31,18 @@ public interface ApiService {
      */
     @GET("{value}")
     Observable<Response<VersionInfo>> getVersionInfo(@Path("value") String url, @Query("type") int type);
+
+    /**
+     * 版本检测
+     */
+    @GET("{value}")
+    Observable<Response<List<VersionInfo.DataBean>>> getVersionInfo(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token);
+
+    /**
+     * 下载app
+     */
+    @GET("{value}")
+    Call<ResponseBody> appDownload(@Path("value") String url, @Query("MemberID") String MemberID, @Query("VersionNo") String VersionNo, @Query("Token") String Token);
 
 
     /**
@@ -65,7 +79,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<RegisterInfo>>> doModifyPwd(@Path("value") String url, @Query("Mobile") String Mobile, @Query("Password") String Password,@Query("NewPassword") String NewPassword,@Query("Token") String Token);
+    Observable<Response<List<RegisterInfo>>> doModifyPwd(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Password") String Password,@Query("NewPassword") String NewPassword,@Query("Token") String Token);
 
     /**
      * 获取会员资料
@@ -110,7 +124,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<JobInfo>>> getJobInfo(@Path("value") String url, @Query("JobType") String JobType, @Query("Token") String Token);
+    Observable<Response<List<JobInfo>>> getJobInfo(@Path("value") String url, @Query("JobType") String JobType,@Query("MemberID") String MemberID, @Query("Token") String Token);
     /**
      * 获取招聘详情
      *
@@ -118,7 +132,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<JobListInfo>>> getJobListInfo(@Path("value") String url, @Query("ID") int ID, @Query("Token") String Token);
+    Observable<Response<List<JobListInfo>>> getJobListInfo(@Path("value") String url, @Query("ID") int ID,@Query("MemberID") String MemberID, @Query("Token") String Token);
     /**
      * 获取通知信息
      *
@@ -126,7 +140,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<NoticeInfo>>> getNoticeInfo(@Path("value") String url, @Query("Token") String Token);
+    Observable<Response<List<NoticeInfo>>> getNoticeInfo(@Path("value") String url,  @Query("MemberID") String MemberID,@Query("Token") String Token);
 
     /**
      * 获取通知详情
@@ -135,7 +149,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<NoticeListInfo>>> getNoticeListInfo(@Path("value") String url,@Query("ID") int ID, @Query("Token") String Token);
+    Observable<Response<List<NoticeListInfo>>> getNoticeListInfo(@Path("value") String url,@Query("ID") int ID,@Query("MemberID") String MemberID, @Query("Token") String Token);
     /**
      * 获取短信验证码
      *

@@ -59,7 +59,7 @@ public class HomeFragment extends BaseLazyFragment {
     }
 
     private void initBanner() {
-        for (int position = 1; position < 6; position++)
+        for (int position = 1; position < 5; position++)
             localImages.add(getResId("ic_banner_" + position, R.mipmap.class));
         convenientBanner.setPages(
                 new CBViewHolderCreator<LocalImageHolderView>() {

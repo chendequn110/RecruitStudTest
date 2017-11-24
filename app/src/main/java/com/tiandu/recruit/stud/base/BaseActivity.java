@@ -1,7 +1,10 @@
 package com.tiandu.recruit.stud.base;
 
 import android.Manifest;
+import android.app.ActivityManager;
 import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,6 +18,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +35,13 @@ import com.tiandu.recruit.stud.base.utils.DialogFactory;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.TUtil;
 import com.tiandu.recruit.stud.base.utils.helper.MyToast;
+import com.tiandu.recruit.stud.data.C;
+import com.tiandu.recruit.stud.data.event.LoginEvent;
+import com.tiandu.recruit.stud.ui.login.LoginActivity;
 import com.tiandu.recruit.stud.view.swipe.SwipeBackLayout;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -440,6 +450,41 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
                 Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         intent.setData(Uri.parse("package:" + getPackageName()));
         startActivity(intent);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onloginoutEvent(LoginEvent event) {
+        if (event.getIsOutLogin() == -1) {
+            outLogin();
+        }
+    }
+    public void outLogin() {
+        showToast("您的账号" + SpUtil.getAccount() + "在其他手机登录");
+        BaseAppManager.getInstance().clearAll();
+
+        Bundle bundle = new Bundle();
+        bundle.putString(C.LOGIN_ACCOUNT,SpUtil.getAccount());
+
+        if (!isForeground(this, "com.jq.learn.yn.stud.ui.login.LoginActivity")) {
+            readyGo(LoginActivity.class,bundle);
+        }
+
+        SpUtil.clearAll();
+    }
+    private boolean isForeground(Context context, String className) {
+        if (context == null || TextUtils.isEmpty(className)) {
+            return false;
+        }
+
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> list = am.getRunningTasks(1);
+        if (list != null && list.size() > 0) {
+            ComponentName cpn = list.get(0).topActivity;
+            if (className.equals(cpn.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

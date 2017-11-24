@@ -51,7 +51,7 @@ public class JobDetailActivity extends BaseActivity {
     private void getInitnetData() {
         showloginDialog("");
         Api.getInstance()
-                .movieService.getJobListInfo(C.USER_JOBLISTINFO,id, SpUtil.getToken())
+                .movieService.getJobListInfo(C.USER_JOBLISTINFO,id,SpUtil.getMemberID(), SpUtil.getToken())
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
                 .subscribe(new Action1<List<JobListInfo>>() {

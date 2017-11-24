@@ -51,7 +51,7 @@ public class NoticeDetailActivity extends BaseActivity {
     private void getInitnetData() {
         showloginDialog("");
         Api.getInstance()
-                .movieService.getNoticeListInfo(C.USER_NOTICELIST,id, SpUtil.getToken())
+                .movieService.getNoticeListInfo(C.USER_NOTICELIST,id,SpUtil.getMemberID(), SpUtil.getToken())
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
                 .subscribe(new Action1<List<NoticeListInfo>>() {

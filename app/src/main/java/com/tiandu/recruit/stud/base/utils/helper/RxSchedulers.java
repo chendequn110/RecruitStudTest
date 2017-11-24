@@ -1,8 +1,6 @@
 package com.tiandu.recruit.stud.base.utils.helper;
 
 import android.accounts.NetworkErrorException;
-import android.util.Log;
-
 
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.api.exception.ResponseException;
@@ -10,7 +8,9 @@ import com.tiandu.recruit.stud.base.App;
 import com.tiandu.recruit.stud.base.utils.Logger;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.data.entity.Response;
+import com.tiandu.recruit.stud.data.event.LoginEvent;
 
+import org.greenrobot.eventbus.EventBus;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -24,6 +24,10 @@ public class RxSchedulers {
             @Override
             public Observable<T> call(Response<T> tResponse) {
                 if (tResponse != null){
+                    if(tResponse.getMessage().equals("token验证失败")){
+                        tResponse.setMessage("您的账号\t" + SpUtil.getAccount() +"\n在其他手机登录");
+                        EventBus.getDefault().post(new LoginEvent(-1));
+                    }
                     if (tResponse.isCode()){
                         return respResult(tResponse);
                     }else {
@@ -63,7 +67,6 @@ public class RxSchedulers {
     public static <T> Observable.Transformer<T, T> io_main() {
         return tObservable -> tObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
-
     /**
      * 处理不规则相应
      * {
