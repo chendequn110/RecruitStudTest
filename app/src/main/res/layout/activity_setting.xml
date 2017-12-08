@@ -30,19 +30,19 @@
                     android:id="@+id/tvSettingVersion"
                     style="@style/txt_icon_style"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:drawableLeft="@mipmap/ic_setting_st"
                     android:text="@string/user_setting_version" />
 
                 <TextView
                     android:id="@+id/tvGetSettingVersion"
+                    style="@style/txt_icon_style2"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_40dp"
                     android:drawableRight="@mipmap/ic_arrow_right"
                     android:gravity="center_vertical|right"
-                    android:paddingRight="@dimen/size_15dp"
                     android:text=""
-                    style="@style/txt_icon_style" />
+                    android:textSize="@dimen/font_normal"/>
 
 
             </LinearLayout>

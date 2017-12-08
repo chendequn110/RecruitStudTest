@@ -49,6 +49,7 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
 
     private NoticeAdpter adapter ;
     private LinearLayout llMoreFoor;
+    private String page ="1";
 
 
 
@@ -114,7 +115,7 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
 
     private void getOrdList() {
         Api.getInstance()
-                .movieService.getNoticeInfo(C.USER_NOTICE,SpUtil.getMemberID(),SpUtil.getToken())
+                .movieService.getNoticeInfo(C.USER_NOTICE,SpUtil.getMemberID(),SpUtil.getToken(),page)
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
                 .subscribe(new Action1<List<NoticeInfo>>() {

@@ -17,22 +17,24 @@
         <LinearLayout
             android:id="@+id/ltBindPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/size_40dp"
             android:background="@color/windowBackground"
             android:orientation="horizontal">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_bind_phone" />
 
             <TextView
                 android:id="@+id/tvBindPhone"
+                style="@style/txt_icon_style2"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/size_40dp"
                 android:layout_weight="1"
                 android:drawableRight="@mipmap/ic_arrow_right"
                 android:gravity="center_vertical|right"
-                android:paddingRight="@dimen/size_15dp"
                 android:text=""
                 android:textSize="@dimen/font_normal" />
         </LinearLayout>
@@ -49,17 +51,19 @@
             android:orientation="horizontal">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_40dp"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_bind_mail" />
 
             <TextView
                 android:id="@+id/tvBindMail"
+                style="@style/txt_icon_style2"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/size_40dp"
                 android:layout_weight="1"
                 android:drawableRight="@mipmap/ic_arrow_right"
                 android:gravity="center_vertical|right"
-                android:paddingRight="@dimen/size_15dp"
                 android:text=""
                 android:textSize="@dimen/font_normal" />
         </LinearLayout>
@@ -70,22 +74,24 @@
         <LinearLayout
             android:id="@+id/ltbindwx"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/size_40dp"
             android:background="@color/windowBackground"
             android:orientation="horizontal">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_bind_wx" />
 
             <TextView
                 android:id="@+id/tvBindwx"
+                style="@style/txt_icon_style2"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/size_40dp"
                 android:layout_weight="1"
                 android:drawableRight="@mipmap/ic_arrow_right"
                 android:gravity="center_vertical|right"
-                android:paddingRight="@dimen/size_15dp"
                 android:text=""
                 android:textSize="@dimen/font_normal" />
         </LinearLayout>
@@ -96,22 +102,24 @@
         <LinearLayout
             android:id="@+id/ltbindqq"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/size_40dp"
             android:background="@color/windowBackground"
             android:orientation="horizontal">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_bind_qq" />
 
             <TextView
                 android:id="@+id/tvBindqq"
+                style="@style/txt_icon_style2"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/size_40dp"
                 android:layout_weight="1"
                 android:drawableRight="@mipmap/ic_arrow_right"
                 android:gravity="center_vertical|right"
-                android:paddingRight="@dimen/size_15dp"
                 android:text=""
                 android:textSize="@dimen/font_normal" />
         </LinearLayout>

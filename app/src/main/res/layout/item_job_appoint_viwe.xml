@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_5dp"
                 android:text="公司名称"
-                android:textColor="#999999"
+                android:textColor="@color/darker_grey"
                 android:textSize="@dimen/font_medium" />
             <TextView
                 android:id="@+id/tvCreateTime"

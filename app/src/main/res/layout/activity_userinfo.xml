@@ -20,13 +20,16 @@
             android:gravity="center_vertical">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_info_memberid" />
 
             <com.tiandu.recruit.stud.view.ClearEditText
                 android:id="@+id/etMemberID"
+                style="@style/txt_noticon_style"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/size_40dp"
                 android:textSize="@dimen/font_normal"
                 android:background="@null"
                 android:minHeight="@dimen/size_45dp"
@@ -45,13 +48,16 @@
             android:gravity="center_vertical">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_info_membername" />
 
             <com.tiandu.recruit.stud.view.ClearEditText
                 android:id="@+id/etMemberName"
+                style="@style/txt_noticon_style"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/size_40dp"
                 android:background="@null"
                 android:inputType="text"
                 android:minHeight="@dimen/size_45dp"
@@ -234,17 +240,19 @@
             android:orientation="horizontal">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_info_Gender" />
 
             <TextView
                 android:id="@+id/tvGender"
+                style="@style/txt_icon_style2"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/size_30dp"
+                android:layout_height="@dimen/size_40dp"
                 android:layout_weight="1"
                 android:drawableRight="@mipmap/ic_arrow_right"
                 android:gravity="center_vertical|right"
-                android:paddingRight="@dimen/size_15dp"
                 android:text=""
                 android:textSize="@dimen/font_normal" />
         </LinearLayout>
@@ -261,18 +269,20 @@
             android:orientation="horizontal">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_info_birthdate" />
 
             <TextView
                 android:id="@+id/tvBirthdate"
+                style="@style/txt_icon_style2"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/size_30dp"
+                android:layout_height="@dimen/size_40dp"
                 android:layout_weight="1"
                 android:drawableRight="@mipmap/ic_arrow_right"
                 android:gravity="center_vertical|right"
                 android:paddingRight="@dimen/size_15dp"
-                android:text=""
                 android:textSize="@dimen/font_normal" />
         </LinearLayout>
         <View
@@ -287,17 +297,19 @@
             android:orientation="horizontal">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_info_Province" />
 
             <TextView
                 android:id="@+id/tvProvince"
+                style="@style/txt_icon_style2"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/size_30dp"
+                android:layout_height="@dimen/size_40dp"
                 android:layout_weight="1"
                 android:drawableRight="@mipmap/ic_arrow_right"
                 android:gravity="center_vertical|right"
-                android:paddingRight="@dimen/size_15dp"
                 android:text=""
                 android:textSize="@dimen/font_normal" />
         </LinearLayout>

@@ -100,6 +100,22 @@
         <item name="android:textSize">@dimen/font_medium</item>
         <item name="android:minHeight">45dp</item>
     </style>
+    <style name="txt_icon_style2">
+        <item name="android:paddingLeft">@dimen/size_16dp</item>
+        <item name="android:paddingRight">@dimen/size_16dp</item>
+        <item name="android:textColor">@color/darker_grey</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">@dimen/size_20dp</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:minHeight">45dp</item>
+    </style>
+    <style name="txt_noticon_style">
+        <item name="android:paddingRight">@dimen/size_16dp</item>
+        <item name="android:textColor">@color/darker_grey</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+        <item name="android:minHeight">45dp</item>
+    </style>
     <style name="change_trade_pwd_style" parent="common_label_style">
         <item name="android:layout_width">@dimen/space_86</item>
         <item name="android:layout_height">wrap_content</item>

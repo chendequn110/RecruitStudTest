@@ -19,11 +19,14 @@
             android:gravity="center_vertical">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_info_parant" />
 
             <com.tiandu.recruit.stud.view.ClearEditText
                 android:id="@+id/etParent"
+                style="@style/txt_noticon_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -32,6 +35,10 @@
                 android:focusable="false"
                 android:textSize="@dimen/font_normal"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/comm_line" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_40dp"
@@ -39,11 +46,14 @@
             android:gravity="center_vertical">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_info_realname" />
 
             <com.tiandu.recruit.stud.view.ClearEditText
                 android:id="@+id/etRealName"
+                style="@style/txt_noticon_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -63,11 +73,14 @@
             android:gravity="center_vertical">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_info_idnumber" />
 
             <com.tiandu.recruit.stud.view.ClearEditText
                 android:id="@+id/etIDNumber"
+                style="@style/txt_noticon_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -90,11 +103,14 @@
             android:gravity="center_vertical">
 
             <TextView
-                style="@style/change_trade_pwd_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/txt_noticon_style"
                 android:text="@string/user_info_bank" />
 
             <com.tiandu.recruit.stud.view.ClearEditText
                 android:id="@+id/etBank"
+                style="@style/txt_noticon_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -116,11 +132,14 @@
                android:gravity="center_vertical">
 
                <TextView
-                   style="@style/change_trade_pwd_style"
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   style="@style/txt_noticon_style"
                    android:text="@string/user_info_bankNum" />
 
                <com.tiandu.recruit.stud.view.ClearEditText
                    android:id="@+id/etBankNum"
+                   style="@style/txt_noticon_style"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:background="@null"

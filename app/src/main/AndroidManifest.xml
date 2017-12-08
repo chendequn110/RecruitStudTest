@@ -141,6 +141,13 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/notice_detail"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <activity
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <!--短信验证-->
         <activity
             android:name="com.mob.tools.MobUIShell"

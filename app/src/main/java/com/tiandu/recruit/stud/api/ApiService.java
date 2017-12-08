@@ -1,6 +1,7 @@
 package com.tiandu.recruit.stud.api;
 
 
+import com.tiandu.recruit.stud.data.entity.AdvertInfo;
 import com.tiandu.recruit.stud.data.entity.ChildMenberInfo;
 import com.tiandu.recruit.stud.data.entity.FeeChildInfo;
 import com.tiandu.recruit.stud.data.entity.JobInfo;
@@ -140,7 +141,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<NoticeInfo>>> getNoticeInfo(@Path("value") String url,  @Query("MemberID") String MemberID,@Query("Token") String Token);
+    Observable<Response<List<NoticeInfo>>> getNoticeInfo(@Path("value") String url,  @Query("MemberID") String MemberID,@Query("Token") String Token,@Query("iPage") String iPage);
 
     /**
      * 获取通知详情
@@ -201,5 +202,23 @@ public interface ApiService {
      */
     @GET("{value}")
     Observable<Response<List<ChildMenberInfo>>> getChildMember(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token);
+
+    /**
+     * 获取广告
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<AdvertInfo>>> getAdv(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token);
+    /**
+     * 修改头像
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<RegisterInfo>>> updateHeadImage(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token, @Query("HeadImage") byte[] HeadImage);
+
 }
 

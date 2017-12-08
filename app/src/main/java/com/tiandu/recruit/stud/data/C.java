@@ -54,6 +54,8 @@ public class C {
     public static final String USER_GETCHILDMEMBER="GetChildMember";
     public static final String USER_GETAPPVERSION="GetAppVersion";
     public static final String USER_APPDOWNLOAD="AppDownload";
+    public static final String USER_ADVERT="GetAdv";
+    public static final String USER_HEADIMAGE="UpdateMemberHeadImage";
 
 
 

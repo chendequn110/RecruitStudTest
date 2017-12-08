@@ -20,6 +20,7 @@ public class SpUtil {
     private static final String USER_NAME_KEY = "userName";
     private static final String USER_INFO_TAKEN_KEY = "user_token_key";
     private static final String USER_MEMBERID = "user_merberid";
+    private static final String USER_HEADIMAGE = "head_image";
 
     private static SharedPreferences prefs;
 
@@ -99,5 +100,12 @@ public class SpUtil {
 
     public static void setMemberID(String memberID) {
         prefs.edit().putString(USER_MEMBERID,memberID).commit();
+    }
+    public static String getHeadImage() {
+        return prefs.getString(USER_HEADIMAGE,"");
+    }
+
+    public static void setHeadImage(String headImage) {
+        prefs.edit().putString(USER_HEADIMAGE,headImage).commit();
     }
 }

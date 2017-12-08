@@ -1,6 +1,8 @@
 package com.tiandu.recruit.stud.ui.main;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewCompat;
@@ -17,6 +19,7 @@ import com.tiandu.recruit.stud.base.BaseActivity;
 import com.tiandu.recruit.stud.base.BaseAppManager;
 import com.tiandu.recruit.stud.base.BaseLazyFragment;
 import com.tiandu.recruit.stud.data.entity.VersionInfo;
+import com.tiandu.recruit.stud.data.event.PhotoEvent;
 import com.tiandu.recruit.stud.ui.adapter.FragmentAdapter;
 import com.tiandu.recruit.stud.ui.fragment.FeeFragment;
 import com.tiandu.recruit.stud.ui.fragment.HomeFragment;
@@ -26,10 +29,14 @@ import com.tiandu.recruit.stud.view.XViewPager;
 import com.tiandu.recruit.stud.view.tabstrip.HomeNavigateTab;
 import com.tiandu.recruit.stud.view.tabstrip.HomeNavigateTabIndicator;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import me.iwf.photopicker.PhotoPicker;
+import me.iwf.photopicker.PhotoPreview;
 
 public class MainActivity extends BaseActivity<MainPresenter, MainModel> implements MainContract.View,
         HomeNavigateTabIndicator.OnTabChangeListener {
@@ -175,6 +182,20 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
                     break;
             }
             return super.onKeyUp(keyCode, event);
+        }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK &&
+                (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE)) {
+            String photo = null;
+            if (data != null) {
+                photo = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS).get(0);
+                PhotoEvent photoEvent=new PhotoEvent();
+                photoEvent.setPhoto(photo);
+                EventBus.getDefault().post(photoEvent);
+            }
         }
     }
 }

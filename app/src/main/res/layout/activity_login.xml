@@ -122,7 +122,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/select_corner_state_green"
-            android:textColor="@color/load_gray"
+            android:textColor="@color/white"
             android:textSize="@dimen/font_medium"
             android:text="登 录"/>
 
