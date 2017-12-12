@@ -107,7 +107,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<MemberFeeInfo>>> getMemberFee(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token);
+    Observable<Response<List<MemberFeeInfo>>> getMemberFee(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token,@Query("iPage") String iPage);
 
     /**
      * 获取分支金额
@@ -116,7 +116,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<FeeChildInfo>>> getFeeChild(@Path("value") String url, @Query("MemberID") String MemberID, @Query("PlanID") String PlanID,@Query("Token") String Token);
+    Observable<Response<List<FeeChildInfo>>> getFeeChild(@Path("value") String url, @Query("MemberID") String MemberID, @Query("PlanID") String PlanID,@Query("Token") String Token,@Query("iPage") String iPage);
 
     /**
      * 获取招聘信息
@@ -125,7 +125,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<JobInfo>>> getJobInfo(@Path("value") String url, @Query("JobType") String JobType,@Query("MemberID") String MemberID, @Query("Token") String Token);
+    Observable<Response<List<JobInfo>>> getJobInfo(@Path("value") String url, @Query("JobType") String JobType,@Query("MemberID") String MemberID, @Query("Token") String Token,@Query("iPage") String iPage);
     /**
      * 获取招聘详情
      *

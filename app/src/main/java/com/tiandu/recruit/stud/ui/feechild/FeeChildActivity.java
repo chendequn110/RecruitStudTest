@@ -5,9 +5,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
@@ -16,7 +14,6 @@ import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.api.Api;
 import com.tiandu.recruit.stud.api.exception.MessageFactory;
 import com.tiandu.recruit.stud.base.BaseActivity;
-import com.tiandu.recruit.stud.base.utils.Logger;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
@@ -27,7 +24,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -42,7 +38,7 @@ import rx.functions.Action1;
  * 修改时间：2017/11/10 10:43
  * 修改备注：
  */
-public class FeeChildActivity extends BaseActivity  implements SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
+public class FeeChildActivity extends BaseActivity  implements SwipeRefreshLayout.OnRefreshListener, View.OnClickListener,BaseQuickAdapter.RequestLoadMoreListener {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -50,7 +46,9 @@ public class FeeChildActivity extends BaseActivity  implements SwipeRefreshLayou
     SwipeRefreshLayout swipeRefresh;
 
     private FeeChildAdapter adapter = null;
-    private LinearLayout llMoreFoor;
+//    private LinearLayout llMoreFoor;
+    private int page=0;
+    private int totalpage = 0;
 
     private String planId;
 
@@ -81,8 +79,8 @@ public class FeeChildActivity extends BaseActivity  implements SwipeRefreshLayou
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter = new FeeChildAdapter());
-        adapter.addFooterView(getFooterView());
-
+//        adapter.addFooterView(getFooterView());
+        adapter.setOnLoadMoreListener(this, recyclerView);
         recyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
             @Override
             public void onSimpleItemChildClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
@@ -101,7 +99,7 @@ public class FeeChildActivity extends BaseActivity  implements SwipeRefreshLayou
     private void getInitnetData() {
         showloginDialog("");
         Api.getInstance()
-                .movieService.getFeeChild(C.USER_FEECHILD,SpUtil.getMemberID(),planId, SpUtil.getToken())
+                .movieService.getFeeChild(C.USER_FEECHILD,SpUtil.getMemberID(),planId, SpUtil.getToken(),page+"")
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
                 .subscribe(new Action1<List<FeeChildInfo>>() {
@@ -110,10 +108,12 @@ public class FeeChildActivity extends BaseActivity  implements SwipeRefreshLayou
                         cannelDialog();
                         if (null != infos) {
                             List<FeeChildInfo.AaDataBean> aaData=infos.get(0).getAaData();
-                            for (FeeChildInfo.AaDataBean aaDataBeen : aaData){
-                                Logger.d("11111>>>>>>>" + aaDataBeen.getChildFee());
+                            totalpage=infos.get(0).getITotalRecords();
+                            if (page == 0) {
+                                adapter.setNewData(aaData);
+                            } else {
+                                adapter.addData(aaData);
                             }
-                            adapter.setNewData(aaData);
                         }else {
                             showToast("数据为空");
                         }
@@ -126,26 +126,45 @@ public class FeeChildActivity extends BaseActivity  implements SwipeRefreshLayou
         cannelDialog();
         showToast(message);
     }
-    public View getFooterView() {
-        View view = LayoutInflater.from(this).inflate(R.layout.fragment_foot, null);
-        llMoreFoor = ButterKnife.findById(view, R.id.llMoreFoor);
-        llMoreFoor.setOnClickListener(this);
-        return view;
-    }
+//    public View getFooterView() {
+//        View view = LayoutInflater.from(this).inflate(R.layout.fragment_foot, null);
+//        llMoreFoor = ButterKnife.findById(view, R.id.llMoreFoor);
+//        llMoreFoor.setOnClickListener(this);
+//        return view;
+//    }
 
     @Override
     public void onClick(View view) {
 
     }
+    @Override
+    public void onLoadMoreRequested() {
+        page++;
+        adapter.setEnableLoadMore(true);
+        swipeRefresh.setEnabled(false);
 
+        recyclerView.post(() -> {
+            if (page*10> totalpage) {
+                adapter.loadMoreEnd(false);
+            } else {
+                adapter.setEnableLoadMore(true);
+
+                Observable.timer(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+                        .subscribe(aLong -> {
+                            getInitnetData();
+                            adapter.loadMoreComplete();
+                        });
+            }
+        });
+        swipeRefresh.setEnabled(true);
+    }
     @Override
     public void onRefresh() {
         Observable.timer(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
                 .subscribe(aLong -> {
+                    getInitnetData();
                     if (swipeRefresh != null && swipeRefresh.isRefreshing()) {
                         swipeRefresh.setRefreshing(false);
-                        getInitnetData();
-//                        showProgress();
                     }
                 });
     }

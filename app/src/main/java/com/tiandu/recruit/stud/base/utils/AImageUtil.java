@@ -26,6 +26,14 @@ public class AImageUtil {
     /**
      * 普通
      */
+    public static void loadImg2(ImageView v, String url,int errorImg) {
+        Glide.with(v.getContext())
+                .load(url)
+                .placeholder(R.mipmap.ic_banner_1)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .error(errorImg)   //R.mipmap.ic_complaint
+                .into(v);
+    }
     public static void loadImg(ImageView v, String url,int errorImg) {
         Glide.with(v.getContext())
                 .load(url)

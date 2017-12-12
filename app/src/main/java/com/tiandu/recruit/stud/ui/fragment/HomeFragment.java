@@ -234,13 +234,13 @@ public class HomeFragment extends BaseLazyFragment {
         public View createView(Context context) {
             imageView = new ImageView(context);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-//            imageView.setImageResource(R.mipmap.ic_banner_1);
+            imageView.setImageResource(R.mipmap.ic_banner_1);
             return imageView;
         }
 
         @Override
         public void UpdateUI(Context context, int position, String data) {
-           AImageUtil.loadImg(imageView, data ,R.mipmap.ic_banner_1);
+           AImageUtil.loadImg2(imageView, data ,R.mipmap.ic_banner_1);
 //            imageView.setImageResource(data);
         }
     }

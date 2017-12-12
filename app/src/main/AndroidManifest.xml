@@ -23,6 +23,8 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!-- 需要运行时注册的权限 -->
+
 
     <supports-screens
         android:anyDensity="true"
@@ -141,6 +143,11 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/notice_detail"
             android:screenOrientation="portrait"/>
+        <activity android:name=".mycoach.CityActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="城市选择"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="me.iwf.photopicker.PhotoPickerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -194,6 +201,12 @@
             android:value="59f16921b27b0a766b000059">
         </meta-data>
 
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="2a11c96981b45adfa66f651626de69de" />
+        <!-- 定位需要的服务 -->
+        <service android:name="com.amap.api.location.APSService" >
+        </service>
     </application>
 
 </manifest>

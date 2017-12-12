@@ -4,6 +4,7 @@ package com.tiandu.recruit.stud.ui.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
@@ -13,13 +14,17 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.base.BaseActivity;
 import com.tiandu.recruit.stud.base.BaseAppManager;
 import com.tiandu.recruit.stud.base.BaseLazyFragment;
+import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.VersionInfo;
+import com.tiandu.recruit.stud.data.event.CityEvent;
 import com.tiandu.recruit.stud.data.event.PhotoEvent;
+import com.tiandu.recruit.stud.mycoach.CityActivity;
 import com.tiandu.recruit.stud.ui.adapter.FragmentAdapter;
 import com.tiandu.recruit.stud.ui.fragment.FeeFragment;
 import com.tiandu.recruit.stud.ui.fragment.HomeFragment;
@@ -30,11 +35,14 @@ import com.tiandu.recruit.stud.view.tabstrip.HomeNavigateTab;
 import com.tiandu.recruit.stud.view.tabstrip.HomeNavigateTabIndicator;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import me.iwf.photopicker.PhotoPicker;
 import me.iwf.photopicker.PhotoPreview;
 
@@ -48,15 +56,19 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     LinearLayout container;
     @BindView(R.id.ll_btn_screen)
     LinearLayout ll_btn_screen;
+    @BindView(R.id.tvAddress)
+    TextView tvAddress;
     private int position = 0;
     private FragmentAdapter adapter = null;
     private List<BaseLazyFragment> mFragments = new ArrayList<>();
     private String mTitles[] = {"首页", "招聘", "账户", "我的"};
+    public static String city="上海";
     private AlertDialog.Builder builder;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void initView() {
+        EventBus.getDefault().register(this);
         cannelDialog();
         setTranslucent();
         setHomeEnable(false);
@@ -84,22 +96,39 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
         return true;
     }
 
+    @OnClick({R.id.tvAddress})void addressClick() {
+        Bundle bundle = new Bundle();
+        bundle.putString(C.ADDRESS_CITY,city);
+        readyGo(CityActivity.class,bundle);
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLatePlanEvent(CityEvent event) {
+        if (null != event.getCity()) {
+            city = event.getCity();
+        } else {
+            city = "上海市";
+        }
+        tvAddress.setText(city);
+    }
     @Override
     public void onTabChanged(int index) {
         position = index;
-        if (position == 2 | position == 1) {
-//            if (SpUtil.isLogined()) {
+        if (position == 2 ) {
+            tvAddress.setVisibility(View.INVISIBLE);
             mToolbar.setVisibility(View.VISIBLE);
             setToolbarTitle(mTitles[index]);
             viewPager.setCurrentItem(position, false);
-//            } else {
-//                readyGo(LoginActivity.class);
-//            }
         } else if (position == 3) {
             mToolbar.setVisibility(View.GONE);
             setToolbarTitle(mTitles[index]);
             viewPager.setCurrentItem(position, false);
-        } else {
+        }else if( position == 1) {
+            tvAddress.setVisibility(View.VISIBLE);
+            mToolbar.setVisibility(View.VISIBLE);
+            setToolbarTitle(mTitles[index]);
+            viewPager.setCurrentItem(position, false);
+        }
+        else {
             mToolbar.setVisibility(View.GONE);
             setToolbarTitle(mTitles[0]);
             viewPager.setCurrentItem(0, false);
@@ -116,6 +145,12 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     @Override
     public void showError(String message) {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

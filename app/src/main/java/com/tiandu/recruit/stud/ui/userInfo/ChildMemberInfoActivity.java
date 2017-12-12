@@ -46,15 +46,15 @@ public class ChildMemberInfoActivity extends BaseActivity implements SwipeRefres
     SwipeRefreshLayout swipeRefresh;
 
     private ChildMemberAdapter adapter;
-    private LinearLayout llMoreFoor;
+//    private LinearLayout llMoreFoor;
 
 
-    public View getFooterView() {
-        View view = LayoutInflater.from(this).inflate(R.layout.fragment_foot, null);
-        llMoreFoor = ButterKnife.findById(view, R.id.llMoreFoor);
-        llMoreFoor.setOnClickListener(this);
-        return view;
-    }
+//    public View getFooterView() {
+//        View view = LayoutInflater.from(this).inflate(R.layout.fragment_foot, null);
+//        llMoreFoor = ButterKnife.findById(view, R.id.llMoreFoor);
+//        llMoreFoor.setOnClickListener(this);
+//        return view;
+//    }
     @Override
     protected void initView() {
 //        showloginDialog("");
@@ -67,7 +67,7 @@ public class ChildMemberInfoActivity extends BaseActivity implements SwipeRefres
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter = new ChildMemberAdapter(this));
-        adapter.addFooterView(getFooterView());
+//        adapter.addFooterView(getFooterView());
 
         recyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
             @Override

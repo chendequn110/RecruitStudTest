@@ -214,7 +214,7 @@ public abstract class BaseLazyFragment extends Fragment {
     }
 
     public void outLogin() {
-        showToast("您的账号" + SpUtil.getAccount() + "在其他手机登录");
+        showToast("您的账号" + SpUtil.getAccount() + "登录异常,请重新登录");
         BaseAppManager.getInstance().clearAll();
         Bundle bundle = new Bundle();
         bundle.putString(C.LOGIN_ACCOUNT,SpUtil.getAccount());

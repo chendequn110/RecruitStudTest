@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/custom_toolbar" />
+    <TextView
+        android:padding="@dimen/size_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="当前位置"
+        android:textColor="@color/title_text"
+        android:background="@color/comm_line"/>
+ 
+    <TextView
+        android:id="@+id/tvCityName"
+        android:padding="@dimen/size_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/ic_address"
+        android:drawablePadding="@dimen/size_5dp"
+        android:textSize="@dimen/font_medium"/>
+
+
+    <TextView
+        android:padding="@dimen/size_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择其他省份"
+        android:textColor="@color/title_text"
+        android:background="@color/comm_line"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

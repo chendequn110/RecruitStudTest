@@ -6,6 +6,7 @@
     android:background="@color/windowBackground">
     <include layout="@layout/view_enroll_toolbar" />
 
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

@@ -34,6 +34,7 @@ public class C {
 
 
 
+    public static final String ADDRESS_CITY = "address_city";
     public static final String USER_LOGIN_PATH = "MemberLogin";
     public static final String USER_REGISTER_PATH = "MemberReg";
     public static final String USER_RESETPWD_PATH = "MemberResetPwd";

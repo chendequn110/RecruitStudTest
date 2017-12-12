@@ -5,7 +5,6 @@ import android.accounts.NetworkErrorException;
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.api.exception.ResponseException;
 import com.tiandu.recruit.stud.base.App;
-import com.tiandu.recruit.stud.base.utils.Logger;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.data.entity.Response;
 import com.tiandu.recruit.stud.data.event.LoginEvent;
@@ -25,7 +24,7 @@ public class RxSchedulers {
             public Observable<T> call(Response<T> tResponse) {
                 if (tResponse != null){
                     if(tResponse.getMessage().equals("token验证失败")){
-                        tResponse.setMessage("您的账号\t" + SpUtil.getAccount() +"\n在其他手机登录");
+                        tResponse.setMessage("您的账号\t" + SpUtil.getAccount() +"\n登录异常,请重新登录");
                         EventBus.getDefault().post(new LoginEvent(-1));
                     }
                     if (tResponse.isCode()){
