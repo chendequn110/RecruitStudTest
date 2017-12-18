@@ -28,7 +28,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="@color/load_bk"
         android:clipToPadding="false"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -47,9 +46,7 @@
             android:maxLines="1"
             android:minHeight="@dimen/size_50dp"
             android:paddingLeft="@dimen/size_10dp"
-            android:textColor="@color/load_gray"
-            android:textColorHint="@color/load_gray"
-            android:textSize="@dimen/font_medium" />
+            android:textColorHint="@color/load_gray" />
 
         <View
             android:layout_width="match_parent"
@@ -72,9 +69,7 @@
             android:maxLines="1"
             android:minHeight="@dimen/size_50dp"
             android:paddingLeft="@dimen/size_10dp"
-            android:textColor="@color/load_gray"
-            android:textColorHint="@color/load_gray"
-            android:textSize="@dimen/font_medium" />
+            android:textColorHint="@color/load_gray" />
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_1dp"
@@ -123,7 +118,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/select_corner_state_green"
             android:textColor="@color/white"
-            android:textSize="@dimen/font_medium"
+            android:textSize="@dimen/font_large"
             android:text="登 录"/>
 
         <!--<Button
