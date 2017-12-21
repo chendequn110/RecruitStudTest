@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.api.Api;
+import com.tiandu.recruit.stud.api.exception.MessageFactory;
 import com.tiandu.recruit.stud.base.BaseAppManager;
 import com.tiandu.recruit.stud.base.BaseLazyFragment;
 import com.tiandu.recruit.stud.base.utils.AImageUtil;
@@ -20,7 +21,7 @@ import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.MeInfo;
-import com.tiandu.recruit.stud.data.entity.RegisterInfo;
+import com.tiandu.recruit.stud.data.entity.Response;
 import com.tiandu.recruit.stud.data.event.PhotoEvent;
 import com.tiandu.recruit.stud.ui.login.LoginActivity;
 import com.tiandu.recruit.stud.ui.modify.ModifyPwdActivity;
@@ -44,11 +45,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.TreeMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import me.iwf.photopicker.PhotoPicker;
 import me.iwf.photopicker.utils.AndroidLifecycleUtils;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import rx.functions.Action1;
 
 /**
@@ -137,7 +142,7 @@ public class UserFragment extends BaseLazyFragment {
 
         if (isUser()) {
             initUserInfo();
-            showHeadImage(SpUtil.getHeadImage());
+//            showHeadImage(SpUtil.getHeadImage());
         }
     }
 
@@ -146,7 +151,8 @@ public class UserFragment extends BaseLazyFragment {
         if (view.getVisibility() == View.VISIBLE) {
             view.setVisibility(View.GONE);
         }
-        showHeadImage(SpUtil.getHeadImage());
+        AImageUtil.loadCircleImg2(ivAvatar,SpUtil.getHeadImage());
+//        showHeadImage(SpUtil.getHeadImage());
     }
 
     @Override
@@ -168,6 +174,8 @@ public class UserFragment extends BaseLazyFragment {
                         if (null != meInfos) {
                             tvGetAuthentic.setText(meInfos.get(0).getStatusName());
                             tvGetUserInfo.setText(meInfos.get(0).getMemberID());
+                            SpUtil.setHeadImage(meInfos.get(0).getHeadImg());
+                            AImageUtil.loadCircleImg2(ivAvatar,meInfos.get(0).getHeadImg());
                         }else {
 
                         }
@@ -230,18 +238,32 @@ public class UserFragment extends BaseLazyFragment {
                 .error(R.mipmap.ic_default_img)
                 .into(ivAvatar);
     }
+    public static MultipartBody.Part filesToMultipartBodyParts(File file) {
+            // TODO: 16-4-2  这里为了简单起见，没有判断file的类型
+            RequestBody requestBody = RequestBody.create(MediaType.parse("image/png"), file);
+            MultipartBody.Part part = MultipartBody.Part.createFormData("files", file.getName(), requestBody);
+        return part;
+    }
+    private TreeMap<String, Object> treeMap = new TreeMap<>();
     private void updataImage(File file) {
+        treeMap.clear();
+        treeMap.put("MemberID",SpUtil.getMemberID());
+        treeMap.put("Token", SpUtil.getToken());
+        treeMap.put("HeadImage",filesToMultipartBodyParts(file));
         Api.getInstance()
-                .movieService.updateHeadImage(C.USER_HEADIMAGE,SpUtil.getMemberID(), SpUtil.getToken(), AImageUtil.getBytes(file))
+                .movieService.updateHeadImage(C.USER_HEADIMAGE,SpUtil.getMemberID(), SpUtil.getToken(),filesToMultipartBodyParts(file))
                 .compose(RxSchedulers.io_main())
-                .compose(RxSchedulers.sTransformer())
-                .subscribe(new Action1<List<RegisterInfo>>() {
+                .subscribe(new Action1<Response>() {
                     @Override
-                    public void call(List<RegisterInfo> meInfos) {
-
+                    public void call(Response response) {
+                        cannelMyDialog();
+                        if (response.isCode()) {
+                            showToast("上传成功");
+                        }
                     }
                 }, e -> {
-
+                    cannelMyDialog();
+                    showToast(MessageFactory.getMessage(e));
                 });
     }
     //TODO 压缩图片

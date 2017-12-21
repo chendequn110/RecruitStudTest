@@ -44,6 +44,7 @@ public class MeInfo implements Serializable {
         private double ID;
         private String MemberID;
         private String MemberName;
+        private String HeadImg;
         private String BindMobile;
         private String BindEmail;
         private String BindWechat;
@@ -61,6 +62,13 @@ public class MeInfo implements Serializable {
         private String StatusName;
         private String BankName;
 
+    public String getHeadImg() {
+        return HeadImg;
+    }
+
+    public void setHeadImg(String headImg) {
+        HeadImg = headImg;
+    }
     public String getBankName() {
         return BankName;
     }

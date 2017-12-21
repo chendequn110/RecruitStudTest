@@ -17,9 +17,13 @@ import com.tiandu.recruit.stud.data.entity.VersionInfo;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -217,8 +221,9 @@ public interface ApiService {
      * @param url
      * @return Response
      */
-    @GET("{value}")
-    Observable<Response<List<RegisterInfo>>> updateHeadImage(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token, @Query("HeadImage") byte[] HeadImage);
+    @Multipart
+    @POST("{value}")
+    Observable<Response> updateHeadImage(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token,@Part MultipartBody.Part part);
 
 }
 
