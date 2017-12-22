@@ -88,16 +88,16 @@ public class ShareActivity extends BaseActivity {
         oks.disableSSOWhenAuthorize();
 
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间等使用
-        oks.setTitle("分享");
+        oks.setTitle("人人招会员注册");
 
         String url = "http://advertise.shanghaiiot.org/MemberReg/MemberReg?ParentID="+ SpUtil.getMemberID();
         // titleUrl是标题的网络链接，QQ和QQ空间等使用
         oks.setTitleUrl(url);
 
         // text是分享文本，所有平台都需要这个字段
-        oks.setText("分享");
+//        oks.setText("人人招会员注册");
 
-        Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic_launcher);
+        Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(), R.mipmap.ic_applogo);
         String imageUrl = AImageUtil.saveFile(bitmap, "icon");
 
         //imagePath是图片的本地路径，Linked-In以外的平台都支持此参数

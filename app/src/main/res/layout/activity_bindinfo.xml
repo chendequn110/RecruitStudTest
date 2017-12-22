@@ -67,7 +67,7 @@
                 android:text=""
                 android:textSize="@dimen/font_normal" />
         </LinearLayout>
-        <View
+      <!--  <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_1dp"
             android:background="@color/comm_line" />
@@ -122,7 +122,7 @@
                 android:gravity="center_vertical|right"
                 android:text=""
                 android:textSize="@dimen/font_normal" />
-        </LinearLayout>
+        </LinearLayout>-->
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_1dp"

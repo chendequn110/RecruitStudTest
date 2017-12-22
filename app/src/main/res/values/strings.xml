@@ -4,7 +4,7 @@
     <string name="find_passwd">忘记密码?</string>
     <string name="protocol_txt">《人人招》协议</string>
     <string name="protocol_hint">我已阅读并同意</string>
-    <string name="login_user_hit">请输入手机号</string>
+    <string name="login_user_hit">请输入手机号码</string>
     <string name="input_phone">请输入手机号码</string>
     <string name="input_mail">请输入邮箱</string>
     <string name="input_wx">请输入微信号</string>

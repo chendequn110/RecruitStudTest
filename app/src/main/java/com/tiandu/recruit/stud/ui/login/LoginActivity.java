@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tiandu.recruit.stud.R;
@@ -23,7 +22,6 @@ import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareConfig;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.utils.SocializeUtils;
-
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -50,10 +48,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
     @BindView(R.id.tvRegister) TextView tvRegister;
     @BindView(R.id.tvForget)
     TextView tvForget;
-    @BindView(R.id.login_qq_fast_login)
-    ImageView iv_qq_fast_login;
-    @BindView(R.id.login_we_chat_fast_login)
-    ImageView iv_wechat_fast_login;
+//    @BindView(R.id.login_qq_fast_login)
+//    ImageView iv_qq_fast_login;
+//    @BindView(R.id.login_we_chat_fast_login)
+//    ImageView iv_wechat_fast_login;
     @BindView(R.id.etAccount) ClearEditText etAccount;
     @BindView(R.id.etPassword) ClearEditText etPassword;
     @BindString(R.string.login_loading) String loading;
@@ -114,12 +112,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter,LoginModel> imple
         showloginDialog(loading);
         presenter.userLogin(uName,uPasswd);
     }
-    @OnClick(R.id.login_qq_fast_login) void qqFastLoginClick(){
-        UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.QQ, authListener);
-    }
-    @OnClick(R.id.login_we_chat_fast_login) void wechatFastClick(){
-        UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.WEIXIN, authListener);
-    }
+//    @OnClick(R.id.login_qq_fast_login) void qqFastLoginClick(){
+//        UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.QQ, authListener);
+//    }
+//    @OnClick(R.id.login_we_chat_fast_login) void wechatFastClick(){
+//        UMShareAPI.get(this).doOauthVerify(this, SHARE_MEDIA.WEIXIN, authListener);
+//    }
     @Override
     protected void initPresenter() {
         presenter.setVM(this,mModel);

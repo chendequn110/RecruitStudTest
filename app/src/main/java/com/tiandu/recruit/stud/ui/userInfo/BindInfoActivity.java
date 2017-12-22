@@ -33,18 +33,18 @@ public class BindInfoActivity extends BaseActivity {
     LinearLayout ltBindPhone;
     @BindView(R.id.ltBindMail)
     LinearLayout ltBindMail;
-    @BindView(R.id.ltbindwx)
-    LinearLayout ltbindwx;
-    @BindView(R.id.ltbindqq)
-    LinearLayout ltbindqq;
+//    @BindView(R.id.ltbindwx)
+//    LinearLayout ltbindwx;
+//    @BindView(R.id.ltbindqq)
+//    LinearLayout ltbindqq;
     @BindView(R.id.tvBindPhone)
     TextView tvBindPhone;
     @BindView(R.id.tvBindMail)
     TextView tvBindMail;
-    @BindView(R.id.tvBindwx)
-    TextView tvBindwx;
-    @BindView(R.id.tvBindqq)
-    TextView tvBindqq;
+//    @BindView(R.id.tvBindwx)
+//    TextView tvBindwx;
+//    @BindView(R.id.tvBindqq)
+//    TextView tvBindqq;
 
     @Override
     protected void initView() {
@@ -65,7 +65,7 @@ public class BindInfoActivity extends BaseActivity {
     protected boolean isApplyStatusBarTranslucency() {
         return false;
     }
-    @OnClick({R.id.ltBindPhone,R.id.ltBindMail,R.id.ltbindwx,R.id.ltbindqq})
+    @OnClick({R.id.ltBindPhone,R.id.ltBindMail})//,R.id.ltbindwx,R.id.ltbindqq
     void OnSelectedClick(View view) {
         switch (view.getId()) {
             case R.id.ltBindPhone:
@@ -74,12 +74,12 @@ public class BindInfoActivity extends BaseActivity {
             case R.id.ltBindMail:
                 readyGo(BindMailActivity.class);
                 break;
-            case R.id.ltbindwx:
-                readyGo(BindWxActivity.class);
-                break;
-            case R.id.ltbindqq:
-                readyGo(BindQQActivity.class);
-                break;
+//            case R.id.ltbindwx:
+//                readyGo(BindWxActivity.class);
+//                break;
+//            case R.id.ltbindqq:
+//                readyGo(BindQQActivity.class);
+//                break;
         }
     }
     private void getInitnetData() {
@@ -95,8 +95,8 @@ public class BindInfoActivity extends BaseActivity {
                         if (null != meInfos) {
                             tvBindPhone.setText( meInfos.get(0).getBindMobile());
                             tvBindMail.setText( meInfos.get(0).getBindEmail());
-                            tvBindwx.setText( meInfos.get(0).getBindWechat());
-                            tvBindqq.setText( meInfos.get(0).getBindQQ());
+//                            tvBindwx.setText( meInfos.get(0).getBindWechat());
+//                            tvBindqq.setText( meInfos.get(0).getBindQQ());
                         }else {
                             showToast("数据为空");
                         }
