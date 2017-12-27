@@ -93,8 +93,8 @@ public class BindInfoActivity extends BaseActivity {
                     public void call(List<MeInfo> meInfos) {
                         cannelDialog();
                         if (null != meInfos) {
-                            tvBindPhone.setText( meInfos.get(0).getBindMobile());
-                            tvBindMail.setText( meInfos.get(0).getBindEmail());
+                            tvBindPhone.setText( meInfos.get(0).getMobile());
+                            tvBindMail.setText( meInfos.get(0).getEmail());
 //                            tvBindwx.setText( meInfos.get(0).getBindWechat());
 //                            tvBindqq.setText( meInfos.get(0).getBindQQ());
                         }else {

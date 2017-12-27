@@ -83,14 +83,14 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
     private String type="00";
     private int page=0;
     private int totalpage = 0;
-
+    private List<JobInfo.AaDataBean> aaData;
 
 
     @Override
     protected void initViewsAndEvents() {
         // 初始化高德
-        initLocation();
-        startLocation();
+//        initLocation();
+//        startLocation();
         setupView();
     }
 
@@ -180,7 +180,7 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
                     public void call(List<JobInfo> infos) {
                         cannelMyDialog();
                         if (null != infos) {
-                            List<JobInfo.AaDataBean> aaData = infos.get(0).getAaData();
+                            aaData =  infos.get(0).getAaData();
                             totalpage=infos.get(0).getITotalRecords();
                             if (page == 0) {
                                 adapter.setNewData(aaData);
@@ -349,6 +349,7 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
      * 定位监听
      */
     public static String locatioCity;
+    public static String locatioCity2;
     private DecimalFormat df = new DecimalFormat("0.000000");
     private int errorCount;
 
@@ -359,6 +360,7 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
                 latitude = loc.getLatitude();//纬
                 longitude = loc.getLongitude();//经
                 locatioCity = loc.getProvince();
+                locatioCity2 = loc.getCity();
 
                 //转百度
                 double[] doubles = LocationUtils.gaoDeToBaidu(longitude, latitude);
@@ -374,14 +376,14 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
                     Logger.d("loc.getErrorCode() != 0");
                     errorCount++;
                     if (errorCount == 6) {  //30秒后没有授权
-                        locatioCity = "上海市";
+                        locatioCity = "上海";
                         longitude = 121.39474;
                         latitude = 31.164691;
                     }
                 }
             } else {
                 //showToast("定位失败");
-                locatioCity = "上海市";
+                locatioCity = "上海";
                 longitude = 121.39474;
                 latitude = 31.164691;
 
@@ -406,6 +408,7 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
             //TODO 修改城市重新从第一页获取
             page = 0;
             showMyDialog("");
+            aaData.clear();
             getOrdList(type);
         }
     }

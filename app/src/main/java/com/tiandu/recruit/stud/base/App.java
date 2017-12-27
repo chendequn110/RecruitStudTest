@@ -5,9 +5,6 @@ import android.content.res.Resources;
 
 import com.mob.MobSDK;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
-import com.umeng.socialize.PlatformConfig;
-import com.umeng.socialize.UMShareAPI;
-import com.umeng.socialize.common.QueuedWork;
 
 /**
  * 项目名称：RecruitStud
@@ -27,18 +24,18 @@ public class App extends Application {
         SpUtil.init(this);
         MobSDK.init(this,"21b8bf737736e","0fde79dbdd1c144c4a2398b78e6767ec");
 //        Config.DEBUG = true;
-        QueuedWork.isUseThreadPool = false;
-        UMinit();
-        UMShareAPI.get(this);
+//        QueuedWork.isUseThreadPool = false;
+//        UMinit();
+//        UMShareAPI.get(this);
 //        JPushInterface.setDebugMode(false);
 //        JPushInterface.init(this);
 
     }
 
-    private void UMinit() {
-        PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
-        PlatformConfig.setQQZone("1106503324", "xbgdfalMXJmRqi1u");
-    }
+//    private void UMinit() {
+//        PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+//        PlatformConfig.setQQZone("1106503324", "xbgdfalMXJmRqi1u");
+//    }
 
     public static App getAppContext() {
         return mApp;

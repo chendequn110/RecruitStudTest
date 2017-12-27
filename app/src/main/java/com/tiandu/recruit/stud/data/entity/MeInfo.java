@@ -45,8 +45,8 @@ public class MeInfo implements Serializable {
         private String MemberID;
         private String MemberName;
         private String HeadImg;
-        private String BindMobile;
-        private String BindEmail;
+        private String Mobile;
+        private String Email;
         private String BindWechat;
         private String BindQQ;
         private String IDNumber;
@@ -113,20 +113,20 @@ public class MeInfo implements Serializable {
         MemberName = memberName;
     }
 
-    public String getBindMobile() {
-        return BindMobile;
+    public String getMobile() {
+        return Mobile;
     }
 
-    public void setBindMobile(String bindMobile) {
-        BindMobile = bindMobile;
+    public void setMobile(String mobile) {
+        Mobile = mobile;
     }
 
-    public String getBindEmail() {
-        return BindEmail;
+    public String getEmail() {
+        return Email;
     }
 
-    public void setBindEmail(String bindEmail) {
-        BindEmail = bindEmail;
+    public void setEmail(String email) {
+        Email = email;
     }
 
     public String getBindWechat() {

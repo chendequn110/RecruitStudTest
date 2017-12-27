@@ -1,6 +1,8 @@
 package com.tiandu.recruit.stud.mycoach;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.location.LocationManager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +26,9 @@ import com.tiandu.recruit.stud.data.event.LocationEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -241,5 +246,22 @@ public class CityActivity extends BaseActivity {
             locationClient = null;
             locationOption = null;
         }
+    }
+    public static String getJson(Context context, String fileName) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        try {
+            AssetManager e = context.getAssets();
+            BufferedReader bf = new BufferedReader(new InputStreamReader(e.open(fileName)));
+
+            String line;
+            while((line = bf.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+        } catch (IOException var6) {
+            var6.printStackTrace();
+        }
+
+        return stringBuilder.toString();
     }
 }

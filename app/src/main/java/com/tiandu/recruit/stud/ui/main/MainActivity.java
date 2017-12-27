@@ -4,7 +4,6 @@ package com.tiandu.recruit.stud.ui.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
@@ -16,15 +15,18 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.lljjcoder.bean.CityBean;
+import com.lljjcoder.bean.DistrictBean;
+import com.lljjcoder.bean.ProvinceBean;
+import com.lljjcoder.citywheel.CityConfig;
+import com.lljjcoder.citywheel.CityPickerView;
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.base.BaseActivity;
 import com.tiandu.recruit.stud.base.BaseAppManager;
 import com.tiandu.recruit.stud.base.BaseLazyFragment;
-import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.VersionInfo;
 import com.tiandu.recruit.stud.data.event.CityEvent;
 import com.tiandu.recruit.stud.data.event.PhotoEvent;
-import com.tiandu.recruit.stud.mycoach.CityActivity;
 import com.tiandu.recruit.stud.ui.adapter.FragmentAdapter;
 import com.tiandu.recruit.stud.ui.fragment.FeeFragment;
 import com.tiandu.recruit.stud.ui.fragment.HomeFragment;
@@ -33,6 +35,7 @@ import com.tiandu.recruit.stud.ui.fragment.UserFragment;
 import com.tiandu.recruit.stud.view.XViewPager;
 import com.tiandu.recruit.stud.view.tabstrip.HomeNavigateTab;
 import com.tiandu.recruit.stud.view.tabstrip.HomeNavigateTabIndicator;
+import com.zaaach.citypicker.CityPickerActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -64,6 +67,8 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     private String mTitles[] = {"首页", "招聘", "账户", "我的"};
     public static String city="上海";
     private AlertDialog.Builder builder;
+    private static final int REQUEST_CODE_PICK_CITY = 0;
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -97,16 +102,20 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     }
 
     @OnClick({R.id.tvAddress})void addressClick() {
-        Bundle bundle = new Bundle();
-        bundle.putString(C.ADDRESS_CITY,city);
-        readyGo(CityActivity.class,bundle);
+        startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),
+                REQUEST_CODE_PICK_CITY);
+//        startGPS();
+//        Bundle bundle = new Bundle();
+//        bundle.putString(C.ADDRESS_CITY,city);
+//        readyGo(CityActivity.class,bundle);
+
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onLatePlanEvent(CityEvent event) {
         if (null != event.getCity()) {
             city = event.getCity();
         } else {
-            city = "上海市";
+            city = "上海";
         }
         tvAddress.setText(city);
     }
@@ -222,6 +231,13 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK){
+            if (data != null){
+                String city = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
+                EventBus.getDefault().post(new CityEvent(city));
+//                tvAddress.setText(city);
+            }
+        }
         if (resultCode == Activity.RESULT_OK &&
                 (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE)) {
             String photo = null;
@@ -232,5 +248,45 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
                 EventBus.getDefault().post(photoEvent);
             }
         }
+    }
+    private void startGPS(){
+        //详细属性设置，如果不需要自定义样式的话，可以直接使用默认的，去掉下面的属性设置，直接build()即可。
+        CityConfig cityConfig = new CityConfig.Builder(this)
+                .title("选择地区")
+                .confirTextColor("#000000")
+                .cancelTextColor("#000000")
+                .province("直辖市")
+                .city("上海")
+                .district("徐汇区")
+                .visibleItemsCount(7)
+                .provinceCyclic(true)
+                .cityCyclic(true)
+                .districtCyclic(true)
+                .itemPadding(5)
+                .setCityInfoType(CityConfig.CityInfoType.BASE)
+                .setCityWheelType(CityConfig.WheelType.PRO_CITY_DIS)
+                .build();
+
+//配置属性
+        CityPickerView cityPicker = new CityPickerView(cityConfig);
+        cityPicker.show();
+
+//监听方法，获取选择结果
+        cityPicker.setOnCityItemClickListener(new CityPickerView.OnCityItemClickListener() {
+            @Override
+            public void onSelected(ProvinceBean province, CityBean city, DistrictBean district) {
+
+                //ProvinceBean 省份信息
+                //CityBean     城市信息
+                //DistrictBean 区县信息
+                tvAddress.setText(city.getName()+district.getName());
+
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+        });
     }
 }

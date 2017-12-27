@@ -5,7 +5,14 @@
     android:background="@color/windowBackground"
     android:orientation="vertical"
     >
-
+   <!--<TextView-->
+       <!--android:id="@+id/tvSF"-->
+       <!--android:padding="@dimen/size_10dp"-->
+       <!--android:layout_width="match_parent"-->
+       <!--android:layout_height="wrap_content"-->
+       <!--android:text="省份"-->
+       <!--android:textColor="@color/title_text"-->
+       <!--android:background="@color/comm_line"/>-->
    <TextView
        android:id="@+id/tvCity"
        android:text="hahah"
