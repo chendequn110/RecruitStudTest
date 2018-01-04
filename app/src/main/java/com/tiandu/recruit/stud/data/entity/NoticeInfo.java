@@ -64,10 +64,18 @@ public class NoticeInfo implements Serializable {
         private int ID;
         private String Title;
         private String Creator;
-        private String CreateTime;
+        private String PublishDate;
         private String Status;
         private String StatusName;
         private String CoverImg;
+
+        public String getPublishDate() {
+            return PublishDate;
+        }
+
+        public void setPublishDate(String publishDate) {
+            PublishDate = publishDate;
+        }
 
         public String getCoverImg() {
             return CoverImg;
@@ -89,9 +97,6 @@ public class NoticeInfo implements Serializable {
             this.Creator = Creator;
         }
 
-        public void setCreateTime(String CreateTime) {
-            this.CreateTime = CreateTime;
-        }
 
         public void setStatus(String Status) {
             this.Status = Status;
@@ -113,9 +118,7 @@ public class NoticeInfo implements Serializable {
             return Creator;
         }
 
-        public String getCreateTime() {
-            return CreateTime;
-        }
+
 
         public String getStatus() {
             return Status;

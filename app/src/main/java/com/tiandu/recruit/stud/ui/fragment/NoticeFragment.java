@@ -20,7 +20,6 @@ import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.NoticeInfo;
 import com.tiandu.recruit.stud.ui.adapter.NoticeAdpter;
 import com.tiandu.recruit.stud.ui.notice.NoticeDetailActivity;
-import com.tiandu.recruit.stud.view.decoration.DividerItemDecoration;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -70,7 +69,7 @@ public class NoticeFragment extends BaseLazyFragment implements SwipeRefreshLayo
 
     private void setupView() {
         swipeRefresh.setOnRefreshListener(this);
-        recyclerView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL_LIST));
+//        recyclerView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL_LIST));
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter = new NoticeAdpter(context));

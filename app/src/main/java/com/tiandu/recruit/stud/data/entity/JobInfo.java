@@ -71,9 +71,17 @@ public class JobInfo implements Serializable {
         private String MonthPay;
         private String WorkPlace;
         private String Creator;
-        private String CreateTime;
+        private String PublishDate;
         private String Status;
         private String StatusName;
+
+        public String getPublishDate() {
+            return PublishDate;
+        }
+
+        public void setPublishDate(String publishDate) {
+            PublishDate = publishDate;
+        }
 
         public String getAwardAmt() {
             return AwardAmt;
@@ -109,9 +117,6 @@ public class JobInfo implements Serializable {
             this.Creator = Creator;
         }
 
-        public void setCreateTime(String CreateTime) {
-            this.CreateTime = CreateTime;
-        }
 
         public void setStatus(String Status) {
             this.Status = Status;
@@ -145,9 +150,7 @@ public class JobInfo implements Serializable {
             return Creator;
         }
 
-        public String getCreateTime() {
-            return CreateTime;
-        }
+
 
         public String getStatus() {
             return Status;

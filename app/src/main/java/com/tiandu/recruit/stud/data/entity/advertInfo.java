@@ -1,7 +1,6 @@
 package com.tiandu.recruit.stud.data.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 项目名称：RecruitStud
@@ -29,13 +28,21 @@ public class AdvertInfo implements Serializable {
         private double ID;
         private String AdvName;
         private String Summary;
-        private String AdvUrl;
+        private String AdvImg;
         private String ExpiredDate;
         private String OrderNo;
         private String Status;
         private String StatusName;
 
-        public void setID(double ID) {
+    public String getAdvImg() {
+        return AdvImg;
+    }
+
+    public void setAdvImg(String advImg) {
+        AdvImg = advImg;
+    }
+
+    public void setID(double ID) {
             this.ID = ID;
         }
 
@@ -47,9 +54,6 @@ public class AdvertInfo implements Serializable {
             this.Summary = Summary;
         }
 
-        public void setAdvUrl(String AdvUrl) {
-            this.AdvUrl = AdvUrl;
-        }
 
         public void setExpiredDate(String ExpiredDate) {
             this.ExpiredDate = ExpiredDate;
@@ -79,9 +83,6 @@ public class AdvertInfo implements Serializable {
             return Summary;
         }
 
-        public String getAdvUrl() {
-            return AdvUrl;
-        }
 
         public String getExpiredDate() {
             return ExpiredDate;

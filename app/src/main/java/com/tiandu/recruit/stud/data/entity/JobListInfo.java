@@ -1,7 +1,6 @@
 package com.tiandu.recruit.stud.data.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 项目名称：RecruitStud
@@ -28,14 +27,30 @@ public class JobListInfo implements Serializable {
 
     private double ID;
     private String Title;
-    private String ArticleContent;
+    private String Contents;
     private String Creator;
-    private String CreateTime;
+    private String PublishDate;
     private String Status;
     private String StatusName;
     private String CompanyName;
     private String MonthPay;
     private String WorkPlace;
+
+    public String getPublishDate() {
+        return PublishDate;
+    }
+
+    public void setPublishDate(String publishDate) {
+        PublishDate = publishDate;
+    }
+
+    public String getContents() {
+        return Contents;
+    }
+
+    public void setContents(String contents) {
+        Contents = contents;
+    }
 
     public void setID(double ID) {
         this.ID = ID;
@@ -45,17 +60,11 @@ public class JobListInfo implements Serializable {
         this.Title = Title;
     }
 
-    public void setArticleContent(String ArticleContent) {
-        this.ArticleContent = ArticleContent;
-    }
 
     public void setCreator(String Creator) {
         this.Creator = Creator;
     }
 
-    public void setCreateTime(String CreateTime) {
-        this.CreateTime = CreateTime;
-    }
 
     public void setStatus(String Status) {
         this.Status = Status;
@@ -85,17 +94,11 @@ public class JobListInfo implements Serializable {
         return Title;
     }
 
-    public String getArticleContent() {
-        return ArticleContent;
-    }
 
     public String getCreator() {
         return Creator;
     }
 
-    public String getCreateTime() {
-        return CreateTime;
-    }
 
     public String getStatus() {
         return Status;

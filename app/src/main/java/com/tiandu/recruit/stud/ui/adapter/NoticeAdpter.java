@@ -34,8 +34,8 @@ public class NoticeAdpter extends BaseQuickAdapter<NoticeInfo.AaDataBean,BaseVie
 
 
         baseViewHolder.setText(R.id.tvTitle, info.getTitle())
-                .setText(R.id.tvCreator, info.getCreator())
-                .setText(R.id.tvCreateTime, info.getCreateTime());
+//                .setText(R.id.tvCreator, info.getCreator())
+                .setText(R.id.tvCreateTime, info.getPublishDate());
         ImageView ivIcon = baseViewHolder.getView(R.id.ivIcon);
         if (null != info.getCoverImg()) {
             AImageUtil.loadImg(ivIcon, info.getCoverImg(),R.mipmap.ic_notice_default);

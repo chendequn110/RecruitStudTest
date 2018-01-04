@@ -107,6 +107,7 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
         line3.setVisibility(View.INVISIBLE);
         line4.setVisibility(View.INVISIBLE);
         swipeRefresh.setOnRefreshListener(this);
+//        recyclerView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL_LIST));
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter = new JobAdapter());
@@ -134,6 +135,7 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
             }
         });
     }
+
 
 
     @Override
@@ -172,7 +174,7 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
 
     private void getOrdList(String type) {
         Api.getInstance()
-                .movieService.getJobInfo(C.USER_JOBINFO,type,SpUtil.getMemberID(),SpUtil.getToken(),page+"")
+                .movieService.getJobInfo(C.USER_JOBINFO,type,SpUtil.getMemberID(),SpUtil.getToken(),"上海市","","",page+"")
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
                 .subscribe(new Action1<List<JobInfo>>() {
@@ -292,7 +294,7 @@ public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.
                 line2.setVisibility(View.INVISIBLE);
                 line3.setVisibility(View.INVISIBLE);
                 line4.setVisibility(View.VISIBLE);
-                type="3";
+                type="03";
                 swipeRefresh.setRefreshing(true);
                 onRefresh();
                 break;

@@ -75,8 +75,8 @@ public class HomeFragment extends BaseLazyFragment {
                     public void call(List<AdvertInfo> meInfos) {
                         if (null != meInfos) {
                          for (AdvertInfo data :meInfos){
-                             Logger.d(data.getAdvUrl());
-                             onileImages.add(data.getAdvUrl());
+                             Logger.d(data.getAdvImg());
+                             onileImages.add(data.getAdvImg());
                          }
                             //        for (int position = 1; position < 5; position++)
 //            localImages.add(getResId("ic_banner_" + position, R.mipmap.class));
