@@ -63,4 +63,9 @@
 
 
     <color name="text_title">#333333</color>
+
+    <color name="colorPrimary2">#3F51B5</color>
+    <color name="colorPrimaryDark2">#303F9F</color>
+    <color name="colorAccent2">#FF4081</color>
+    <color name="comment_divider">#cccccc</color>
 </resources>

@@ -1,1 +1,1 @@
-include ':app', ':convenientbanner', ':PhotoPicker'
+include ':app', ':convenientbanner', ':PhotoPicker', ':filter-lib'
