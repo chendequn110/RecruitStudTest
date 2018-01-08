@@ -143,6 +143,16 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/notice_detail"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.ProtocolActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/fuwu"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.ProtocolActivity2"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/yins"
+            android:screenOrientation="portrait"/>
         <activity android:name=".mycoach.CityActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="城市选择"

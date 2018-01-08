@@ -33,7 +33,8 @@ public class DropMenuAdapter implements MenuAdapter {
     private final Context mContext;
     private OnFilterDoneListener onFilterDoneListener;
     private String[] titles;
-    private String[] area;
+    private String[] area=new String[]{};
+    private SingleListView<String> singleListView;
 
     public DropMenuAdapter(Context context, String[] titles, OnFilterDoneListener onFilterDoneListener) {
         this.mContext = context;
@@ -89,9 +90,18 @@ public class DropMenuAdapter implements MenuAdapter {
 
         return view;
     }
+    public void setNewData(String[] area2) {
+        ArrayList<String> objects = new ArrayList<>();
+        objects.clear();
+        for (int i = 0; i < area2.length; i++) {
+            objects.add(area2[i]);
+        }
 
+        singleListView.setNewList(objects);
+        return;
+    }
     private View createSingleListView(String[] area) {
-        SingleListView<String> singleListView = new SingleListView<String>(mContext)
+        singleListView = new SingleListView<String>(mContext)
                 .adapter(new SimpleTextAdapter<String>(null, mContext) {
                     @Override
                     public String provideText(String string) {
@@ -122,7 +132,6 @@ public class DropMenuAdapter implements MenuAdapter {
             list.add(area[i]);
         }
         singleListView.setList(list, -1);
-
         return singleListView;
     }
     private View createSingleListView2() {

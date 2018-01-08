@@ -89,6 +89,9 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
     private int page=0;
     private int totalpage = 0;
     private List<JobInfo.AaDataBean> aaData;
+    private DropMenuAdapter cityAdapter;
+    private String districts="";
+    private String Province="";
 
 
     @Override
@@ -102,7 +105,8 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
     private void initFilterDropDownView() {
         String[] titleList = new String[]{"区域", "类别"};
         String[] area =new String[]{"黄浦区","卢湾区","徐汇区","长宁区","静安区","普陀区","闸北区","虹口区","杨浦区","闵行区","宝山区","嘉定区","浦东新区","金山区","松江区","青浦区","南汇区","奉贤区","崇明县"};
-        dropDownMenu.setMenuAdapter(new DropMenuAdapter(getActivity(), titleList, this,area));
+        cityAdapter = new DropMenuAdapter(getActivity(), titleList, this,area);
+        dropDownMenu.setMenuAdapter(cityAdapter);
     }
 
     @Override
@@ -111,7 +115,9 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
             dropDownMenu.setPositionIndicatorText(FilterUrl.instance().position, FilterUrl.instance().positionTitle);
         }
         if(position==0){
-
+            districts=FilterUrl.instance().positionTitle;
+            swipeRefresh.setRefreshing(true);
+            onRefresh();
         }
         if(position==1){
             if(FilterUrl.instance().positionTitle.equals("实习")){
@@ -216,7 +222,7 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
 
     private void getOrdList(String type) {
         Api.getInstance()
-                .movieService.getJobInfo(C.USER_JOBINFO,type,SpUtil.getMemberID(),SpUtil.getToken(),"上海市","","",page+"")
+                .movieService.getJobInfo(C.USER_JOBINFO,type,SpUtil.getMemberID(),SpUtil.getToken(),"",locatioCity,districts,page+"")
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
                 .subscribe(new Action1<List<JobInfo>>() {
@@ -392,7 +398,7 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
     /**
      * 定位监听
      */
-    public static String locatioCity;
+    public static String locatioCity="上海";
     public static String locatioCity2;
     private DecimalFormat df = new DecimalFormat("0.000000");
     private int errorCount;
@@ -449,7 +455,6 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
         if (null != event.getCity()) {
             locatioCity = event.getCity();
             Logger.d("locatioCity>>>" + locatioCity);
-
             String[] titleList = new String[]{"区域", "类别"};
             String[] area=new String[]{};
             if (locatioCity.equals("北京")){
@@ -461,14 +466,16 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
             }else if(locatioCity.equals("重庆")){
                  area =new String[]{"万州区","涪陵区","渝中区","大渡口区","江北区","沙坪坝区","九龙坡区","南岸区","北碚区","万盛区","双桥区","渝北区","巴南区","黔江区","长寿区","江津区","合川区","永川区","南川区","綦江县","潼南县","铜梁县","大足县","荣昌县","璧山县","梁平县","城口县","丰都县","垫江县","武隆县","忠县","开县","云阳县","奉节县","巫山县","巫溪县","石柱土家族自治县","秀山土家族苗族自治县","酉阳土家族苗族自治县","彭水苗族土家族自治县"};
             }
-            dropDownMenu.setMenuAdapter(new DropMenuAdapter(getActivity(), titleList, this,area));
+            cityAdapter.setNewData(area);
             //TODO 修改城市重新从第一页获取
             page = 0;
-            showMyDialog("");
+//            showMyDialog("");
             aaData.clear();
             getOrdList(type);
         }
     }
+
+
 
     private LocationManager lm;
     private void isOpenGPSServise() {

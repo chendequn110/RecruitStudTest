@@ -103,6 +103,46 @@
             android:textColor="@color/white"
             android:textSize="@dimen/font_large" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_20dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cbProtocol"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:checked="false"
+            android:drawableLeft="@drawable/select_check_box_bg"
+            android:text="@string/protocol_hint"
+            android:textColor="@color/load_gray"
+            android:textSize="@dimen/font_mediumer" />
+
+        <TextView
+            android:id="@+id/tvProtocol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/protocol_txt"
+            android:textColor="@color/color_8a8a8a"
+            android:textSize="@dimen/font_mediumer" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="和"
+            android:textColor="@color/load_gray"
+            android:textSize="@dimen/font_mediumer" />
+        <TextView
+            android:id="@+id/tvProtocol2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/protocol_txt2"
+            android:textColor="@color/color_8a8a8a"
+            android:textSize="@dimen/font_mediumer" />
+    </LinearLayout>
 
 
 </LinearLayout>

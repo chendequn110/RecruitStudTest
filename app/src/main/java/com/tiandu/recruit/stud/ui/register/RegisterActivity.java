@@ -2,6 +2,7 @@ package com.tiandu.recruit.stud.ui.register;
 
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.tiandu.recruit.stud.R;
@@ -13,6 +14,8 @@ import com.tiandu.recruit.stud.base.utils.CountDownButtonHelper;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.RegisterInfo;
+import com.tiandu.recruit.stud.ui.ProtocolActivity;
+import com.tiandu.recruit.stud.ui.ProtocolActivity2;
 import com.tiandu.recruit.stud.ui.login.LoginActivity;
 import com.tiandu.recruit.stud.view.ClearEditText;
 
@@ -47,6 +50,8 @@ public class RegisterActivity extends BaseActivity <ResisterPresenter,RegisterMo
     @BindView(R.id.setPasswd)
     ClearEditText setPasswd;
     @BindView(R.id.okPasswd) ClearEditText okPasswd;
+    @BindView(R.id.cbProtocol)
+    CheckBox cbProtocol;
     @BindString(R.string.register_loading) String loading;
     private EventHandler handler;
     private String phone;
@@ -87,6 +92,10 @@ public class RegisterActivity extends BaseActivity <ResisterPresenter,RegisterMo
 
 
     @OnClick(R.id.btnSubmit) void submitClick(){
+        if(!cbProtocol.isChecked()){
+            showToast("请先同意服务协议和隐私政策");
+            return ;
+        }
         String number = etValideCode.getText().toString();
         if (AStringUtil.isEmpty(number)) {
             showToast("验证码不能为空");
@@ -209,5 +218,11 @@ public class RegisterActivity extends BaseActivity <ResisterPresenter,RegisterMo
     private void showMessage(String message) {
         cannelDialog();
         showToast(message);
+    }
+    @OnClick(R.id.tvProtocol) void onClick() {
+        readyGo(ProtocolActivity.class);
+    }
+    @OnClick(R.id.tvProtocol2) void onClick2() {
+        readyGo(ProtocolActivity2.class);
     }
 }

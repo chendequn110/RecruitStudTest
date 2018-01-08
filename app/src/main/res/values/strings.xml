@@ -2,8 +2,9 @@
     <string name="app_name">人人招</string>
     <string name="login">登录</string>
     <string name="find_passwd">忘记密码?</string>
-    <string name="protocol_txt">《人人招》协议</string>
-    <string name="protocol_hint">我已阅读并同意</string>
+    <string name="protocol_txt">服务协议</string>
+    <string name="protocol_txt2">隐私政策</string>
+    <string name="protocol_hint">同意</string>
     <string name="login_user_hit">请输入手机号码</string>
     <string name="input_phone">请输入手机号码</string>
     <string name="input_mail">请输入邮箱</string>
@@ -33,6 +34,8 @@
     <string name="fee_child">分支金额</string>
     <string name="job_detail">招聘详情</string>
     <string name="notice_detail">通知详情</string>
+    <string name="fuwu">服务协议</string>
+    <string name="yins">隐私政策</string>
     <string name="main_me">我的</string>
     <string name="main_trends">账户</string>
     <string name="main_human">招聘</string>
@@ -66,7 +69,7 @@
     <string name="user_info_more">系统设置</string>
     <string name="user_info_attention">会员资料</string>
     <string name="user_info_certification">实名认证</string>
-    <string name="user_info_wall">分享</string>
+    <string name="user_info_wall">发展下级</string>
     <string name="user_info_child">下级会员</string>
     <string name="user_info_contace">评价管理</string>
     <string name="user_info_complaint">投诉</string>

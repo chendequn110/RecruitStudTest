@@ -43,7 +43,7 @@
             android:background="@color/windowBackground"
             android:gravity="center"
             android:padding="@dimen/size_16dp"
-            android:text="上海天都人力资源有限公司"
+            android:text="上海天都人力资源集团有奖招聘平台"
             android:textColor="@color/context_text"
             android:textSize="@dimen/font_normal" />
 
