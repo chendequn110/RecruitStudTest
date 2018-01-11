@@ -23,6 +23,8 @@ import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.MeInfo;
 import com.tiandu.recruit.stud.data.entity.Response;
 import com.tiandu.recruit.stud.data.event.PhotoEvent;
+import com.tiandu.recruit.stud.ui.activity.CooperateActivity;
+import com.tiandu.recruit.stud.ui.activity.MessageActivity;
 import com.tiandu.recruit.stud.ui.login.LoginActivity;
 import com.tiandu.recruit.stud.ui.modify.ModifyPwdActivity;
 import com.tiandu.recruit.stud.ui.userInfo.BindInfoActivity;
@@ -83,7 +85,7 @@ public class UserFragment extends BaseLazyFragment {
 
     }
 
-    @OnClick({R.id.ivAvatar,R.id.tvModifyPwd,R.id.llUserInfo, R.id.llWall,R.id.tvAboutUs,R.id.tvExit,R.id.tvAccountBind,R.id.llAuthentic,R.id.llChildInfo,R.id.tvMore})
+    @OnClick({R.id.ivMsg,R.id.llCooperate,R.id.ivAvatar,R.id.tvModifyPwd,R.id.llUserInfo, R.id.llWall,R.id.tvAboutUs,R.id.tvExit,R.id.tvAccountBind,R.id.llAuthentic,R.id.llChildInfo,R.id.tvMore})
     void OnSelectedClick(View view) {
         switch (view.getId()) {
             case R.id.tvModifyPwd:
@@ -117,6 +119,12 @@ public class UserFragment extends BaseLazyFragment {
                 break;
             case R.id.llWall:
                 readyGo(ShareActivity.class);
+                break;
+            case R.id.llCooperate:
+                readyGo(CooperateActivity.class);
+                break;
+            case R.id.ivMsg:
+                readyGo(MessageActivity.class);
                 break;
         }
     }

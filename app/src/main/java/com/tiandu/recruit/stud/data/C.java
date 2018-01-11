@@ -57,6 +57,7 @@ public class C {
     public static final String USER_APPDOWNLOAD="AppDownload";
     public static final String USER_ADVERT="GetAdv";
     public static final String USER_HEADIMAGE="UpdateMemberHeadImage";
+    public static final String USER_GETMESSAGE="MessageList";
 
 
 

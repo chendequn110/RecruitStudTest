@@ -33,9 +33,12 @@
     <string name="user_bindphone">绑定手机</string>
     <string name="fee_child">分支金额</string>
     <string name="job_detail">招聘详情</string>
+    <string name="cooperate_detail">我要合作</string>
     <string name="notice_detail">通知详情</string>
     <string name="fuwu">服务协议</string>
     <string name="yins">隐私政策</string>
+    <string name="message">消息</string>
+    <string name="message_detail">消息详情</string>
     <string name="main_me">我的</string>
     <string name="main_trends">账户</string>
     <string name="main_human">招聘</string>
@@ -71,6 +74,7 @@
     <string name="user_info_certification">实名认证</string>
     <string name="user_info_wall">发展下级</string>
     <string name="user_info_child">下级会员</string>
+    <string name="user_info_cooperate">我要合作(反馈)</string>
     <string name="user_info_contace">评价管理</string>
     <string name="user_info_complaint">投诉</string>
     <string name="user_about_us">关于我们</string>

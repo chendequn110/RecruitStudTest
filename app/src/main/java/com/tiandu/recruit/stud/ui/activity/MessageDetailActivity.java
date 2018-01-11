@@ -1,4 +1,4 @@
-package com.tiandu.recruit.stud.ui.notice;
+package com.tiandu.recruit.stud.ui.activity;
 
 import android.os.Bundle;
 import android.webkit.WebView;
@@ -7,6 +7,7 @@ import android.webkit.WebViewClient;
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.api.Api;
 import com.tiandu.recruit.stud.base.BaseActivity;
+import com.tiandu.recruit.stud.base.utils.Logger;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 
 import butterknife.BindView;
@@ -20,9 +21,9 @@ import butterknife.BindView;
  * 修改时间：2017/11/10 14:24
  * 修改备注：
  */
-public class NoticeDetailActivity extends BaseActivity {
-    @BindView(R.id.wv_notice)
-    WebView wv_notice;
+public class MessageDetailActivity extends BaseActivity {
+    @BindView(R.id.wv_job)
+    WebView wv_job;
     private int id;
 
     @Override
@@ -32,7 +33,7 @@ public class NoticeDetailActivity extends BaseActivity {
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.activity_noticedetail;
+        return R.layout.activity_jobdetail;
     }
 
     @Override
@@ -42,27 +43,28 @@ public class NoticeDetailActivity extends BaseActivity {
         getInitnetData();
     }
     private void getInitnetData() {
-        wv_notice.getSettings().setJavaScriptEnabled(true);
-        wv_notice.getSettings().setAllowFileAccess(true);
+        wv_job.getSettings().setJavaScriptEnabled(true);
+        wv_job.getSettings().setAllowFileAccess(true);
         //加载HTML字符串进行显示
-        if(wv_notice!=null){
-            wv_notice.loadUrl(Api.API_DEV_URL+"/NoticesView?MemberID="+SpUtil.getMemberID()+"&ID="+id);
-            wv_notice.setWebViewClient(new webViewClient ());
-        }
+                        if(wv_job!=null){
+                            Logger.d(Api.API_DEV_URL+"/MessageView?MemberID="+ SpUtil.getMemberID()+"&Token="+SpUtil.getToken()+"&ID="+id);
+                            wv_job.loadUrl(Api.API_DEV_URL+"/MessageView?MemberID="+ SpUtil.getMemberID()+"&Token="+SpUtil.getToken()+"&ID="+id);
+                            wv_job.setWebViewClient(new webViewClient ());
+                        }
 //        showloginDialog("");
 //        Api.getInstance()
-//                .movieService.getNoticeListInfo(C.USER_NOTICELIST,id,SpUtil.getMemberID(), SpUtil.getToken())
+//                .movieService.getJobListInfo(C.USER_JOBLISTINFO,id,SpUtil.getMemberID(), SpUtil.getToken())
 //                .compose(RxSchedulers.io_main())
 //                .compose(RxSchedulers.sTransformer())
-//                .subscribe(new Action1<List<NoticeListInfo>>() {
+//                .subscribe(new Action1<List<JobListInfo>>() {
 //                    @Override
-//                    public void call(List<NoticeListInfo> Infos) {
+//                    public void call(List<JobListInfo> Infos) {
 //                        cannelDialog();
-//                        wv_notice.getSettings().setJavaScriptEnabled(true);
+//                        wv_job.getSettings().setJavaScriptEnabled(true);
 //                        //加载HTML字符串进行显示
-//                        if(wv_notice!=null){
-//                            wv_notice.loadDataWithBaseURL(null,Infos.get(0).getArticleContent(),"text/html", "utf-8",null);
-//                            wv_notice.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+//                        if(wv_job!=null){
+//                            wv_job.loadDataWithBaseURL(null,Infos.get(0).getArticleContent(),"text/html", "utf-8",null);
+//                            wv_job.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 //                        }
 //
 //                    }

@@ -74,6 +74,42 @@ public class JobInfo implements Serializable {
         private String PublishDate;
         private String Status;
         private String StatusName;
+        private String IsApply;
+        private String IsTop;
+        private String City;
+        private String District;
+
+        public String getCity() {
+            return City;
+        }
+
+        public void setCity(String city) {
+            City = city;
+        }
+
+        public String getDistrict() {
+            return District;
+        }
+
+        public void setDistrict(String district) {
+            District = district;
+        }
+
+        public String getIsApply() {
+            return IsApply;
+        }
+
+        public void setIsApply(String isApply) {
+            IsApply = isApply;
+        }
+
+        public String getIsTop() {
+            return IsTop;
+        }
+
+        public void setIsTop(String isTop) {
+            IsTop = isTop;
+        }
 
         public String getPublishDate() {
             return PublishDate;

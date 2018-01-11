@@ -8,6 +8,7 @@ import com.tiandu.recruit.stud.data.entity.JobInfo;
 import com.tiandu.recruit.stud.data.entity.JobListInfo;
 import com.tiandu.recruit.stud.data.entity.MeInfo;
 import com.tiandu.recruit.stud.data.entity.MemberFeeInfo;
+import com.tiandu.recruit.stud.data.entity.MessageInfo;
 import com.tiandu.recruit.stud.data.entity.NoticeInfo;
 import com.tiandu.recruit.stud.data.entity.NoticeListInfo;
 import com.tiandu.recruit.stud.data.entity.RegisterInfo;
@@ -225,5 +226,13 @@ public interface ApiService {
     @POST("{value}")
     Observable<Response> updateHeadImage(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token,@Part MultipartBody.Part part);
 
+    /**
+     * 获取消息
+     *
+     * @param url
+     * @return Response
+     */
+    @GET("{value}")
+    Observable<Response<List<MessageInfo>>> getMessageInfo(@Path("value") String url, @Query("MemberID") String MemberID, @Query("Token") String Token, @Query("iPage") String iPage);
 }
 

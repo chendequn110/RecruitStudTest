@@ -86,9 +86,8 @@ public class SettingActivity extends BaseActivity {
                         builder.setPositiveButton("立即更新", (dialog13, which) -> {
                             dialog13.dismiss();
                             VersionManager versionManager = new VersionManager(this);
-                            Logger.d("http://advertise.shanghaiiot.org/MobileAPI/AppDownload?MemberID=" + SpUtil.getMemberID() + "&VersionNo=" + version + "&Token=" + SpUtil.getToken() + "");
 
-                            versionManager.downLoadApk("http://advertise.shanghaiiot.org/MobileAPI/AppDownload?MemberID=" + SpUtil.getMemberID() + "&VersionNo=" + version + "&Token=" + SpUtil.getToken() + "");
+                            versionManager.downLoadApk(Api.API_DEV_URL+"/AppDownload?MemberID=" + SpUtil.getMemberID() + "&VersionNo=" + version + "&Token=" + SpUtil.getToken() + "");
 //                            versionManager.downLoadApk("http://openbox.mobilem.360.cn/index/d/sid/3585242");
                         });
                         builder.setNegativeButton("放弃", (dialog12, which) -> {

@@ -5,6 +5,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.tiandu.recruit.stud.R;
+import com.tiandu.recruit.stud.api.Api;
 import com.tiandu.recruit.stud.base.BaseActivity;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 
@@ -45,7 +46,7 @@ public class JobDetailActivity extends BaseActivity {
         wv_job.getSettings().setAllowFileAccess(true);
         //加载HTML字符串进行显示
                         if(wv_job!=null){
-                            wv_job.loadUrl("http://advertise.shanghaiiot.org/MobileAPI/JobsView?MemberID="+ SpUtil.getMemberID()+"&Token="+SpUtil.getToken()+"&ID="+id);
+                            wv_job.loadUrl(Api.API_DEV_URL+"/JobsView?MemberID="+ SpUtil.getMemberID()+"&Token="+SpUtil.getToken()+"&ID="+id);
                             wv_job.setWebViewClient(new webViewClient ());
                         }
 //        showloginDialog("");

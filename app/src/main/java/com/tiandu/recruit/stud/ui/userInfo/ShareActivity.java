@@ -48,7 +48,7 @@ public class ShareActivity extends BaseActivity {
 
     @Override
     protected void initPresenter() {
-        Bitmap qrBitmap = generateBitmap("http://advertise.shanghaiiot.org/MemberReg/MemberReg?ParentID="+ SpUtil.getMemberID(),400, 400);
+        Bitmap qrBitmap = generateBitmap("http://www.tdhr-rpo.com/MemberReg/MemberReg?ParentID="+ SpUtil.getMemberID(),400, 400);
         im_qrcode.setImageBitmap(qrBitmap);
 
     }
@@ -90,7 +90,7 @@ public class ShareActivity extends BaseActivity {
         // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间等使用
         oks.setTitle("人人招会员注册");
 
-        String url = "http://advertise.shanghaiiot.org/MemberReg/MemberReg?ParentID="+ SpUtil.getMemberID();
+        String url = "http://www.tdhr-rpo.com/MemberReg/MemberReg?ParentID="+ SpUtil.getMemberID();
         // titleUrl是标题的网络链接，QQ和QQ空间等使用
         oks.setTitleUrl(url);
 

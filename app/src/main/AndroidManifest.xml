@@ -139,6 +139,11 @@
             android:label="@string/job_detail"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".ui.activity.CooperateActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/cooperate_detail"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".ui.notice.NoticeDetailActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/notice_detail"
@@ -152,6 +157,16 @@
             android:name=".ui.ProtocolActivity2"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/yins"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.MessageActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/message"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.MessageDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/message_detail"
             android:screenOrientation="portrait"/>
         <activity android:name=".mycoach.CityActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

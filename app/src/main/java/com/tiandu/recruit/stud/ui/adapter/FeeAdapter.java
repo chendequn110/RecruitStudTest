@@ -17,7 +17,7 @@ import com.tiandu.recruit.stud.data.entity.MemberFeeInfo;
 public class FeeAdapter  extends BaseQuickAdapter<MemberFeeInfo.AaDataBean,BaseViewHolder> {
 
     public FeeAdapter() {
-        super(R.layout.item_fee_appoint_viwe, null);
+        super(R.layout.view_main_header, null);
     }
 
     @Override
@@ -26,11 +26,13 @@ public class FeeAdapter  extends BaseQuickAdapter<MemberFeeInfo.AaDataBean,BaseV
 
 
 
-        baseViewHolder.setText(R.id.tvTotalFee,"总金额:" +info.getTotalFee())
-                .setText(R.id.tvParentFee,"上交金额:"+info.getParentFee())
+        baseViewHolder.setText(R.id.tvTotalFee,"￥" +info.getTakeFee())
+                .setText(R.id.tvParentFee,"￥"+info.getChildFee())
                 .setText(R.id.tvArrangeTime,info.getStartDate())
-                .setText(R.id.tvTakeFee,"劳务费:"+info.getTakeFee())
-                .setText(R.id.tvChildFee,"分支金额:"+info.getChildFee());
+                .setText(R.id.tvTakeFee,"￥"+info.getSelfFee())
+                .setText(R.id.tv_month,info.getStartDate().substring(5,7))
+                .setText(R.id.tvChildFee,"￥"+info.getChildFee());
+
 //                .addOnClickListener(R.id.btnXiajia);
     }
 }

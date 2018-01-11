@@ -1,5 +1,8 @@
 package com.tiandu.recruit.stud.ui.adapter;
 
+import android.graphics.Color;
+import android.widget.TextView;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.tiandu.recruit.stud.R;
@@ -27,12 +30,40 @@ public class JobAdapter extends BaseQuickAdapter<JobInfo.AaDataBean,BaseViewHold
 
 
         baseViewHolder.setText(R.id.tvTitle, info.getTitle())
-                .setText(R.id.tvWorkPlace,info.getWorkPlace())
-                .setText(R.id.tvMonthPay,info.getMonthPay())
+//                .setText(R.id.tvWorkPlace,info.getWorkPlace())
+                .setText(R.id.tvMonthPay,"月薪:"+info.getMonthPay())
                 .setText(R.id.tvCompanyName,info.getCompanyName())
                 .setText(R.id.tvCreateTime,info.getPublishDate())
-                .setText(R.id.tvAwardAmt,"推荐奖金:"+info.getAwardAmt());
+                .setText(R.id.tvAwardAmt,"推荐奖金:"+info.getAwardAmt())
+            .setText(R.id.tvWorkPlace,info.getCity()+"  "+info.getDistrict());
 
+
+        TextView tv_isTop = baseViewHolder.getView(R.id.tv_isTop);
+        TextView tv_apply = baseViewHolder.getView(R.id.tv_apply);
+        if((info.getIsTop()!=null)){
+            if(info.getIsTop().equals("是")){
+                tv_isTop.setText("置顶");
+            }else{
+                tv_isTop.setText("");
+            }
+        }else{
+            tv_isTop.setText("");
+        }
+
+        if(info.getIsApply()!=null){
+            if(info.getIsApply().equals("1")){
+                tv_apply.setText("已应聘");
+            }else{
+                tv_apply.setText("未应聘");
+                tv_apply.setTextColor(Color.RED);
+            }
+        }else{
+            tv_apply.setText("");
+        }
+
+
+//                .setText(R.id.tv_isTop,if(info.getIsTop().equals("是"))
+//                .setText(R.id.tv_apply,info.getAwardAmt());
 //                .setText(R.id.tvStatusName,info.getStatusName())
 //                .addOnClickListener(R.id.btnMeg);
 
