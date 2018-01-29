@@ -6,6 +6,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
@@ -14,6 +15,7 @@ import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.api.Api;
 import com.tiandu.recruit.stud.api.exception.MessageFactory;
 import com.tiandu.recruit.stud.base.BaseLazyFragment;
+import com.tiandu.recruit.stud.base.utils.Logger;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
@@ -44,6 +46,8 @@ public class FeeFragment extends BaseLazyFragment implements SwipeRefreshLayout.
     RecyclerView recyclerView;
     @BindView(R.id.swipeRefresh)
     SwipeRefreshLayout swipeRefresh;
+    @BindView(R.id.tv_totalAmount)
+    TextView tv_totalAmount;
 
 
     private FeeAdapter adapter = null;
@@ -142,6 +146,8 @@ public class FeeFragment extends BaseLazyFragment implements SwipeRefreshLayout.
                         if (null != orderInfos) {
                             List<MemberFeeInfo.AaDataBean> aaData = orderInfos.get(0).getAaData();
                             totalpage=orderInfos.get(0).getITotalRecords();
+                            Logger.d(orderInfos.get(0).getdRemark()+"");
+                            tv_totalAmount.setText("¥ "+orderInfos.get(0).getdRemark()+"");
                             if (page == 0) {
                                 adapter.setNewData(aaData);
                             } else {
@@ -227,7 +233,7 @@ public class FeeFragment extends BaseLazyFragment implements SwipeRefreshLayout.
 
     @Override
     protected int getLayoutRes() {
-        return R.layout.fragment_fee;
+        return R.layout.fragment_fee2;
     }
 
     @Override

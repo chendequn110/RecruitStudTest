@@ -21,7 +21,7 @@ public class ProtocolActivity extends BaseActivity {
         cannelDialog();
         WebSettings wSet = webView.getSettings();
         wSet.setJavaScriptEnabled(true);
-        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl("http://www.tdhr-rpo.com/"+"MemberReg/ServiceAgreement");
     }
 
     @Override

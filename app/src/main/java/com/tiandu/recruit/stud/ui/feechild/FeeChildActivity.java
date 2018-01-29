@@ -160,6 +160,8 @@ public class FeeChildActivity extends BaseActivity  implements SwipeRefreshLayou
     }
     @Override
     public void onRefresh() {
+        page = 0;
+        adapter.setEnableLoadMore(false);
         Observable.timer(1, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
                 .subscribe(aLong -> {
                     getInitnetData();

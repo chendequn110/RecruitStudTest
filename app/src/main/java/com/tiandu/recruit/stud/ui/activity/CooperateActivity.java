@@ -6,6 +6,7 @@ import android.webkit.WebViewClient;
 import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.api.Api;
 import com.tiandu.recruit.stud.base.BaseActivity;
+import com.tiandu.recruit.stud.base.utils.Logger;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 
 import butterknife.BindView;
@@ -22,7 +23,6 @@ import butterknife.BindView;
 public class CooperateActivity extends BaseActivity {
     @BindView(R.id.wv_job)
     WebView wv_job;
-    private int id;
 
     @Override
     protected void initView() {
@@ -43,30 +43,10 @@ public class CooperateActivity extends BaseActivity {
         wv_job.getSettings().setAllowFileAccess(true);
         //加载HTML字符串进行显示
                         if(wv_job!=null){
-                            wv_job.loadUrl(Api.API_DEV_URL+"/FeedbackDetail?MemberID="+ SpUtil.getMemberID()+"&Token="+SpUtil.getToken());
+                            Logger.d(Api.API_DEV_URL+"FeedbackDetail?MemberID="+ SpUtil.getMemberID()+"&Token="+SpUtil.getToken());
                             wv_job.setWebViewClient(new webViewClient ());
                         }
-//        showloginDialog("");
-//        Api.getInstance()
-//                .movieService.getJobListInfo(C.USER_JOBLISTINFO,id,SpUtil.getMemberID(), SpUtil.getToken())
-//                .compose(RxSchedulers.io_main())
-//                .compose(RxSchedulers.sTransformer())
-//                .subscribe(new Action1<List<JobListInfo>>() {
-//                    @Override
-//                    public void call(List<JobListInfo> Infos) {
-//                        cannelDialog();
-//                        wv_job.getSettings().setJavaScriptEnabled(true);
-//                        //加载HTML字符串进行显示
-//                        if(wv_job!=null){
-//                            wv_job.loadDataWithBaseURL(null,Infos.get(0).getArticleContent(),"text/html", "utf-8",null);
-//                            wv_job.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-//                        }
-//
-//                    }
-//                }, e -> {
-//                    cannelDialog();
-//                    showMessage(MessageFactory.getMessage(e));
-//                });
+        wv_job.loadUrl(Api.API_DEV_URL+"FeedbackDetail?MemberID="+ SpUtil.getMemberID()+"&Token="+SpUtil.getToken());
     }
 
     @Override

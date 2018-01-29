@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     private int position = 0;
     private FragmentAdapter adapter = null;
     private List<BaseLazyFragment> mFragments = new ArrayList<>();
-    private String mTitles[] = {"首页", "招聘", "账户", "我的"};
+    private String mTitles[] = {"首页", "招聘", "本人账户", "我的"};
     public static String city="上海";
     private AlertDialog.Builder builder;
     private static final int REQUEST_CODE_PICK_CITY = 0;

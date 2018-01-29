@@ -1,6 +1,7 @@
 package com.tiandu.recruit.stud.ui.notice;
 
 import android.os.Bundle;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -49,27 +50,6 @@ public class NoticeDetailActivity extends BaseActivity {
             wv_notice.loadUrl(Api.API_DEV_URL+"/NoticesView?MemberID="+SpUtil.getMemberID()+"&ID="+id);
             wv_notice.setWebViewClient(new webViewClient ());
         }
-//        showloginDialog("");
-//        Api.getInstance()
-//                .movieService.getNoticeListInfo(C.USER_NOTICELIST,id,SpUtil.getMemberID(), SpUtil.getToken())
-//                .compose(RxSchedulers.io_main())
-//                .compose(RxSchedulers.sTransformer())
-//                .subscribe(new Action1<List<NoticeListInfo>>() {
-//                    @Override
-//                    public void call(List<NoticeListInfo> Infos) {
-//                        cannelDialog();
-//                        wv_notice.getSettings().setJavaScriptEnabled(true);
-//                        //加载HTML字符串进行显示
-//                        if(wv_notice!=null){
-//                            wv_notice.loadDataWithBaseURL(null,Infos.get(0).getArticleContent(),"text/html", "utf-8",null);
-//                            wv_notice.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-//                        }
-//
-//                    }
-//                }, e -> {
-//                    cannelDialog();
-//                    showMessage(MessageFactory.getMessage(e));
-//                });
     }
 
     @Override

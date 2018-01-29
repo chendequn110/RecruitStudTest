@@ -16,6 +16,16 @@ public class MemberFeeInfo implements Serializable {
 
     private int iTotalDisplayRecords;
     private int iTotalRecords;
+    private double dRemark;
+
+    public double getdRemark() {
+        return dRemark;
+    }
+
+    public void setdRemark(double dRemark) {
+        this.dRemark = dRemark;
+    }
+
     private List<AaDataBean> aaData;
 
     public int getITotalDisplayRecords() {

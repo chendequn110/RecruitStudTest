@@ -5,7 +5,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.tiandu.recruit.stud.R;
-import com.tiandu.recruit.stud.api.Api;
 import com.tiandu.recruit.stud.base.BaseActivity;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 
@@ -45,31 +44,11 @@ public class JobDetailActivity extends BaseActivity {
         wv_job.getSettings().setJavaScriptEnabled(true);
         wv_job.getSettings().setAllowFileAccess(true);
         //加载HTML字符串进行显示
-                        if(wv_job!=null){
-                            wv_job.loadUrl(Api.API_DEV_URL+"/JobsView?MemberID="+ SpUtil.getMemberID()+"&Token="+SpUtil.getToken()+"&ID="+id);
-                            wv_job.setWebViewClient(new webViewClient ());
-                        }
-//        showloginDialog("");
-//        Api.getInstance()
-//                .movieService.getJobListInfo(C.USER_JOBLISTINFO,id,SpUtil.getMemberID(), SpUtil.getToken())
-//                .compose(RxSchedulers.io_main())
-//                .compose(RxSchedulers.sTransformer())
-//                .subscribe(new Action1<List<JobListInfo>>() {
-//                    @Override
-//                    public void call(List<JobListInfo> Infos) {
-//                        cannelDialog();
-//                        wv_job.getSettings().setJavaScriptEnabled(true);
-//                        //加载HTML字符串进行显示
-//                        if(wv_job!=null){
-//                            wv_job.loadDataWithBaseURL(null,Infos.get(0).getArticleContent(),"text/html", "utf-8",null);
-//                            wv_job.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-//                        }
-//
-//                    }
-//                }, e -> {
-//                    cannelDialog();
-//                    showMessage(MessageFactory.getMessage(e));
-//                });
+        if(wv_job!=null){
+            //wv_job.loadUrl("http://advertise.shanghaiiot.org/MobileAPI/JobsView?MemberID="+ SpUtil.getMemberID()+"&Token="+SpUtil.getToken()+"&ID="+id);
+            wv_job.setWebViewClient(new webViewClient ());
+        }
+        wv_job.loadUrl("http://www.tdhr-rpo.com/MobileAPI/JobsView?MemberID="+ SpUtil.getMemberID()+"&Token="+SpUtil.getToken()+"&ID="+id);
     }
 
     @Override

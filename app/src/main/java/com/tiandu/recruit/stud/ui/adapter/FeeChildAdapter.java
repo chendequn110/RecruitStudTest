@@ -25,11 +25,11 @@ public class FeeChildAdapter extends BaseQuickAdapter<FeeChildInfo.AaDataBean, B
 
 
 
-        baseViewHolder.setText(R.id.tvMemberID, "会员编号:" + info.getMemberID())
-                .setText(R.id.tvMemberName, "昵称:" + info.getMemberName())
+        baseViewHolder.setText(R.id.tvMemberID,  info.getMemberID())
+                .setText(R.id.tvMemberName, info.getMemberName())
                 .setText(R.id.tvStartDate, info.getStartDate())
-                .setText(R.id.tvRealName, "真实姓名:" + info.getRealName())
-                .setText(R.id.tvParentFee, "上交金额:" + info.getParentFee());
+                .setText(R.id.tvRealName,  info.getRealName())
+                .setText(R.id.tvParentFee, "¥"+info.getParentFee());
 //                .addOnClickListener(R.id.btnXiajia);
 
     }

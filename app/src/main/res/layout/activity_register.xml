@@ -116,7 +116,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:button="@null"
-            android:checked="false"
+            android:checked="true"
             android:drawableLeft="@drawable/select_check_box_bg"
             android:text="@string/protocol_hint"
             android:textColor="@color/load_gray"

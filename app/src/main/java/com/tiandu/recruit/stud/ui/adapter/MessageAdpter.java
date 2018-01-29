@@ -32,7 +32,6 @@ public class MessageAdpter extends BaseQuickAdapter<MessageInfo.AaDataBean,BaseV
 
 
         baseViewHolder.setText(R.id.tvTitle, info.getTitle())
-                .setText(R.id.tvArth, info.getCreator())
                 .setText(R.id.tvCreateTime, info.getPublishDate());
     }
 

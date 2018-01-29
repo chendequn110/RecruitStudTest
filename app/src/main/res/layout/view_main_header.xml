@@ -140,7 +140,7 @@
                         android:textColor="@color/darker_grey"
                         android:textSize="@dimen/font_medium"/>
                     <View
-                        android:layout_marginTop="@dimen/size_5dp"
+                        android:layout_marginTop="@dimen/size_10dp"
                         android:layout_below="@+id/tvTotalFee"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -176,7 +176,7 @@
                         android:textColor="@color/darker_grey"
                         android:textSize="@dimen/font_medium"/>
                     <View
-                        android:layout_marginTop="@dimen/size_5dp"
+                        android:layout_marginTop="@dimen/size_10dp"
                         android:layout_below="@+id/tvParentFee"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -212,7 +212,7 @@
                         android:textColor="@color/darker_grey"
                         android:textSize="@dimen/font_medium"/>
                     <View
-                        android:layout_marginTop="@dimen/size_5dp"
+                        android:layout_marginTop="@dimen/size_10dp"
                         android:layout_below="@+id/tvTakeFee"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -262,6 +262,6 @@
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="5dp"
+        android:layout_height="10dp"
         android:background="@color/comm_line" />
 </LinearLayout>

@@ -26,12 +26,12 @@ public class FeeAdapter  extends BaseQuickAdapter<MemberFeeInfo.AaDataBean,BaseV
 
 
 
-        baseViewHolder.setText(R.id.tvTotalFee,"￥" +info.getTakeFee())
-                .setText(R.id.tvParentFee,"￥"+info.getChildFee())
+        baseViewHolder.setText(R.id.tvTotalFee,"¥" +info.getTakeFee())
+                .setText(R.id.tvParentFee,"¥"+info.getChildFee())
                 .setText(R.id.tvArrangeTime,info.getStartDate())
-                .setText(R.id.tvTakeFee,"￥"+info.getSelfFee())
+                .setText(R.id.tvTakeFee,"¥"+info.getSelfFee())
                 .setText(R.id.tv_month,info.getStartDate().substring(5,7))
-                .setText(R.id.tvChildFee,"￥"+info.getChildFee());
+                .setText(R.id.tvChildFee,"¥"+info.getChildFee());
 
 //                .addOnClickListener(R.id.btnXiajia);
     }

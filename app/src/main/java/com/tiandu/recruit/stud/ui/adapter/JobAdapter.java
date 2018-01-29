@@ -1,6 +1,6 @@
 package com.tiandu.recruit.stud.ui.adapter;
 
-import android.graphics.Color;
+import android.view.View;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -44,10 +44,10 @@ public class JobAdapter extends BaseQuickAdapter<JobInfo.AaDataBean,BaseViewHold
             if(info.getIsTop().equals("是")){
                 tv_isTop.setText("置顶");
             }else{
-                tv_isTop.setText("");
+                tv_isTop.setVisibility(View.INVISIBLE);
             }
         }else{
-            tv_isTop.setText("");
+            tv_isTop.setVisibility(View.INVISIBLE);
         }
 
         if(info.getIsApply()!=null){
@@ -55,7 +55,6 @@ public class JobAdapter extends BaseQuickAdapter<JobInfo.AaDataBean,BaseViewHold
                 tv_apply.setText("已应聘");
             }else{
                 tv_apply.setText("未应聘");
-                tv_apply.setTextColor(Color.RED);
             }
         }else{
             tv_apply.setText("");

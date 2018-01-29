@@ -32,9 +32,8 @@ public class ChildMemberAdapter extends BaseQuickAdapter<ChildMenberInfo, BaseVi
 
 
 
-        baseViewHolder.setText(R.id.tvMemberID, "会员编号:" + info.getMemberID())
-                .setText(R.id.tvMemberName, "昵称:" + info.getMemberName())
-                .setText(R.id.tvRealName, "真实姓名:" + info.getRealName())
-                .setText(R.id.tvStatus, "会员状态:" + info.getStatusName());
+        baseViewHolder.setText(R.id.tvMemberID,  info.getMemberID())
+                .setText(R.id.tvMemberName, info.getMemberName())
+                .setText(R.id.tvRealName,  info.getRealName());
     }
 }
