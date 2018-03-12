@@ -144,6 +144,11 @@
             android:label="@string/cooperate_detail"
             android:screenOrientation="portrait"/>
         <activity
+            android:name=".ui.activity.MyResumeActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/resume_detail"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".ui.notice.NoticeDetailActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/notice_detail"
@@ -167,6 +172,16 @@
             android:name=".ui.activity.MessageDetailActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/message_detail"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.AboutUSActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/setting_aboutus"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activity.MyJobActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/myjob"
             android:screenOrientation="portrait"/>
         <activity android:name=".mycoach.CityActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

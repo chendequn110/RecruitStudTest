@@ -69,6 +69,17 @@ public class ChildMenberInfo implements Serializable {
         private String Status;
         private String StatusName;
 
+    public String getChildMemberNum() {
+        return ChildMemberNum;
+    }
+
+    public void setChildMemberNum(String childMemberNum) {
+        ChildMemberNum = childMemberNum;
+    }
+
+    private String ChildMemberNum
+                ;
+
         public void setID(double ID) {
             this.ID = ID;
         }

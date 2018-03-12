@@ -25,6 +25,8 @@ import com.tiandu.recruit.stud.data.entity.Response;
 import com.tiandu.recruit.stud.data.event.PhotoEvent;
 import com.tiandu.recruit.stud.ui.activity.CooperateActivity;
 import com.tiandu.recruit.stud.ui.activity.MessageActivity;
+import com.tiandu.recruit.stud.ui.activity.MyJobActivity;
+import com.tiandu.recruit.stud.ui.activity.MyResumeActivity;
 import com.tiandu.recruit.stud.ui.login.LoginActivity;
 import com.tiandu.recruit.stud.ui.modify.ModifyPwdActivity;
 import com.tiandu.recruit.stud.ui.userInfo.BindInfoActivity;
@@ -85,7 +87,8 @@ public class UserFragment extends BaseLazyFragment {
 
     }
 
-    @OnClick({R.id.ivMsg,R.id.llCooperate,R.id.ivAvatar,R.id.tvModifyPwd,R.id.llUserInfo, R.id.llWall,R.id.tvAboutUs,R.id.tvExit,R.id.tvAccountBind,R.id.llAuthentic,R.id.llChildInfo,R.id.tvMore})
+    @OnClick({R.id.llMyrResume,R.id.ivMsg,R.id.llCooperate,R.id.ivAvatar,R.id.tvModifyPwd,R.id.llUserInfo, R.id.llWall,R.id.tvAboutUs,R.id.tvExit,R.id.tvAccountBind,R.id.llAuthentic,R.id.llChildInfo,R.id.tvMore,
+            R.id.llMyjob})
     void OnSelectedClick(View view) {
         switch (view.getId()) {
             case R.id.tvModifyPwd:
@@ -126,6 +129,12 @@ public class UserFragment extends BaseLazyFragment {
             case R.id.ivMsg:
                 readyGo(MessageActivity.class);
                 break;
+            case R.id.llMyrResume:
+                readyGo(MyResumeActivity.class);
+                break;
+            case R.id.llMyjob:
+                readyGo(MyJobActivity.class);
+                break;
         }
     }
 
@@ -159,6 +168,7 @@ public class UserFragment extends BaseLazyFragment {
         if (view.getVisibility() == View.VISIBLE) {
             view.setVisibility(View.GONE);
         }
+        initUserInfo();
         AImageUtil.loadCircleImg2(ivAvatar,SpUtil.getHeadImage());
 //        showHeadImage(SpUtil.getHeadImage());
     }

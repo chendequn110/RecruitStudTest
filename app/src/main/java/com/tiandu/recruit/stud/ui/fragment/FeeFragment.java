@@ -20,8 +20,12 @@ import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.MemberFeeInfo;
+import com.tiandu.recruit.stud.data.event.ErrorEvent;
 import com.tiandu.recruit.stud.ui.adapter.FeeAdapter;
 import com.tiandu.recruit.stud.ui.feechild.FeeChildActivity;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -48,14 +52,23 @@ public class FeeFragment extends BaseLazyFragment implements SwipeRefreshLayout.
     SwipeRefreshLayout swipeRefresh;
     @BindView(R.id.tv_totalAmount)
     TextView tv_totalAmount;
-
+    @BindView(R.id.fee_error)
+    TextView fee_error;
 
     private FeeAdapter adapter = null;
 //    private LinearLayout llMoreFoor;
     private int page=0;
     private int totalpage = 0;
 
-
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLatePlanEvent(ErrorEvent event) {
+        if (null != event.getError()&&!event.getError().equals("")) {
+            fee_error.setText(event.getError());
+            fee_error.setPadding(20,10,20,10);
+        }else{
+            fee_error.setText("");
+        }
+    }
 
     @Override
     protected void initViewsAndEvents() {
@@ -262,10 +275,10 @@ public class FeeFragment extends BaseLazyFragment implements SwipeRefreshLayout.
             view.setVisibility(View.VISIBLE);
         }
 
-//        if (isUser()) {
-//            swipeRefresh.setRefreshing(true);
-//            onRefresh();
-//        }
+        if (isUser()) {
+            swipeRefresh.setRefreshing(true);
+            onRefresh();
+        }
 
     }
 

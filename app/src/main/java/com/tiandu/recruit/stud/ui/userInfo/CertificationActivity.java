@@ -11,7 +11,10 @@ import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.MeInfo;
+import com.tiandu.recruit.stud.data.event.ErrorEvent;
 import com.tiandu.recruit.stud.view.ClearEditText;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -75,11 +78,13 @@ public class CertificationActivity extends BaseActivity {
                 }, e -> {
                     cannelDialog();
                     showMessage(MessageFactory.getMessage(e));
+                    getInitnetData();
                 });
 
     }
     @Override
     protected void initView() {
+        EventBus.getDefault().register(this);
         cannelDialog();
     }
 
@@ -114,10 +119,15 @@ public class CertificationActivity extends BaseActivity {
                         if (null != meInfos) {
                             etParent.setText( meInfos.get(0).getParentID());
                             etRealName.setText( meInfos.get(0).getRealName());
-                            etIDNumber.setText( meInfos.get(0).getIDNumber());
+                            etIDNumber.setText( AStringUtil.makeId(meInfos.get(0).getIDNumber()));
                             etBank.setText( meInfos.get(0).getBankName());
-                            etBankNum.setText( meInfos.get(0).getBankAccount());
-
+                            etBankNum.setText(AStringUtil.makeCardId(meInfos.get(0).getBankAccount()));
+                            if(meInfos.get(0).getBankName().equals("")||meInfos.get(0).getBankAccount().equals("")||
+                                    meInfos.get(0).getBankName()==null||meInfos.get(0).getBankAccount()==null){
+                                EventBus.getDefault().post(new ErrorEvent("请尽快完善您的银行卡信息，否则我们将无法正常发放您的奖励金额！"));
+                            }else{
+                                EventBus.getDefault().post(new ErrorEvent(""));
+                            }
                         }else {
                             showToast("数据为空");
                         }
@@ -126,5 +136,11 @@ public class CertificationActivity extends BaseActivity {
                     cannelDialog();
                     showMessage(MessageFactory.getMessage(e));
                 });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

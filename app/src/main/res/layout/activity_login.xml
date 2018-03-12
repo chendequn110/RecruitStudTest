@@ -46,7 +46,8 @@
             android:maxLines="1"
             android:minHeight="@dimen/size_50dp"
             android:paddingLeft="@dimen/size_10dp"
-            android:textColorHint="@color/load_gray" />
+            android:textColorHint="@color/load_gray"
+            android:textSize="@dimen/font_medium"/>
 
         <View
             android:layout_width="match_parent"
@@ -69,7 +70,8 @@
             android:maxLines="1"
             android:minHeight="@dimen/size_50dp"
             android:paddingLeft="@dimen/size_10dp"
-            android:textColorHint="@color/load_gray" />
+            android:textColorHint="@color/load_gray"
+            android:textSize="@dimen/font_medium"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_1dp"

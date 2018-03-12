@@ -101,6 +101,33 @@
                         android:textSize="@dimen/font_medium" />
 
                 </RelativeLayout>
+                <View
+                    android:layout_marginTop="@dimen/size_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/comm_line" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="下级人数"
+                        android:textColor="@color/darker_grey"
+                        android:textSize="@dimen/font_medium" />
+
+                    <TextView
+                        android:id="@+id/tvChildMemberNum"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="下级人数"
+                        android:textColor="@color/darker_grey"
+                        android:textSize="@dimen/font_medium" />
+
+                </RelativeLayout>
 
             </LinearLayout>
 

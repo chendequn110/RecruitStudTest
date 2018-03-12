@@ -8,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -25,6 +26,7 @@ import com.tiandu.recruit.stud.base.BaseActivity;
 import com.tiandu.recruit.stud.base.BaseAppManager;
 import com.tiandu.recruit.stud.base.BaseLazyFragment;
 import com.tiandu.recruit.stud.data.entity.VersionInfo;
+import com.tiandu.recruit.stud.data.event.AreaEvent;
 import com.tiandu.recruit.stud.data.event.CityEvent;
 import com.tiandu.recruit.stud.data.event.PhotoEvent;
 import com.tiandu.recruit.stud.ui.adapter.FragmentAdapter;
@@ -32,6 +34,7 @@ import com.tiandu.recruit.stud.ui.fragment.FeeFragment;
 import com.tiandu.recruit.stud.ui.fragment.HomeFragment;
 import com.tiandu.recruit.stud.ui.fragment.JobFragment;
 import com.tiandu.recruit.stud.ui.fragment.UserFragment;
+import com.tiandu.recruit.stud.view.WheelView;
 import com.tiandu.recruit.stud.view.XViewPager;
 import com.tiandu.recruit.stud.view.tabstrip.HomeNavigateTab;
 import com.tiandu.recruit.stud.view.tabstrip.HomeNavigateTabIndicator;
@@ -42,6 +45,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -61,6 +65,8 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     LinearLayout ll_btn_screen;
     @BindView(R.id.tvAddress)
     TextView tvAddress;
+    @BindView(R.id.tvAddress2)
+    TextView tvAddress2;
     private int position = 0;
     private FragmentAdapter adapter = null;
     private List<BaseLazyFragment> mFragments = new ArrayList<>();
@@ -68,6 +74,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     public static String city="上海";
     private AlertDialog.Builder builder;
     private static final int REQUEST_CODE_PICK_CITY = 0;
+    private static  String[] AREA = new String[]{"全部","黄浦区","卢湾区","徐汇区","长宁区","静安区","普陀区","闸北区","虹口区","杨浦区","闵行区","宝山区","嘉定区","浦东新区","金山区","松江区","青浦区","南汇区","奉贤区","崇明县"};;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -110,10 +117,46 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
 //        readyGo(CityActivity.class,bundle);
 
     }
+    @OnClick({R.id.tvAddress2})void address2Click() {
+        View outerView = LayoutInflater.from(this).inflate(R.layout.item_whellview, null);
+        WheelView wv = (WheelView) outerView.findViewById(R.id.main_wv);
+        wv.setOffset(2);
+        wv.setItems(Arrays.asList(AREA));
+        wv.setSeletion(0);
+        wv.setOnWheelViewListener(new WheelView.OnWheelViewListener() {
+            @Override
+            public void onSelected(int selectedIndex, String item) {
+                tvAddress2.setText(item);
+                EventBus.getDefault().post(new AreaEvent(item));
+            }
+        });
+
+        new AlertDialog.Builder(this)
+                .setTitle("请选择区域")
+                .setView(outerView)
+                .setPositiveButton("确定", null)
+                .show();
+    }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onLatePlanEvent(CityEvent event) {
         if (null != event.getCity()) {
             city = event.getCity();
+            if (city.equals("北京")){
+                tvAddress2.setText("区域");
+                AREA =new String[]{"全部","西城区","崇文区","宣武区","朝阳区","丰台区","石景山区","海淀区","门头沟区","房山区","通州区","顺义区","昌平区","大兴区","怀柔区","平谷区","密云县","延庆县"};
+            }else if(city.equals("上海")){
+                tvAddress2.setText("区域");
+                AREA =new String[]{"全部","黄浦区","卢湾区","徐汇区","长宁区","静安区","普陀区","闸北区","虹口区","杨浦区","闵行区","宝山区","嘉定区","浦东新区","金山区","松江区","青浦区","南汇区","奉贤区","崇明县"};
+            }else if(city.equals("天津")){
+                tvAddress2.setText("区域");
+                AREA =new String[]{"全部","和平区","河东区","河西区","南开区","河北区","红桥区","塘沽区","汉沽区","大港区","东丽区","西青区","津南区","北辰区","武清区","宝坻区","宁河县","静海县","蓟县"};
+            }else if(city.equals("重庆")){
+                tvAddress2.setText("区域");
+                AREA =new String[]{"全部","万州区","涪陵区","渝中区","大渡口区","江北区","沙坪坝区","九龙坡区","南岸区","北碚区","万盛区","双桥区","渝北区","巴南区","黔江区","长寿区","江津区","合川区","永川区","南川区","綦江县","潼南县","铜梁县","大足县","荣昌县","璧山县","梁平县","城口县","丰都县","垫江县","武隆县","忠县","开县","云阳县","奉节县","巫山县","巫溪县","石柱土家族自治县","秀山土家族苗族自治县","酉阳土家族苗族自治县","彭水苗族土家族自治县"};
+            }else {
+                tvAddress2.setText("区域");
+                AREA =new String[]{};
+            }
         } else {
             city = "上海";
         }
@@ -124,6 +167,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
         position = index;
         if (position == 2 ) {
             tvAddress.setVisibility(View.INVISIBLE);
+            tvAddress2.setVisibility(View.INVISIBLE);
             mToolbar.setVisibility(View.VISIBLE);
             setToolbarTitle(mTitles[index]);
             viewPager.setCurrentItem(position, false);
@@ -133,6 +177,7 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
             viewPager.setCurrentItem(position, false);
         }else if( position == 1) {
             tvAddress.setVisibility(View.VISIBLE);
+            tvAddress2.setVisibility(View.VISIBLE);
             mToolbar.setVisibility(View.VISIBLE);
             setToolbarTitle(mTitles[index]);
             viewPager.setCurrentItem(position, false);

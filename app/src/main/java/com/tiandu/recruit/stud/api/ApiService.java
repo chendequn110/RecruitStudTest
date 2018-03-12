@@ -130,7 +130,7 @@ public interface ApiService {
      * @return Response
      */
     @GET("{value}")
-    Observable<Response<List<JobInfo>>> getJobInfo(@Path("value") String url, @Query("JobType") String JobType,@Query("MemberID") String MemberID, @Query("Token") String Token, @Query("Province") String Province, @Query("City") String City, @Query("District") String District,@Query("iPage") String iPage);
+    Observable<Response<List<JobInfo>>> getJobInfo(@Path("value") String url, @Query("JobType") String JobType,@Query("MemberID") String MemberID, @Query("Token") String Token, @Query("Province") String Province, @Query("City") String City, @Query("District") String District, @Query("IsFavorite") String IsFavorite, @Query("IsApply") String IsApply,@Query("IsBrowse") String IsBrowse,@Query("iPage") String iPage);
     /**
      * 获取招聘详情
      *

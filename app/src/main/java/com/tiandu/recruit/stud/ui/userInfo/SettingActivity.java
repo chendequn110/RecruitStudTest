@@ -14,6 +14,7 @@ import com.tiandu.recruit.stud.base.utils.VersionManager;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
 import com.tiandu.recruit.stud.data.entity.VersionInfo;
+import com.tiandu.recruit.stud.ui.activity.AboutUSActivity;
 
 import java.util.List;
 
@@ -71,6 +72,10 @@ public class SettingActivity extends BaseActivity {
         return false;
     }
 
+    @OnClick({R.id.llAboutUs})
+    void OnAboutUsClick(View view) {
+        readyGo(AboutUSActivity.class);
+    }
     @OnClick({R.id.llSettingVersion})
     void OnSelectedClick(View view) {
         switch (view.getId()) {

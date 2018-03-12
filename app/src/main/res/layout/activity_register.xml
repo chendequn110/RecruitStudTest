@@ -20,6 +20,7 @@
             android:background="@null"
             android:inputType="number"
             android:hint="@string/input_phone"
+            android:textSize="@dimen/font_medium"
             android:minHeight="@dimen/size_45dp" />
 
         <View
@@ -41,6 +42,7 @@
                 android:background="@null"
                 android:inputType="number"
                 android:hint="@string/input_valide_code"
+                android:textSize="@dimen/font_medium"
                 android:minHeight="@dimen/size_45dp" />
 
             <Button
@@ -71,6 +73,7 @@
             android:background="@null"
             android:hint="@string/input_reset_paswd"
             android:inputType="textPassword"
+            android:textSize="@dimen/font_medium"
             android:minHeight="@dimen/size_45dp" />
 
         <View
@@ -86,6 +89,7 @@
             android:background="@null"
             android:inputType="textPassword"
             android:hint="@string/input_ok_passwd"
+            android:textSize="@dimen/font_medium"
             android:minHeight="@dimen/size_45dp" />
 
         <View

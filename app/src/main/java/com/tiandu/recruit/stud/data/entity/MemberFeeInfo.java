@@ -90,6 +90,15 @@ public class MemberFeeInfo implements Serializable {
         private String StartDate;
         private double TakeFee;
         private double TotalFee;
+        private double FinalFee;
+
+        public double getFinalFee() {
+            return FinalFee;
+        }
+
+        public void setFinalFee(double finalFee) {
+            FinalFee = finalFee;
+        }
 
         public double getChildFee() {
             return ChildFee;

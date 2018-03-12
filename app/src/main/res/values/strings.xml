@@ -34,13 +34,16 @@
     <string name="fee_child">下级奖金</string>
     <string name="job_detail">招聘详情</string>
     <string name="cooperate_detail">我要合作</string>
+    <string name="resume_detail">我的简历</string>
     <string name="notice_detail">通知详情</string>
     <string name="fuwu">服务协议</string>
     <string name="yins">隐私政策</string>
     <string name="message">消息</string>
     <string name="message_detail">消息详情</string>
+    <string name="setting_aboutus">关于我们</string>
+    <string name="myjob">我的职位</string>
     <string name="main_me">我的</string>
-    <string name="main_trends">账户</string>
+    <string name="main_trends">账富</string>
     <string name="main_human">招聘</string>
     <string name="main_home">首页</string>
     <string name="dialog_title_default">操作确认</string>
@@ -67,14 +70,16 @@
 
     <!--我的界面-->
     <string name="user_info_coupon">账号关联</string>
-    <string name="user_info_progressquery">修改密码</string>
+    <string name="user_info_progressquery">密码管理</string>
     <string name="user_info_coach">实名认证</string>
+    <string name="user_info_resume">我的简历</string>
     <string name="user_info_more">系统设置</string>
     <string name="user_info_attention">会员资料</string>
     <string name="user_info_certification">实名认证</string>
-    <string name="user_info_wall">发展下级</string>
-    <string name="user_info_child">下级会员</string>
+    <string name="user_info_wall">发展人脉</string>
+    <string name="user_info_child">人脉信息</string>
     <string name="user_info_cooperate">我要合作(反馈)</string>
+    <string name="user_info_myjob">我的职位</string>
     <string name="user_info_contace">评价管理</string>
     <string name="user_info_complaint">投诉</string>
     <string name="user_about_us">关于我们</string>
@@ -89,7 +94,11 @@
     <string name="user_info_wx">绑定微信</string>
     <string name="user_info_qq">绑定QQ</string>
     <string name="user_info_idnumber">身份证号</string>
-
+    <!--关于我们-->
+    <string name="setting_web">网址</string>
+    <string name="setting_phone">服务热线</string>
+    <string name="setting_mail">邮箱</string>
+    <string name="setting_wechat">微信服务号</string>
     <string name="user_info_parant">上级代理</string>
     <string name="user_info_realname">真实姓名</string>
     <string name="user_info_Gender">性别</string>
@@ -107,5 +116,6 @@
 
     <string name="user_setting">系统设置</string>
     <string name="user_setting_version">版本检测</string>
+    <string name="user_setting_us">关于我们</string>
 
 </resources>

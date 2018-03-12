@@ -163,6 +163,35 @@
 
 
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/comm_line" />
+
+                <LinearLayout
+                    android:id="@+id/llMyrResume"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvMyrResume"
+                        style="@style/txt_icon_style"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@mipmap/ic_myresume"
+                        android:text="@string/user_info_resume" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_40dp"
+                        android:drawableRight="@mipmap/ic_arrow_right"
+                        android:gravity="center_vertical|right"
+                        android:paddingRight="@dimen/size_15dp"
+                        android:text=""
+                        android:textSize="@dimen/font_normal"
+                        style="@style/txt_icon_style2"/>
+
+
+                </LinearLayout>
 
 
 
@@ -290,7 +319,37 @@
 
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/comm_line" />
+            <LinearLayout
+                android:id="@+id/llMyjob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/windowBackground"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/tvMyjob"
+                    style="@style/txt_icon_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@mipmap/ic_my_joblist"
+                    android:text="@string/user_info_myjob" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/size_10dp"
+                    android:drawableRight="@mipmap/ic_arrow_right"
+                    android:gravity="center_vertical|right"
+                    android:paddingRight="@dimen/size_15dp"
+                    android:textSize="@dimen/font_normal" />
+
+
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

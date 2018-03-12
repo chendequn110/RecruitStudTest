@@ -35,6 +35,7 @@
             android:background="@null"
             android:hint="@string/input_old_paswd"
             android:inputType="textPassword"
+            android:textSize="@dimen/font_medium"
             android:minHeight="@dimen/size_45dp" />
 
         <View
@@ -52,6 +53,7 @@
             android:background="@null"
             android:hint="@string/input_new_paswd"
             android:inputType="textPassword"
+            android:textSize="@dimen/font_medium"
             android:minHeight="@dimen/size_45dp" />
 
         <View
@@ -67,6 +69,7 @@
             android:background="@null"
             android:inputType="textPassword"
             android:hint="@string/input_ok_passwd"
+            android:textSize="@dimen/font_medium"
             android:minHeight="@dimen/size_45dp" />
 
         <View

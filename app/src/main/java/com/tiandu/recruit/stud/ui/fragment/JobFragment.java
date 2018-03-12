@@ -8,13 +8,12 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.baiiu.filter.DropDownMenu;
-import com.baiiu.filter.interfaces.OnFilterDoneListener;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
@@ -27,8 +26,8 @@ import com.tiandu.recruit.stud.base.utils.Logger;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
-import com.tiandu.recruit.stud.data.entity.FilterUrl;
 import com.tiandu.recruit.stud.data.entity.JobInfo;
+import com.tiandu.recruit.stud.data.event.AreaEvent;
 import com.tiandu.recruit.stud.data.event.CityEvent;
 import com.tiandu.recruit.stud.ui.adapter.DropMenuAdapter;
 import com.tiandu.recruit.stud.ui.adapter.JobAdapter;
@@ -43,6 +42,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -58,29 +58,29 @@ import static android.content.Context.LOCATION_SERVICE;
  * 修改时间：2017/11/9 13:03
  * 修改备注：
  */
-public class JobFragment extends BaseLazyFragment implements OnFilterDoneListener,SwipeRefreshLayout.OnRefreshListener, View.OnClickListener,BaseQuickAdapter.RequestLoadMoreListener {
+public class JobFragment extends BaseLazyFragment implements SwipeRefreshLayout.OnRefreshListener, View.OnClickListener,BaseQuickAdapter.RequestLoadMoreListener {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.mFilterContentView)
     SwipeRefreshLayout swipeRefresh;
-//    @BindView(R.id.tvJob1)
-//    TextView tvJob1;
-//    @BindView(R.id.tvJob2)
-//    TextView tvJob2;
-//    @BindView(R.id.tvJob3)
-//    TextView tvJob3;
-//    @BindView(R.id.tvJob4)
-//    TextView tvJob4;
-//    @BindView(R.id.line2)
-//    View line2;
-//    @BindView(R.id.line1)
-//    View line1;
-//    @BindView(R.id.line3)
-//    View line3;
-//    @BindView(R.id.line4)
-//    View line4;
-    @BindView(R.id.dropDownMenu)
-    DropDownMenu dropDownMenu;
+    @BindView(R.id.tvJob1)
+    TextView tvJob1;
+    @BindView(R.id.tvJob2)
+    TextView tvJob2;
+    @BindView(R.id.tvJob3)
+    TextView tvJob3;
+    @BindView(R.id.tvJob4)
+    TextView tvJob4;
+    @BindView(R.id.line2)
+    View line2;
+    @BindView(R.id.line1)
+    View line1;
+    @BindView(R.id.line3)
+    View line3;
+    @BindView(R.id.line4)
+    View line4;
+//    @BindView(R.id.dropDownMenu)
+//    DropDownMenu dropDownMenu;
 
 
     private JobAdapter adapter = null;
@@ -90,7 +90,7 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
     private int totalpage = 0;
     private List<JobInfo.AaDataBean> aaData;
     private DropMenuAdapter cityAdapter;
-    private String districts="";
+    private String districts="全部";
     private String Province="";
 
 
@@ -99,48 +99,48 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
         // 初始化高德
 //        initLocation();
 //        startLocation();
-        initFilterDropDownView();
+//        initFilterDropDownView();
         setupView();
     }
-    private void initFilterDropDownView() {
-        String[] titleList = new String[]{"区域", "类别"};
-        String[] area =new String[]{"黄浦区","卢湾区","徐汇区","长宁区","静安区","普陀区","闸北区","虹口区","杨浦区","闵行区","宝山区","嘉定区","浦东新区","金山区","松江区","青浦区","南汇区","奉贤区","崇明县"};
-        cityAdapter = new DropMenuAdapter(getActivity(), titleList, this,area);
-        dropDownMenu.setMenuAdapter(cityAdapter);
-    }
+//    private void initFilterDropDownView() {
+//        String[] titleList = new String[]{"区域"};
+//        String[] area =new String[]{"全部","黄浦区","卢湾区","徐汇区","长宁区","静安区","普陀区","闸北区","虹口区","杨浦区","闵行区","宝山区","嘉定区","浦东新区","金山区","松江区","青浦区","南汇区","奉贤区","崇明县"};
+//        cityAdapter = new DropMenuAdapter(getActivity(), titleList, this,area);
+//        dropDownMenu.setMenuAdapter(cityAdapter);
+//    }
 
-    @Override
-    public void onFilterDone(int position, String positionTitle, String urlValue) {
-        if (position != 3) {
-            dropDownMenu.setPositionIndicatorText(FilterUrl.instance().position, FilterUrl.instance().positionTitle);
-        }
-        if(position==0){
-            districts=FilterUrl.instance().positionTitle;
-            swipeRefresh.setRefreshing(true);
-            onRefresh();
-        }
-        if(position==1){
-            if(FilterUrl.instance().positionTitle.equals("实习")){
-                type="00";
-                swipeRefresh.setRefreshing(true);
-                onRefresh();
-            }else if(FilterUrl.instance().positionTitle.equals("普工")){
-                type="01";
-                swipeRefresh.setRefreshing(true);
-                onRefresh();
-            }else if(FilterUrl.instance().positionTitle.equals("技工")){
-                type="02";
-                swipeRefresh.setRefreshing(true);
-                onRefresh();
-            }else if(FilterUrl.instance().positionTitle.equals("猎聘")){
-                type="03";
-                swipeRefresh.setRefreshing(true);
-                onRefresh();
-            }
-        }
-        dropDownMenu.close();
-//        mFilterContentView.setText(FilterUrl.instance().toString());
-    }
+//    @Override
+//    public void onFilterDone(int position, String positionTitle, String urlValue) {
+//        if (position != 3) {
+//            dropDownMenu.setPositionIndicatorText(FilterUrl.instance().position, FilterUrl.instance().positionTitle);
+//        }
+//        if(position==0){
+//            districts=FilterUrl.instance().positionTitle;
+//            swipeRefresh.setRefreshing(true);
+//            onRefresh();
+//        }
+//        if(position==1){
+//            if(FilterUrl.instance().positionTitle.equals("实习")){
+//                type="00";
+//                swipeRefresh.setRefreshing(true);
+//                onRefresh();
+//            }else if(FilterUrl.instance().positionTitle.equals("普工")){
+//                type="01";
+//                swipeRefresh.setRefreshing(true);
+//                onRefresh();
+//            }else if(FilterUrl.instance().positionTitle.equals("技工")){
+//                type="02";
+//                swipeRefresh.setRefreshing(true);
+//                onRefresh();
+//            }else if(FilterUrl.instance().positionTitle.equals("猎聘")){
+//                type="03";
+//                swipeRefresh.setRefreshing(true);
+//                onRefresh();
+//            }
+//        }
+//        dropDownMenu.close();
+////        mFilterContentView.setText(FilterUrl.instance().toString());
+//    }
 
 //    public View getFooterView() {
 //        View view = LayoutInflater.from(context).inflate(R.layout.fragment_foot, null);
@@ -150,10 +150,10 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
 //    }
 
     private void setupView() {
-//        line1.setVisibility(View.VISIBLE);
-//        line2.setVisibility(View.INVISIBLE);
-//        line3.setVisibility(View.INVISIBLE);
-//        line4.setVisibility(View.INVISIBLE);
+        line1.setVisibility(View.VISIBLE);
+        line2.setVisibility(View.INVISIBLE);
+        line3.setVisibility(View.INVISIBLE);
+        line4.setVisibility(View.INVISIBLE);
         swipeRefresh.setOnRefreshListener(this);
 //        recyclerView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL_LIST));
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
@@ -222,7 +222,7 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
 
     private void getOrdList(String type) {
         Api.getInstance()
-                .movieService.getJobInfo(C.USER_JOBINFO,type,SpUtil.getMemberID(),SpUtil.getToken(),"",locatioCity,districts,page+"")
+                .movieService.getJobInfo(C.USER_JOBINFO,type,SpUtil.getMemberID(),SpUtil.getToken(),"",locatioCity,districts,"","","",page+"")
                 .compose(RxSchedulers.io_main())
                 .compose(RxSchedulers.sTransformer())
                 .subscribe(new Action1<List<JobInfo>>() {
@@ -287,10 +287,10 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
             view.setVisibility(View.VISIBLE);
         }
 
-//        if (isUser()) {
-//            swipeRefresh.setRefreshing(true);
-//            onRefresh();
-//        }
+        if (isUser()) {
+            swipeRefresh.setRefreshing(true);
+            onRefresh();
+        }
 
     }
 
@@ -303,51 +303,51 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
     protected void onUserInvisible() {
 
     }
-//    @OnClick({R.id.tvJob1, R.id.tvJob2,R.id.tvJob3,R.id.tvJob4})
-//    void onSelectClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.tvJob1:
-//                Logger.d("点击1");
-//                line1.setVisibility(View.VISIBLE);
-//                line2.setVisibility(View.INVISIBLE);
-//                line3.setVisibility(View.INVISIBLE);
-//                line4.setVisibility(View.INVISIBLE);
-//                type="00";
-//                swipeRefresh.setRefreshing(true);
-//                onRefresh();
-//                break;
-//            case R.id.tvJob2:
-//                Logger.d("点击2");
-//                line1.setVisibility(View.INVISIBLE);
-//                line2.setVisibility(View.VISIBLE);
-//                line3.setVisibility(View.INVISIBLE);
-//                line4.setVisibility(View.INVISIBLE);
-//                type="01";
-//                swipeRefresh.setRefreshing(true);
-//                onRefresh();
-//                break;
-//            case R.id.tvJob3:
-//                Logger.d("点击3");
-//                line1.setVisibility(View.INVISIBLE);
-//                line2.setVisibility(View.INVISIBLE);
-//                line3.setVisibility(View.VISIBLE);
-//                line4.setVisibility(View.INVISIBLE);
-//                type="02";
-//                swipeRefresh.setRefreshing(true);
-//                onRefresh();
-//                break;
-//            case R.id.tvJob4:
-//                Logger.d("点击4");
-//                line1.setVisibility(View.INVISIBLE);
-//                line2.setVisibility(View.INVISIBLE);
-//                line3.setVisibility(View.INVISIBLE);
-//                line4.setVisibility(View.VISIBLE);
-//                type="03";
-//                swipeRefresh.setRefreshing(true);
-//                onRefresh();
-//                break;
-//        }
-//    }
+    @OnClick({R.id.tvJob1, R.id.tvJob2,R.id.tvJob3,R.id.tvJob4})
+    void onSelectClick(View v) {
+        switch (v.getId()) {
+            case R.id.tvJob1:
+                Logger.d("点击1");
+                line1.setVisibility(View.VISIBLE);
+                line2.setVisibility(View.INVISIBLE);
+                line3.setVisibility(View.INVISIBLE);
+                line4.setVisibility(View.INVISIBLE);
+                type="00";
+                swipeRefresh.setRefreshing(true);
+                onRefresh();
+                break;
+            case R.id.tvJob2:
+                Logger.d("点击2");
+                line1.setVisibility(View.INVISIBLE);
+                line2.setVisibility(View.VISIBLE);
+                line3.setVisibility(View.INVISIBLE);
+                line4.setVisibility(View.INVISIBLE);
+                type="01";
+                swipeRefresh.setRefreshing(true);
+                onRefresh();
+                break;
+            case R.id.tvJob3:
+                Logger.d("点击3");
+                line1.setVisibility(View.INVISIBLE);
+                line2.setVisibility(View.INVISIBLE);
+                line3.setVisibility(View.VISIBLE);
+                line4.setVisibility(View.INVISIBLE);
+                type="02";
+                swipeRefresh.setRefreshing(true);
+                onRefresh();
+                break;
+            case R.id.tvJob4:
+                Logger.d("点击4");
+                line1.setVisibility(View.INVISIBLE);
+                line2.setVisibility(View.INVISIBLE);
+                line3.setVisibility(View.INVISIBLE);
+                line4.setVisibility(View.VISIBLE);
+                type="03";
+                swipeRefresh.setRefreshing(true);
+                onRefresh();
+                break;
+        }
+    }
 
     @Override
     public void onClick(View view) {
@@ -448,7 +448,14 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
 //            stopLocation();
         }
     };
-
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onLatePlanEvent(AreaEvent event) {
+        if (null != event.getArea()) {
+            districts=event.getArea();
+            swipeRefresh.setRefreshing(true);
+            onRefresh();
+        }
+    }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onLatePlanEvent(CityEvent event) {
@@ -458,13 +465,13 @@ public class JobFragment extends BaseLazyFragment implements OnFilterDoneListene
             String[] titleList = new String[]{"区域", "类别"};
             String[] area=new String[]{};
             if (locatioCity.equals("北京")){
-                 area =new String[]{"西城区","崇文区","宣武区","朝阳区","丰台区","石景山区","海淀区","门头沟区","房山区","通州区","顺义区","昌平区","大兴区","怀柔区","平谷区","密云县","延庆县"};
+                 area =new String[]{"全部","西城区","崇文区","宣武区","朝阳区","丰台区","石景山区","海淀区","门头沟区","房山区","通州区","顺义区","昌平区","大兴区","怀柔区","平谷区","密云县","延庆县"};
             }else if(locatioCity.equals("上海")){
-                 area =new String[]{"黄浦区","卢湾区","徐汇区","长宁区","静安区","普陀区","闸北区","虹口区","杨浦区","闵行区","宝山区","嘉定区","浦东新区","金山区","松江区","青浦区","南汇区","奉贤区","崇明县"};
+                 area =new String[]{"全部","黄浦区","卢湾区","徐汇区","长宁区","静安区","普陀区","闸北区","虹口区","杨浦区","闵行区","宝山区","嘉定区","浦东新区","金山区","松江区","青浦区","南汇区","奉贤区","崇明县"};
             }else if(locatioCity.equals("天津")){
-                 area =new String[]{"和平区","河东区","河西区","南开区","河北区","红桥区","塘沽区","汉沽区","大港区","东丽区","西青区","津南区","北辰区","武清区","宝坻区","宁河县","静海县","蓟县"};
+                 area =new String[]{"全部","和平区","河东区","河西区","南开区","河北区","红桥区","塘沽区","汉沽区","大港区","东丽区","西青区","津南区","北辰区","武清区","宝坻区","宁河县","静海县","蓟县"};
             }else if(locatioCity.equals("重庆")){
-                 area =new String[]{"万州区","涪陵区","渝中区","大渡口区","江北区","沙坪坝区","九龙坡区","南岸区","北碚区","万盛区","双桥区","渝北区","巴南区","黔江区","长寿区","江津区","合川区","永川区","南川区","綦江县","潼南县","铜梁县","大足县","荣昌县","璧山县","梁平县","城口县","丰都县","垫江县","武隆县","忠县","开县","云阳县","奉节县","巫山县","巫溪县","石柱土家族自治县","秀山土家族苗族自治县","酉阳土家族苗族自治县","彭水苗族土家族自治县"};
+                 area =new String[]{"全部","万州区","涪陵区","渝中区","大渡口区","江北区","沙坪坝区","九龙坡区","南岸区","北碚区","万盛区","双桥区","渝北区","巴南区","黔江区","长寿区","江津区","合川区","永川区","南川区","綦江县","潼南县","铜梁县","大足县","荣昌县","璧山县","梁平县","城口县","丰都县","垫江县","武隆县","忠县","开县","云阳县","奉节县","巫山县","巫溪县","石柱土家族自治县","秀山土家族苗族自治县","酉阳土家族苗族自治县","彭水苗族土家族自治县"};
             }
             cityAdapter.setNewData(area);
             //TODO 修改城市重新从第一页获取

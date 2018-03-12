@@ -96,7 +96,6 @@ public class DropMenuAdapter implements MenuAdapter {
         for (int i = 0; i < area2.length; i++) {
             objects.add(area2[i]);
         }
-
         singleListView.setNewList(objects);
         return;
     }

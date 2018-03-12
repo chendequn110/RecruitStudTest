@@ -8,6 +8,7 @@ import com.tiandu.recruit.stud.R;
 import com.tiandu.recruit.stud.api.Api;
 import com.tiandu.recruit.stud.api.exception.MessageFactory;
 import com.tiandu.recruit.stud.base.BaseActivity;
+import com.tiandu.recruit.stud.base.utils.AStringUtil;
 import com.tiandu.recruit.stud.base.utils.SpUtil;
 import com.tiandu.recruit.stud.base.utils.helper.RxSchedulers;
 import com.tiandu.recruit.stud.data.C;
@@ -93,7 +94,7 @@ public class BindInfoActivity extends BaseActivity {
                     public void call(List<MeInfo> meInfos) {
                         cannelDialog();
                         if (null != meInfos) {
-                            tvBindPhone.setText( meInfos.get(0).getMobile());
+                            tvBindPhone.setText(AStringUtil.makePhone(meInfos.get(0).getMobile()));
                             tvBindMail.setText( meInfos.get(0).getEmail());
 //                            tvBindwx.setText( meInfos.get(0).getBindWechat());
 //                            tvBindqq.setText( meInfos.get(0).getBindQQ());

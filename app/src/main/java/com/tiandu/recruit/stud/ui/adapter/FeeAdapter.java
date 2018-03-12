@@ -31,7 +31,7 @@ public class FeeAdapter  extends BaseQuickAdapter<MemberFeeInfo.AaDataBean,BaseV
                 .setText(R.id.tvArrangeTime,info.getStartDate())
                 .setText(R.id.tvTakeFee,"¥"+info.getSelfFee())
                 .setText(R.id.tv_month,info.getStartDate().substring(5,7))
-                .setText(R.id.tvChildFee,"¥"+info.getChildFee());
+                .setText(R.id.tvChildFee,"¥"+info.getFinalFee());
 
 //                .addOnClickListener(R.id.btnXiajia);
     }

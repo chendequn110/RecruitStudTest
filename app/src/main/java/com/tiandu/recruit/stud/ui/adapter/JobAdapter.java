@@ -31,7 +31,7 @@ public class JobAdapter extends BaseQuickAdapter<JobInfo.AaDataBean,BaseViewHold
 
         baseViewHolder.setText(R.id.tvTitle, info.getTitle())
 //                .setText(R.id.tvWorkPlace,info.getWorkPlace())
-                .setText(R.id.tvMonthPay,"月薪:"+info.getMonthPay())
+                .setText(R.id.tvMonthPay,"薪酬:"+info.getMonthPay())
                 .setText(R.id.tvCompanyName,info.getCompanyName())
                 .setText(R.id.tvCreateTime,info.getPublishDate())
                 .setText(R.id.tvAwardAmt,"推荐奖金:"+info.getAwardAmt())
@@ -54,7 +54,7 @@ public class JobAdapter extends BaseQuickAdapter<JobInfo.AaDataBean,BaseViewHold
             if(info.getIsApply().equals("1")){
                 tv_apply.setText("已应聘");
             }else{
-                tv_apply.setText("未应聘");
+                tv_apply.setText("我要应聘");
             }
         }else{
             tv_apply.setText("");

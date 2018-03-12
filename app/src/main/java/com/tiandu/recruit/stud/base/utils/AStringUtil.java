@@ -7,18 +7,12 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.widget.TextView;
 
-
-import com.tiandu.recruit.stud.base.App;
-
-import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.List;
@@ -575,6 +569,49 @@ public class AStringUtil {
         }
         return result.toString();
     }
-
-
+    public static String makePhone(String phone){
+        if(!TextUtils.isEmpty(phone) && phone.length() > 6 ){
+            StringBuilder sb  =new StringBuilder();
+            for (int i = 0; i < phone.length(); i++) {
+                char c = phone.charAt(i);
+                if (i >= 3 && i <= 6) {
+                    sb.append('*');
+                } else {
+                    sb.append(c);
+                }
+            }
+            return sb.toString();
+        }
+        return phone;
+    }
+    public static String makeCardId(String cardId){
+        if(!TextUtils.isEmpty(cardId) && cardId.length() > 10 ){
+            StringBuilder sb  =new StringBuilder();
+            for (int i = 0; i < cardId.length(); i++) {
+                char c = cardId.charAt(i);
+                if (i >= 8 && i <= 11) {
+                    sb.append('*');
+                } else {
+                    sb.append(c);
+                }
+            }
+            return sb.toString();
+        }
+        return cardId;
+    }
+    public static String makeId(String ID) {
+        if (!TextUtils.isEmpty(ID) && ID.length() >17) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < ID.length(); i++) {
+                char c = ID.charAt(i);
+                if (i >= 6 && i <= 13) {
+                    sb.append('*');
+                } else {
+                    sb.append(c);
+                }
+            }
+            return sb.toString();
+        }
+        return ID;
+    }
 }

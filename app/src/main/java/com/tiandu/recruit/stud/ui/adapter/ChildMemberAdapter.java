@@ -34,6 +34,7 @@ public class ChildMemberAdapter extends BaseQuickAdapter<ChildMenberInfo, BaseVi
 
         baseViewHolder.setText(R.id.tvMemberID,  info.getMemberID())
                 .setText(R.id.tvMemberName, info.getMemberName())
-                .setText(R.id.tvRealName,  info.getRealName());
+                .setText(R.id.tvRealName,  info.getRealName())
+                .setText(R.id.tvChildMemberNum,info.getChildMemberNum());
     }
 }
